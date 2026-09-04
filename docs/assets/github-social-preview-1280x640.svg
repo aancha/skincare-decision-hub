@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title description">
+  <title id="title">Skincare Decision Hub social preview</title>
+  <desc id="description">A decision-first skincare comparison portfolio with synthetic data, safety guardrails, and responsible machine learning evaluation.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eef6f1"/>
+      <stop offset="0.58" stop-color="#f7f5ee"/>
+      <stop offset="1" stop-color="#f3e8dd"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#173f38" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+  <rect width="1280" height="640" fill="url(#background)"/>
+  <circle cx="1120" cy="88" r="180" fill="#cfe2d8" opacity="0.58"/>
+  <circle cx="1080" cy="610" r="230" fill="#edc9aa" opacity="0.38"/>
+  <g transform="translate(76 72)">
+    <rect width="1128" height="496" rx="34" fill="#fff" opacity="0.94" filter="url(#shadow)"/>
+    <text x="54" y="62" fill="#2f6f67" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" letter-spacing="4">INDEPENDENT PRODUCT · PUBLIC SHOWCASE</text>
+    <text x="54" y="145" fill="#173f38" font-family="Georgia, serif" font-size="62" font-weight="700">Skincare Decision Hub</text>
+    <text x="54" y="194" fill="#405549" font-family="Arial, Helvetica, sans-serif" font-size="25">Move from a broad shelf to a defensible skincare decision.</text>
+    <g transform="translate(54 244)" font-family="Arial, Helvetica, sans-serif">
+      <rect width="208" height="64" rx="16" fill="#173f38"/>
+      <text x="104" y="40" text-anchor="middle" fill="#fff" font-size="20" font-weight="700">Overview</text>
+      <text x="225" y="40" fill="#88a59f" font-size="30">→</text>
+      <rect x="260" width="208" height="64" rx="16" fill="#e1eee9"/>
+      <text x="364" y="40" text-anchor="middle" fill="#173f38" font-size="20" font-weight="700">Catalog</text>
+      <text x="485" y="40" fill="#88a59f" font-size="30">→</text>
+      <rect x="520" width="208" height="64" rx="16" fill="#f1e5da"/>
+      <text x="624" y="40" text-anchor="middle" fill="#6b4435" font-size="20" font-weight="700">Shortlist</text>
+      <text x="745" y="40" fill="#88a59f" font-size="30">→</text>
+      <rect x="780" width="208" height="64" rx="16" fill="#e9efed"/>
+      <text x="884" y="40" text-anchor="middle" fill="#173f38" font-size="20" font-weight="700">Routine</text>
+    </g>
+    <g transform="translate(54 348)" font-family="Arial, Helvetica, sans-serif">
+      <rect width="296" height="86" rx="18" fill="#f5f8f6" stroke="#d7e2dd"/>
+      <text x="24" y="34" fill="#2f6f67" font-size="16" font-weight="700">STATIC + LIVE</text>
+      <text x="24" y="62" fill="#173f38" font-size="20">No-build client · SSE</text>
+      <rect x="316" width="296" height="86" rx="18" fill="#f5f8f6" stroke="#d7e2dd"/>
+      <text x="340" y="34" fill="#2f6f67" font-size="16" font-weight="700">SAFETY AS A CONTRACT</text>
+      <text x="340" y="62" fill="#173f38" font-size="20">50 deterministic cases</text>
+      <rect x="632" width="356" height="86" rx="18" fill="#f5f8f6" stroke="#d7e2dd"/>
+      <text x="656" y="34" fill="#2f6f67" font-size="16" font-weight="700">RESPONSIBLE ML</text>
+      <text x="656" y="62" fill="#173f38" font-size="20">Promotion gates failed · no ship</text>
+    </g>
+  </g>
+  <text x="640" y="612" text-anchor="middle" fill="#53645f" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" letter-spacing="2">FICTIONAL SHOWCASE DATA · DECISION SUPPORT, NOT MEDICAL ADVICE</text>
+</svg>

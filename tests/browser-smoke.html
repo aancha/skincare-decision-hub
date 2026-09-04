@@ -1,0 +1,752 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SkinCare Hub browser smoke</title>
+    <style>
+      html,
+      body,
+      iframe {
+        border: 0;
+        height: 100%;
+        margin: 0;
+        width: 100%;
+      }
+
+      #result {
+        left: -10000px;
+        position: fixed;
+      }
+    </style>
+  </head>
+  <body data-status="running">
+    <p id="result" role="status">RUNNING</p>
+    <iframe id="app" title="SkinCare Hub public showcase"></iframe>
+    <script>
+      const result = document.querySelector("#result");
+      const frame = document.querySelector("#app");
+      const token = new URLSearchParams(window.location.search).get("token") || "missing";
+      let phase = "normal";
+      const guardrailCasesPromise = fetch("./fixtures/skincare_guardrail_eval_cases.json").then((response) => response.json());
+
+      async function finish(status, detail) {
+        document.body.dataset.status = status;
+        result.textContent = `${status.toUpperCase()}: ${detail}`;
+        await fetch("/__smoke_result__", {
+          body: JSON.stringify({ token, status, detail }),
+          headers: { "Content-Type": "application/json" },
+          method: "POST",
+        });
+      }
+
+      function requireCondition(condition, message) {
+        if (!condition) throw new Error(message);
+      }
+
+      function requireIncludes(actual, expected, label) {
+        const missing = (expected || []).filter((value) => !(actual || []).includes(value));
+        requireCondition(!missing.length, `${label} missing ${missing.join(", ")}`);
+      }
+
+      function requireVisibleSyntheticEvidence(page, label) {
+        const visibleLeaves = [...page.querySelectorAll("body *")].filter(
+          (entry) => !entry.children.length && entry.getClientRects().length && entry.textContent.trim(),
+        );
+        visibleLeaves.forEach((entry) => {
+          const text = entry.textContent.trim();
+          const prices = text.match(/\$\d[\d,]*\.\d{2}/g) || [];
+          prices.forEach((price) => {
+            requireCondition(text.includes(`${price} · synthetic fixture`), `${label} exposes an unqualified price: ${text}`);
+          });
+          if (/\b(?:in stock|out of stock|backorder|preorder|discontinued|availability (?:unknown|mixed))\b/i.test(text)) {
+            requireCondition(
+              /synthetic fixture|fixture availability/i.test(text),
+              `${label} exposes unqualified availability: ${text}`,
+            );
+          }
+        });
+      }
+
+      async function verifyGeneratedFixtureEscaping(view, page) {
+        const app = view.SkinCareHubApp;
+        const marker = '<img id="public-generated-fixture-xss" src="x" onerror="window.__publicGeneratedFixtureXss=1">';
+        const originalProducts = app.state.products;
+        const originalMetadata = app.state.metadata;
+        const originalFavorites = app.state.favoriteIds;
+        const originalRoutineDraft = app.state.routineDraft;
+        const originalRoutineTime = app.state.routineTime;
+        const originalPicksMode = app.state.picksMode;
+        const originalArticleGroup = app.state.articleGroup;
+        const originalArticleId = app.state.articleId;
+        const article = app.articleCatalog[0];
+        const originalArticle = article
+          ? {
+              title: article.title,
+              retailer: article.retailer,
+              preview: article.preview,
+              sections: article.sections,
+            }
+          : null;
+        try {
+          const hostileProduct = {
+            ...originalProducts[0],
+            id: "public-generated-fixture-probe",
+            brand: marker,
+            name: marker,
+            retailer: "Sephora",
+            category: "cleanser",
+            concerns: [marker],
+            ingredients: [marker],
+            image: null,
+            availabilityState: "in_stock",
+            availabilityDetail: { label: marker, state: "available", group: "available_now" },
+          };
+          const hostileAlternative = {
+            ...hostileProduct,
+            id: "public-generated-fixture-probe-alt",
+            retailer: marker,
+            price: Number(hostileProduct.price || 20) + 1,
+          };
+          app.state.products = [hostileProduct, hostileAlternative];
+          app.state.metadata = { ...originalMetadata, retailers: [hostileProduct.retailer, hostileAlternative.retailer] };
+          app.state.favoriteIds = [hostileProduct.id];
+          app.renderFavorites({ force: true });
+          app.renderAdvisor([hostileProduct], hostileProduct);
+          app.state.picksMode = "overall";
+          app.renderBestPicks({ force: true });
+          app.renderMarketView([hostileProduct, hostileAlternative]);
+          app.state.routineTime = "am";
+          app.state.routineDraft = {
+            "am:cleanser": { locked: true, removed: false, candidateIndex: 0, productId: hostileProduct.id },
+          };
+          app.renderRoutineBuilder({ force: true });
+          const comparisonProbe = page.createElement("div");
+          comparisonProbe.id = "public-comparison-escaping-probe";
+          comparisonProbe.innerHTML = [
+            app.renderRetailerComparisonMarkup(hostileProduct),
+            app.renderRetailerOfferHistory(hostileAlternative),
+            app.renderRoutineBasketCardMarkup({
+              kind: "mixed",
+              title: "Fixture basket",
+              subtitle: "Fixture basket",
+              total: hostileAlternative.price,
+              items: [{ step: { label: "Cleanse" }, offer: hostileAlternative }],
+            }),
+            app.renderTrackedAlertCardMarkup({
+              title: "Fixture alert",
+              product: hostileProduct,
+              bestOfferNow: hostileAlternative,
+            }),
+            app.renderWatchingCardMarkup({
+              product: hostileProduct,
+              bestOfferNow: hostileAlternative,
+              comparisonKey: hostileProduct.comparisonKey,
+              identityKey: "fixture-watch",
+            }),
+          ].join("");
+          page.body.appendChild(comparisonProbe);
+          if (article) {
+            article.title = marker;
+            article.retailer = marker;
+            article.preview = marker;
+            article.sections = [{ heading: marker, body: marker }];
+            app.state.articleGroup = article.group;
+            app.state.articleId = article.id;
+            app.renderArticles({ force: true });
+          }
+          await new Promise((resolve) => window.setTimeout(resolve, 0));
+          requireCondition(!page.querySelector("#public-generated-fixture-xss"), "generated fixture text created active markup");
+          requireCondition(!view.__publicGeneratedFixtureXss, "generated fixture text executed script");
+        } finally {
+          app.state.products = originalProducts;
+          app.state.metadata = originalMetadata;
+          app.state.favoriteIds = originalFavorites;
+          app.state.routineDraft = originalRoutineDraft;
+          app.state.routineTime = originalRoutineTime;
+          app.state.picksMode = originalPicksMode;
+          app.state.articleGroup = originalArticleGroup;
+          app.state.articleId = originalArticleId;
+          if (article && originalArticle) Object.assign(article, originalArticle);
+          page.querySelector("#public-comparison-escaping-probe")?.remove();
+          app.renderSnapshot();
+        }
+      }
+
+      async function verifyPreflightFailureModes() {
+        const { enforcePublicStaticPreflight } = await import("../web/public-preflight.js");
+        const pageUrl = `${window.location.origin}/web/?view=catalog`;
+        const appBaseUrl = `${window.location.origin}/web/`;
+        const makeRegistration = (
+          scope,
+          { subscription = true, unregisterResult = true, persist = false, scriptUrl = `${window.location.origin}/web/service-worker.js` } = {},
+        ) => {
+          const registration = {
+            active: { scriptURL: scriptUrl },
+            installed: true,
+            scope,
+            pushManager: {
+              getSubscription: async () => subscription
+                ? { unsubscribe: async () => { registration.unsubscribed = true; return true; } }
+                : null,
+            },
+            unregister: async () => {
+              registration.unregisterAttempts = (registration.unregisterAttempts || 0) + 1;
+              if (!persist && unregisterResult) registration.installed = false;
+              return unregisterResult;
+            },
+          };
+          return registration;
+        };
+        const ancestor = makeRegistration(`${window.location.origin}/`);
+        const exact = makeRegistration(`${window.location.origin}/web/`, { subscription: false });
+        const descendant = makeRegistration(`${window.location.origin}/web/catalog/`);
+        const unrelated = makeRegistration(`${window.location.origin}/other/`);
+        const registrations = [exact, descendant, unrelated];
+        const result = await enforcePublicStaticPreflight({
+          storage: { removeItem() {} },
+          serviceWorker: {
+            controller: null,
+            getRegistrations: async () => registrations.filter((registration) => registration.installed),
+          },
+          pageUrl,
+          blockAfterReload: false,
+        });
+        requireCondition(result.cleanedRegistrations === 2, "preflight did not remove every owned public-app worker scope");
+        requireCondition(
+          !exact.installed && descendant.unsubscribed && !descendant.installed && unrelated.installed,
+          "preflight scope cleanup was incorrect",
+        );
+
+        async function requireRejected(serviceWorkerProbe, label, urlOverrides = {}) {
+          let rejected = false;
+          try {
+            await enforcePublicStaticPreflight({
+              storage: { removeItem() {} },
+              serviceWorker: serviceWorkerProbe,
+              pageUrl: urlOverrides.pageUrl || pageUrl,
+              appBaseUrl: urlOverrides.appBaseUrl || appBaseUrl,
+              blockAfterReload: false,
+            });
+          } catch {
+            rejected = true;
+          }
+          requireCondition(rejected, `${label} did not block startup`);
+        }
+        const ownedAlongsideAncestor = makeRegistration(`${window.location.origin}/web/`);
+        await requireRejected(
+          {
+            getRegistrations: async () => [ancestor, ownedAlongsideAncestor].filter((registration) => registration.installed),
+          },
+          "foreign ancestor service worker",
+        );
+        requireCondition(
+          ancestor.installed && !ancestor.unsubscribed && !ancestor.unregisterAttempts,
+          "preflight mutated a service worker outside the public app namespace",
+        );
+        requireCondition(
+          ownedAlongsideAncestor.unsubscribed && !ownedAlongsideAncestor.installed,
+          "a foreign ancestor prevented cleanup of an owned worker",
+        );
+        const rootWorker = makeRegistration(`${window.location.origin}/`);
+        await requireRejected(
+          {
+            getRegistrations: async () => [rootWorker],
+          },
+          "unattributable root-namespace service worker",
+          {
+            pageUrl: `${window.location.origin}/`,
+            appBaseUrl: `${window.location.origin}/`,
+          },
+        );
+        requireCondition(
+          rootWorker.installed && !rootWorker.unsubscribed && !rootWorker.unregisterAttempts,
+          "root deployment mutated an unattributable same-origin worker",
+        );
+        await requireRejected({ getRegistrations: async () => { throw new Error("lookup denied"); } }, "registration lookup failure");
+        const unsubscribeFailure = makeRegistration(`${window.location.origin}/web/`);
+        unsubscribeFailure.pushManager.getSubscription = async () => ({ unsubscribe: async () => { throw new Error("unsubscribe denied"); } });
+        const laterRegistration = makeRegistration(`${window.location.origin}/web/catalog/`);
+        const failureRegistrations = [unsubscribeFailure, laterRegistration];
+        await requireRejected(
+          { getRegistrations: async () => failureRegistrations.filter((registration) => registration.installed) },
+          "push unsubscribe failure",
+        );
+        requireCondition(
+          unsubscribeFailure.unregisterAttempts === 1 && !unsubscribeFailure.installed && laterRegistration.unsubscribed && !laterRegistration.installed,
+          "an earlier cleanup failure prevented later worker cleanup attempts",
+        );
+        const unregisterFailure = makeRegistration(`${window.location.origin}/web/`, { unregisterResult: false });
+        await requireRejected({ getRegistrations: async () => [unregisterFailure] }, "service-worker unregister failure");
+        const persistent = makeRegistration(`${window.location.origin}/web/`, { persist: true });
+        await requireRejected({ getRegistrations: async () => [persistent] }, "unverified service-worker removal");
+        const unknownScript = makeRegistration(`${window.location.origin}/web/catalog/`, {
+          scriptUrl: `${window.location.origin}/web/catalog/unrelated-worker.js`,
+        });
+        const unknownScriptResult = await enforcePublicStaticPreflight({
+          storage: { removeItem() {} },
+          serviceWorker: { controller: null, getRegistrations: async () => [unknownScript] },
+          pageUrl,
+          appBaseUrl,
+          blockAfterReload: false,
+        });
+        requireCondition(
+          unknownScriptResult.cleanedRegistrations === 0 && unknownScript.installed && !unknownScript.unregisterAttempts,
+          "preflight claimed an unrelated descendant worker by scope alone",
+        );
+        let reloads = 0;
+        const controlledResult = await enforcePublicStaticPreflight({
+          storage: { removeItem() {} },
+          serviceWorker: { controller: {}, getRegistrations: async () => [] },
+          pageUrl,
+          appBaseUrl,
+          reload: () => { reloads += 1; },
+          blockAfterReload: false,
+        });
+        requireCondition(controlledResult.reloading && reloads === 1, "a controlling worker did not force a reload boundary");
+      }
+
+      async function verifyBrowserGuardrailMatrix(view) {
+        const payload = await guardrailCasesPromise;
+        const cases = payload.cases || [];
+        requireCondition(cases.length === 50, `browser guardrail matrix has ${cases.length} cases`);
+        requireCondition(new Set(cases.map((entry) => entry.id)).size === 50, "browser guardrail case IDs are not unique");
+        cases.forEach((testCase) => {
+          const expected = testCase.expected || {};
+          if (testCase.kind === "product_posture") {
+            const posture = view.SkinCareHubApp.assessProductGuardrails(testCase.product);
+            if (Object.prototype.hasOwnProperty.call(expected, "sensitiveSafe")) {
+              requireCondition(posture.sensitiveSafe === expected.sensitiveSafe, `${testCase.id} sensitiveSafe mismatch`);
+            }
+            requireIncludes(posture.tags, expected.tagsInclude, `${testCase.id} product tags`);
+            requireIncludes(posture.pregnancyCautionTags, expected.pregnancyTagsInclude, `${testCase.id} pregnancy tags`);
+            return;
+          }
+          if (testCase.kind === "question_guardrail") {
+            const evaluation = view.SkinCareHubApp.evaluateShortlistQuestionGuardrails(testCase.question, testCase.products || []);
+            requireCondition(evaluation.severity === expected.severity, `${testCase.id} severity mismatch`);
+            if (expected.primaryTag) requireCondition(evaluation.primaryTag === expected.primaryTag, `${testCase.id} primaryTag mismatch`);
+            requireIncludes(evaluation.tags, expected.tagsInclude, `${testCase.id} question tags`);
+            return;
+          }
+          if (testCase.kind === "routine_warning") {
+            const warnings = view.SkinCareHubApp.buildRoutineGuardrailWarningEntries(
+              testCase.products || [],
+              testCase.timing,
+              testCase.avoidIngredients || [],
+            );
+            requireIncludes(warnings.map((entry) => entry.tag), expected.tagsInclude, `${testCase.id} routine tags`);
+            return;
+          }
+          throw new Error(`${testCase.id} has unsupported kind ${testCase.kind}`);
+        });
+      }
+
+      async function waitFor(check, label, timeoutMs = 12000) {
+        const startedAt = performance.now();
+        while (performance.now() - startedAt < timeoutMs) {
+          if (check()) return;
+          await new Promise((resolve) => window.setTimeout(resolve, 50));
+        }
+        throw new Error(`Timed out waiting for ${label}`);
+      }
+
+      frame.addEventListener("load", async () => {
+        try {
+          const view = frame.contentWindow;
+          const page = frame.contentDocument;
+          if (phase === "storage-denied") {
+            await waitFor(
+              () => view.SkinCareHubApp?.state?.products?.length === 12,
+              "the storage-denied synthetic catalog",
+            );
+            requireCondition(
+              page.querySelector("#results-title")?.textContent !== "Unable to load catalog",
+              "denied browser storage aborted initial catalog rendering",
+            );
+            page.querySelector('.workspace-nav-button[data-shell-view="catalog"]').click();
+            await waitFor(
+              () => page.querySelectorAll("#product-grid .product-card").length === 12,
+              "the storage-denied Catalog view",
+            );
+            page.querySelector("#product-grid .favorite-button").click();
+            await waitFor(
+              () => view.SkinCareHubApp.state.favoriteIds.length === 1,
+              "in-memory saving with denied browser storage",
+            );
+            const deniedAudit = view.__publicShowcaseNetworkAudit;
+            requireCondition(deniedAudit.serviceWorkerRegistrations.length === 0, "storage-denied path registered a service worker");
+            requireCondition(deniedAudit.notificationPermissionRequests === 0, "storage-denied path requested notification permission");
+            await finish(
+              "passed",
+              "12 products; saved flow; shortlist; routine; four Learn guardrails; 50-case browser contract; public network boundary; fail-closed legacy push cleanup; denied-storage startup and in-memory save",
+            );
+            return;
+          }
+          if (phase === "forced-failure") {
+            const failureAudit = view.__publicShowcaseNetworkAudit;
+            requireCondition(failureAudit, "failure-path network audit hook is missing");
+            await waitFor(
+              () => failureAudit.serviceWorkerUnregistrations === 1 && failureAudit.pushUnsubscriptions === 1,
+              "failure-path legacy service-worker and push cleanup",
+            );
+            await waitFor(
+              () => page.querySelector("#results-title")?.textContent === "Unable to load catalog",
+              "the forced public catalog failure",
+            );
+            requireCondition(failureAudit.serviceWorkerRegistrations.length === 0, "failure path registered a service worker");
+            requireCondition(failureAudit.notificationDeliveries === 0, "failure path displayed a notification");
+            requireCondition(failureAudit.pushSubscriptions === 0, "failure path requested a push subscription");
+            phase = "storage-denied";
+            frame.src = "../web/?public-showcase-browser-smoke=1&public-showcase-browser-smoke-deny-storage=1&apiOrigin=https%3A%2F%2Fattacker.invalid&mlDemo=1&mlPolicy=shadow";
+            return;
+          }
+          await waitFor(
+            () => view.SkinCareHubApp?.state?.products?.length === 12,
+            "the 12-product synthetic catalog",
+          );
+          await verifyGeneratedFixtureEscaping(view, page);
+
+          const networkAudit = view.__publicShowcaseNetworkAudit;
+          requireCondition(networkAudit, "public network audit hook is missing");
+          requireCondition(
+            view.localStorage.getItem("skincare-hub-api-origin") === null,
+            "public startup retained a stored hostile API origin",
+          );
+          requireCondition(!page.querySelector("#public-profile-xss"), "stored profile name created active markup");
+          requireCondition(!view.__publicProfileXss, "stored profile name executed script");
+          requireCondition(
+            page.querySelector("#profile-status .profile-status-meta")?.textContent.includes('<img id="public-profile-xss"'),
+            "stored profile name was not rendered as inert text",
+          );
+          requireCondition(view.SkinCareHubApp.state.userProfile.goal === "dryness", "stored profile goal was not allowlisted");
+          view.localStorage.setItem("skincare-hub-user-profile", JSON.stringify({ name: {} }));
+          requireCondition(
+            view.SkinCareHubApp.loadUserProfile().name === "",
+            "a malformed non-string profile name was not normalized",
+          );
+          requireCondition(!page.querySelector("#public-profile-goal-xss"), "stored profile goal created active markup");
+          requireCondition(!view.__publicProfileGoalXss, "stored profile goal executed script");
+          requireCondition(
+            view.SkinCareHubApp.state.savedRoutines[0]?.config?.routineConcern === "dryness",
+            "stored saved-routine concern was not allowlisted",
+          );
+          requireCondition(!page.querySelector("#public-saved-routine-xss"), "stored saved-routine concern created active markup");
+          requireCondition(!view.__publicSavedRoutineXss, "stored saved-routine concern executed script");
+          requireCondition(
+            view.SkinCareHubApp.state.favoriteIds.length === 0
+              && view.SkinCareHubApp.state.legacyTrackedAlertIds.length === 0
+              && view.SkinCareHubApp.state.savedArticleIds.length === 0,
+            "malformed array-valued storage was not normalized",
+          );
+          await waitFor(
+            () => view.SkinCareHubApp.state.routinePlanner.draftId === "hostile-storage-fixture",
+            "the hostile routine-session fixture restore",
+          );
+          requireCondition(view.SkinCareHubApp.state.routineConcern === "dryness", "stored routine concern escaped its allowlist");
+          view.localStorage.setItem(
+            "skincare-hub-routine-planner-session",
+            JSON.stringify({ concern: '<img id="public-routine-xss" src="x" onerror="window.__publicRoutineXss=1">' }),
+          );
+          requireCondition(
+            view.SkinCareHubApp.loadRoutinePlannerSession()?.concern === null,
+            "stored routine concern was not rejected",
+          );
+          view.SkinCareHubApp.persistRoutinePlannerSession({ skipContinuitySync: true });
+          await waitFor(() => page.querySelector(".saved-preset"), "the hostile saved-profile fixture");
+          requireCondition(!page.querySelector("#public-preset-xss"), "stored preset identifier created active markup");
+          requireCondition(!view.__publicPresetXss, "stored preset identifier executed script");
+          const normalizedPresetFilters = view.SkinCareHubApp.state.savedProfiles[0]?.filters;
+          requireCondition(
+            normalizedPresetFilters?.retailer === "all"
+              && normalizedPresetFilters?.brand === "all"
+              && normalizedPresetFilters?.category === "all"
+              && normalizedPresetFilters?.ingredient === "all"
+              && normalizedPresetFilters?.sort === "relevance"
+              && normalizedPresetFilters?.browseLaneKey === null,
+            "stored profile filters escaped their exact allowlists",
+          );
+          const continuityFilters = view.SkinCareHubApp.normalizeContinuityDomains({
+            saved_profiles: {
+              entries: [{
+                id: "continuity-hostile-profile",
+                label: "Continuity hostile fixture",
+                filters: {
+                  retailer: '<img id="public-continuity-filter-xss" src="x" onerror="window.__publicContinuityFilterXss=1">',
+                  brand: "constructor",
+                  category: "toString",
+                  ingredient: "__proto__",
+                  sort: "valueOf",
+                  browseLaneKey: "hasOwnProperty",
+                },
+              }],
+            },
+          }).saved_profiles.entries[0]?.filters;
+          requireCondition(
+            continuityFilters?.retailer === "all"
+              && continuityFilters?.brand === "all"
+              && continuityFilters?.category === "all"
+              && continuityFilters?.ingredient === "all"
+              && continuityFilters?.sort === "relevance"
+              && continuityFilters?.browseLaneKey === null,
+            "continuity profile filters escaped their exact allowlists",
+          );
+          page.querySelector('.saved-preset-main[data-kind="profile"]').click();
+          await waitFor(() => view.SkinCareHubApp.state.retailer === "all", "the hostile saved profile apply");
+          requireCondition(!page.querySelector("#public-preset-filter-xss"), "stored profile filter created active markup");
+          requireCondition(!view.__publicPresetFilterXss, "stored profile filter executed script");
+          requireCondition(!page.querySelector("#public-continuity-filter-xss"), "continuity profile filter created active markup");
+          requireCondition(!view.__publicContinuityFilterXss, "continuity profile filter executed script");
+          requireCondition(view.SkinCareHubApp.resolveApiOrigin() === "", "public mode accepted an API origin");
+          requireCondition(
+            view.SkinCareHubApp.buildGeneratedArtifactBaseCandidates().every(
+              (value) => new URL(value, view.document.baseURI).origin === view.location.origin,
+            ),
+            "static fallback includes a cross-origin candidate",
+          );
+          requireCondition(
+            view.SkinCareHubApp.buildGeneratedArtifactBaseCandidates(`${view.location.origin}/project/web/`)[0] ===
+              `${view.location.origin}/project/data/generated`,
+            "static fallback is not project-subpath safe",
+          );
+          const mlSnapshot = view.SkinCareHubApp.getResidualShadowDemoRuntimeSnapshot();
+          requireCondition(!mlSnapshot.requested && !mlSnapshot.loadAttempted, "public mode accepted the hostile ML demo query");
+          let apiBlocked = false;
+          try {
+            view.SkinCareHubApp.buildApiUrl("/api/status");
+          } catch (error) {
+            apiBlocked = /blocks API requests/.test(String(error?.message || error));
+          }
+          requireCondition(apiBlocked, "public mode did not fail closed on an API URL");
+          let missingFixtureFailedClosed = false;
+          try {
+            await view.SkinCareHubApp.fetchStaticArtifactJson("missing-public-fixture.json", "network-boundary", { timeoutMs: 1000 });
+          } catch {
+            missingFixtureFailedClosed = true;
+          }
+          requireCondition(missingFixtureFailedClosed, "missing static fixture did not fail closed");
+          view.SkinCareHubApp.maybeShowBrowserNotifications({
+            alerts: [{
+              id: "public-notification-probe",
+              title: "Fixture alert",
+              body: "Synthetic notification probe",
+              watch: { delivery: { push: true } },
+            }],
+          });
+          await new Promise((resolve) => window.setTimeout(resolve, 0));
+          requireCondition(networkAudit.notificationDeliveries === 0, "public mode displayed a browser notification");
+          await view.SkinCareHubApp.ensureBrowserNotificationPermission();
+          await view.SkinCareHubApp.syncPushSubscriptionForDialog(true);
+          requireCondition(networkAudit.notificationPermissionRequests === 0, "public mode requested notification permission");
+          requireCondition(networkAudit.pushSubscriptions === 0, "public mode requested a push subscription");
+          await waitFor(
+            () => networkAudit.serviceWorkerUnregistrations === 1 && networkAudit.pushUnsubscriptions === 1,
+            "legacy service-worker and push cleanup",
+          );
+          requireCondition(networkAudit.serviceWorkerRegistrationLookups === 2, "public mode did not verify legacy service-worker removal");
+          await verifyPreflightFailureModes();
+          await verifyBrowserGuardrailMatrix(view);
+          requireVisibleSyntheticEvidence(page, "Overview");
+
+          const disclosure = page.querySelector(".public-demo-note")?.textContent || "";
+          requireCondition(disclosure.includes("fictional synthetic data"), "synthetic-data disclosure is missing");
+          requireCondition(disclosure.includes("not medical advice"), "medical boundary is missing");
+
+          page.querySelector('.workspace-nav-button[data-shell-view="catalog"]').click();
+          await waitFor(
+            () => !page.querySelector("#shell-view-catalog").hidden && page.querySelectorAll("#product-grid .product-card").length === 12,
+            "the rendered Catalog view",
+          );
+
+          const catalogText = page.querySelector("#product-grid").textContent;
+          [
+            "High review confidence",
+            "Strong review signal",
+            "Best value today",
+            "Lowest live price",
+            "Strongest live rating",
+            "Shop Sephora",
+            "Shop Bluemercury",
+            "Shop Dermstore",
+          ].forEach((forbiddenCopy) => {
+            requireCondition(!catalogText.includes(forbiddenCopy), `synthetic catalog exposes '${forbiddenCopy}'`);
+          });
+          requireCondition(
+            catalogText.includes("synthetic review sample"),
+            "catalog does not localize synthetic review provenance",
+          );
+          requireCondition(
+            page.querySelector("#product-grid .product-link")?.textContent.includes("demo link"),
+            "fictional product link is not labeled as a demo link",
+          );
+          const visibleRatingLines = [...page.querySelectorAll("#product-grid .product-rating")]
+            .filter((entry) => !entry.hidden && entry.textContent.trim());
+          requireCondition(visibleRatingLines.length === 12, "not every product card exposes its rating provenance");
+          requireCondition(
+            visibleRatingLines.every((entry) => entry.textContent.includes("synthetic fixture")),
+            "a product-card rating is missing field-local synthetic provenance",
+          );
+          const visiblePrices = [...page.querySelectorAll("#product-grid .price")]
+            .filter((entry) => !entry.hidden && entry.textContent.trim());
+          requireCondition(visiblePrices.length === 12, "not every product card exposes its price provenance");
+          requireCondition(
+            visiblePrices.every((entry) => entry.textContent.includes("synthetic fixture")),
+            "a product-card price is missing field-local synthetic provenance",
+          );
+          page.querySelector("#product-grid .product-reasoning").open = true;
+          await waitFor(
+            () => page.querySelector("#product-grid .compare-popover"),
+            "the retailer comparison",
+          );
+          const comparePopover = page.querySelector("#product-grid .compare-popover");
+          requireCondition(comparePopover, "retailer comparison did not render");
+          comparePopover.open = true;
+          requireVisibleSyntheticEvidence(page, "Catalog and retailer comparison");
+          requireCondition(
+            [...page.querySelectorAll("#product-grid .product-link")].every(
+              (entry) => !entry.hasAttribute("href") && entry.getAttribute("aria-disabled") === "true",
+            ),
+            "a fictional product link remains navigable",
+          );
+
+          const firstSaveButton = page.querySelector("#product-grid .favorite-button");
+          requireCondition(firstSaveButton, "Catalog did not render a save action");
+          view.SkinCareHubApp.openWatchSettings(view.SkinCareHubApp.state.products[0].id);
+          await waitFor(() => !page.querySelector("#watch-settings-dialog").hidden, "the watch settings dialog");
+          const pushInput = page.querySelector('#watch-settings-form [name="deliveryPush"]');
+          requireCondition(pushInput.disabled && !pushInput.checked, "public watch settings expose browser push");
+          requireCondition(
+            page.querySelector("#watch-settings-delivery-note").textContent.includes("unavailable in the public showcase"),
+            "public watch settings promise unavailable notification delivery",
+          );
+          view.SkinCareHubApp.closeWatchSettings({ restoreFocus: false });
+          firstSaveButton.click();
+          await waitFor(
+            () => view.SkinCareHubApp.state.favoriteIds.length === 1,
+            "the saved product state",
+          );
+
+          page.querySelector('.workspace-nav-button[data-shell-view="shortlist"]').click();
+          await waitFor(
+            () => !page.querySelector("#shell-view-shortlist").hidden && page.querySelector("#saved-grid").children.length === 1,
+            "the populated Shortlist view",
+          );
+          requireVisibleSyntheticEvidence(page, "Shortlist");
+
+          page.querySelector('.workspace-nav-button[data-shell-view="workspace"]').click();
+          await waitFor(() => !page.querySelector("#shell-view-workspace").hidden, "the Workspace view");
+          page.querySelector("#routine-builder-tab").click();
+          await waitFor(() => !page.querySelector("#routine-builder-panel").hidden, "the Routine panel");
+          requireCondition(!page.querySelector("#public-routine-xss"), "stored routine concern created active markup");
+          requireCondition(!view.__publicRoutineXss, "stored routine concern executed script");
+          requireVisibleSyntheticEvidence(page, "Routine");
+
+          page.querySelector("#market-view-tab").click();
+          await waitFor(() => !page.querySelector("#market-view-panel").hidden, "the Market and retailer-picks panel");
+          requireVisibleSyntheticEvidence(page, "Market and retailer picks");
+
+          page.querySelector("#learn-workspace-tab").click();
+          await waitFor(
+            () =>
+              !page.querySelector("#learn-workspace-panel").hidden &&
+              page.querySelector("#article-title").textContent === "How to read a synthetic shortlist",
+            "the public-safe Learn guide",
+          );
+          requireCondition(
+            !page.querySelector("#article-source-link").hasAttribute("href"),
+            "synthetic Learn guide unexpectedly exposes an external source link",
+          );
+
+          const learnInput = page.querySelector("#learn-answer-input");
+          const learnSubmit = page.querySelector("#learn-answer-submit");
+          async function submitGuardrailQuestion(question, expectedText) {
+            learnInput.value = question;
+            learnInput.dispatchEvent(new Event("input", { bubbles: true }));
+            learnSubmit.click();
+            await waitFor(
+              () => page.querySelector("#learn-answer-response").textContent.includes(expectedText),
+              `Learn guardrail response for ${question}`,
+            );
+          }
+          await submitGuardrailQuestion(
+            "I am pregnant. Is retinol safe for me?",
+            "Retinoids are not a conservative first call",
+          );
+          await submitGuardrailQuestion(
+            "I have a rash and swelling after a new serum.",
+            "beyond normal product shopping guidance",
+          );
+          await submitGuardrailQuestion(
+            "I have a fragrance allergy. Can you confirm this is safe?",
+            "Catalog data cannot confirm allergy safety",
+          );
+          await submitGuardrailQuestion(
+            "I use prescription tretinoin. Should I add another active?",
+            "Prescription active routines need a conservative read",
+          );
+
+          requireCondition(
+            [...page.querySelectorAll(".product-link, .compare-link, .routine-basket-link, .market-copy-link, #article-source-link")]
+              .every((entry) => !entry.hasAttribute("href")),
+            "a synthetic showcase action remains an active outbound link",
+          );
+
+          const automaticUrls = [
+            ...networkAudit.fetches,
+            ...networkAudit.xhrs,
+            ...networkAudit.eventSources,
+            ...view.performance.getEntriesByType("resource").map((entry) => entry.name),
+          ].map((value) => new URL(value, view.document.baseURI));
+          requireCondition(
+            automaticUrls.every((url) => url.origin === view.location.origin),
+            `automatic cross-origin request: ${automaticUrls.find((url) => url.origin !== view.location.origin)}`,
+          );
+          requireCondition(
+            automaticUrls.every((url) => !url.pathname.startsWith("/api/")),
+            `automatic API request: ${automaticUrls.find((url) => url.pathname.startsWith("/api/"))}`,
+          );
+          requireCondition(
+            automaticUrls.every(
+              (url) => url.pathname.startsWith("/web/") || url.pathname.startsWith("/data/generated/"),
+            ),
+            `automatic non-static path: ${automaticUrls.find(
+              (url) => !url.pathname.startsWith("/web/") && !url.pathname.startsWith("/data/generated/"),
+            )}`,
+          );
+          requireCondition(
+            !automaticUrls.some((url) => /recommender_(?:model|residual_slice_model)(?:\.manifest)?\.json$/.test(url.pathname)),
+            "public mode requested an excluded ML model artifact",
+          );
+          requireCondition(networkAudit.eventSources.length === 0, "public mode created an EventSource");
+          requireCondition(networkAudit.serviceWorkerRegistrations.length === 0, "public mode registered a service worker");
+          requireCondition(networkAudit.serviceWorkerUnregistrations === 1, "public mode left a legacy service worker registered");
+          requireCondition(networkAudit.notificationPermissionRequests === 0, "public mode requested notification permission");
+          requireCondition(networkAudit.notificationDeliveries === 0, "public mode displayed a browser notification");
+          requireCondition(networkAudit.pushSubscriptions === 0, "public mode requested a push subscription");
+          requireCondition(networkAudit.pushUnsubscriptions === 1, "public mode left a legacy push subscription active");
+          requireCondition(networkAudit.windowOpens.length === 0, "public mode opened a window automatically");
+          requireCondition(
+            !automaticUrls.some((url) => url.hostname === "skincarehub.app"),
+            "live product opened without an explicit CTA action",
+          );
+          const liveProductCta = page.querySelector(".public-live-product-cta");
+          requireCondition(liveProductCta?.href === "https://skincarehub.app/", "live-product CTA target is wrong");
+          liveProductCta.click();
+          requireCondition(
+            networkAudit.liveProductCtaClicks.length === 1 && networkAudit.liveProductCtaClicks[0] === "https://skincarehub.app/",
+            "explicit live-product CTA action was not isolated",
+          );
+
+          const overflow = page.documentElement.scrollWidth - view.innerWidth;
+          requireCondition(overflow <= 1, `horizontal overflow is ${overflow}px`);
+          phase = "forced-failure";
+          frame.src = "../web/?public-showcase-browser-smoke=1&public-showcase-browser-smoke-fail-catalog=1&apiOrigin=https%3A%2F%2Fattacker.invalid&mlDemo=1&mlPolicy=shadow";
+        } catch (error) {
+          await finish("failed", error?.message || String(error));
+        }
+      });
+
+      frame.src = "../web/?public-showcase-browser-smoke=1&apiOrigin=https%3A%2F%2Fattacker.invalid&mlDemo=1&mlPolicy=shadow";
+    </script>
+  </body>
+</html>

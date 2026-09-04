@@ -1,0 +1,53 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+
+# Local configuration and credentials
+.env*
+*.env*
+*.credentials
+*.credential
+credentials.*
+secrets.*
+*.key
+*.pem
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.crt
+*.cer
+
+# Runtime state and databases
+*.db
+*.db-*
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+*.journal
+*.wal
+*.shm
+*.log
+*.pid
+
+# Backups, archives, and editor residue
+*.bak
+*.backup
+*.old
+*.orig
+*~
+*.zip
+*.tar
+*.tgz
+*.tar.gz
+*.gz
+*.7z
+*.rar
+
+# Test and tool caches
+.coverage
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/

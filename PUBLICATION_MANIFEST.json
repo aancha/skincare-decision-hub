@@ -1,0 +1,325 @@
+{
+  "files": [
+    {
+      "bytes": 654,
+      "path": ".github/SECURITY.md",
+      "sha256": "d1dadcb777f3591ce128605c1ec852a4a202fd6a7661aff5daf48361de153467"
+    },
+    {
+      "bytes": 737,
+      "path": ".github/workflows/ci.yml",
+      "sha256": "f7dfd3decd4547035ec7b915a8d96c10afeead86cea954fd48d0803393a4dadd"
+    },
+    {
+      "bytes": 507,
+      "path": ".gitignore",
+      "sha256": "ed10e23f402b527b0c97d8518b7d2921b6c371af3129ed11d95ca7a9d25852cc"
+    },
+    {
+      "bytes": 1064,
+      "path": "LICENSE",
+      "sha256": "95d59afbfe25d325bb3d5018f6069b62017aa30839ad83a0e54ad186bee7d306"
+    },
+    {
+      "bytes": 1153,
+      "path": "NOTICE.md",
+      "sha256": "6a3a7cf88e97df5a04c138f2d3c93338598cb19445ce9fa9fe546c711eae9706"
+    },
+    {
+      "bytes": 6121,
+      "path": "README.md",
+      "sha256": "4baa1c3652dff054dc661f5c3828c26dd3d26e2786a1249b93f00451f45aade6"
+    },
+    {
+      "bytes": 67,
+      "path": "data/generated/articles.json",
+      "sha256": "5eb15db648081919eca504a25bcbcce72cbdfa918d59fc38ee54b45cf6da31f2"
+    },
+    {
+      "bytes": 14183,
+      "path": "data/generated/catalog.json",
+      "sha256": "acf3f93665a4c32b419634bff95fede0aab677b4cdb317b36b86c8848b484759"
+    },
+    {
+      "bytes": 66,
+      "path": "data/generated/ratings.json",
+      "sha256": "d32be695caef2ef82149d479c62077ce9b9962d7bfec8022820f995525b072a5"
+    },
+    {
+      "bytes": 466,
+      "path": "docs/README.md",
+      "sha256": "2cff3f8af4f73acf4e0ae2a3d8e1debf97e81ae36436c654c6ed98239f8a88b3"
+    },
+    {
+      "bytes": 814,
+      "path": "docs/architecture/data-pipeline.md",
+      "sha256": "1c69362e90766add1590846870f07dbe0e4f9552434dc1d76f4384d720694712"
+    },
+    {
+      "bytes": 2570,
+      "path": "docs/architecture/overview.md",
+      "sha256": "79b86988f9afafdc4dfc1158d5ff1ae6f955cf0314d24fde9d1bb26c877af504"
+    },
+    {
+      "bytes": 262844,
+      "path": "docs/assets/catalog-desktop-synthetic.png",
+      "sha256": "12a5cd71a1d093942b976d3a022f71c2ffa00b5c631eb34018a2ffa067b3d2d5"
+    },
+    {
+      "bytes": 212310,
+      "path": "docs/assets/demo-video-poster.png",
+      "sha256": "a0b573e90d70902de8918852a13d1317ccbe2b6472c46026dac83f34ecd12db6"
+    },
+    {
+      "bytes": 3900,
+      "path": "docs/assets/demo-video-poster.svg",
+      "sha256": "411ba8180daa27a2e76186908573e039d414571896fb003ce39a43260105328d"
+    },
+    {
+      "bytes": 142107,
+      "path": "docs/assets/github-social-preview-1280x640.png",
+      "sha256": "9323290214ef8923d918af9f725682abadc8f921bbba79bfc56f218c93ef24eb"
+    },
+    {
+      "bytes": 3749,
+      "path": "docs/assets/github-social-preview-1280x640.svg",
+      "sha256": "f5f4913c7c2edfe6c58f35d66487b385172d830284111f3525f4a94274e53b2d"
+    },
+    {
+      "bytes": 87096,
+      "path": "docs/assets/shortlist-mobile-synthetic.png",
+      "sha256": "08df645a18ce0046f859d4d6c8cfa0980605793ff13198fa85f8dfae9aed2c37"
+    },
+    {
+      "bytes": 2092,
+      "path": "docs/portfolio/case-study.md",
+      "sha256": "120774a384b3cb8463532fca6c6bf67abce866db34509072db962d7f4a1a846e"
+    },
+    {
+      "bytes": 1303,
+      "path": "docs/portfolio/demo-walkthrough.md",
+      "sha256": "c7bb30b133d79e967c3d8fc88a7612ee72cbe5eb3683e9732160e29d4902e537"
+    },
+    {
+      "bytes": 1153,
+      "path": "docs/portfolio/engineering-decisions.md",
+      "sha256": "358474b6c6a707f0e63507a3a11c92bbefe83091d7cf8c060025a3c89c486cec"
+    },
+    {
+      "bytes": 2307,
+      "path": "docs/portfolio/evidence.md",
+      "sha256": "165fab0b586a961439d06e8e16e4bc918148655edccf3ef61610d71ccecb522e"
+    },
+    {
+      "bytes": 2033,
+      "path": "docs/portfolio/responsible-ml.md",
+      "sha256": "8c4047ca6a714f78870377677bc99fda92cb8f63da77ce7b67dd28a0325486b3"
+    },
+    {
+      "bytes": 880,
+      "path": "docs/research/ml/README.md",
+      "sha256": "caafe06754d76667339c183dc8de50e3b05bb25e26f3f3d0ca094ba51c1038ab"
+    },
+    {
+      "bytes": 698,
+      "path": "docs/research/ml/data-card.md",
+      "sha256": "5490767a66958960ba7aafb442b07a128a9c03c80434467e57515a0402e06604"
+    },
+    {
+      "bytes": 732,
+      "path": "docs/research/ml/model-card.md",
+      "sha256": "3d4753b897b291556a2ff57be4d9cfbdc94edea45a2df21c5c42e9122915525e"
+    },
+    {
+      "bytes": 585,
+      "path": "scripts/check_python_syntax.py",
+      "sha256": "b424284cc65b09751aae97dcdd7089f7caab236dac1f4217e4a3b3d150992c8d"
+    },
+    {
+      "bytes": 3526,
+      "path": "scripts/evaluate_skincare_guardrails.py",
+      "sha256": "0c00c7f4a1037825eb9eae4ca1187624addfb3be8dd761cabbda0eef898495a5"
+    },
+    {
+      "bytes": 5824,
+      "path": "scripts/publication_manifest.py",
+      "sha256": "b0cbf1192d08a5c7cd397c1743f718e6369f6c30e29cf3244b3c40696a67dcda"
+    },
+    {
+      "bytes": 37014,
+      "path": "scripts/routine_planner.py",
+      "sha256": "dd85ec80c64e650c0a33955bd14985537b1d30360255a561f161d9c92c1adbb2"
+    },
+    {
+      "bytes": 11819,
+      "path": "scripts/skincare_guardrails.py",
+      "sha256": "188081ee6ae05bac88bed3a02b14322d6f0119a99e59a456d07835601f82e07c"
+    },
+    {
+      "bytes": 11208,
+      "path": "scripts/verify_fresh_repository.py",
+      "sha256": "cdb750d8f0e1d10b047f482aff5e839ab2d12f5ee6a85ae7da821705fed79e18"
+    },
+    {
+      "bytes": 40140,
+      "path": "tests/browser-smoke.html",
+      "sha256": "9cbf4e85154c950718cad072e54f23b1934806445510a37004558c5725770ba3"
+    },
+    {
+      "bytes": 20138,
+      "path": "tests/fixtures/skincare_guardrail_eval_cases.json",
+      "sha256": "56b0d8cea867bee1cbcefb0c0332e10889c924f8b3efbd6b00aabfaf30b2f92d"
+    },
+    {
+      "bytes": 5129,
+      "path": "tests/test_browser_smoke.py",
+      "sha256": "a6e2336989f10e5987d8d74db0d56742e7bc49630a633f5fe5407e79b35c9eb7"
+    },
+    {
+      "bytes": 20243,
+      "path": "tests/test_release_proofs.py",
+      "sha256": "2aabd3641d89a1c613896426d177798dbf33bfeb1c0ff162a3fa74faa8bd3861"
+    },
+    {
+      "bytes": 20953,
+      "path": "tests/test_showcase.py",
+      "sha256": "6b10c4233ac2404ae56a660fd8eca4fb3833601e83518204ee9d1bfbc9e0ed35"
+    },
+    {
+      "bytes": 526,
+      "path": "web/affiliate-config.js",
+      "sha256": "83611c983681268643969f04146e1c2751a2297255ed02d09181c0d81403cbac"
+    },
+    {
+      "bytes": 3361,
+      "path": "web/app.js",
+      "sha256": "d124ba871c4dcb838eaf7049be245a896e28e9d923ef69a286d82ab2abffcf04"
+    },
+    {
+      "bytes": 1012,
+      "path": "web/assets/synthetic/cleanser.svg",
+      "sha256": "89285591554a6ae33fce884de37c655cf13456be8df72e20f862c0f4bf68614a"
+    },
+    {
+      "bytes": 1015,
+      "path": "web/assets/synthetic/moisturizer.svg",
+      "sha256": "21514479afdd60114f65d035fe8b219612d6392549184973673e5e7c8f6649bc"
+    },
+    {
+      "bytes": 1108,
+      "path": "web/assets/synthetic/serum.svg",
+      "sha256": "dec3d1060c16f7cf9172550f2d0486d5a16dd007bd3edc34332cb18ee458ed07"
+    },
+    {
+      "bytes": 971,
+      "path": "web/assets/synthetic/sunscreen.svg",
+      "sha256": "111a2382e15c7ca309bdf8f8f1b30027b7df477e465e5b46d98f059b01d32823"
+    },
+    {
+      "bytes": 390,
+      "path": "web/catalog/index.html",
+      "sha256": "d8b8df0286d77fb95703345eecd0c7780ca836865513a3dd3980e5076d7d263f"
+    },
+    {
+      "bytes": 389,
+      "path": "web/favicon.svg",
+      "sha256": "ebe263714df2214fad7b77f4de14fb9de82b0c7bd089710d0038dbf9abc7c40a"
+    },
+    {
+      "bytes": 74635,
+      "path": "web/index.html",
+      "sha256": "c13be5ad97c845728799d21cd2272d8abd55ffdc6ff205567120a61779b03b05"
+    },
+    {
+      "bytes": 57885,
+      "path": "web/js/api.js",
+      "sha256": "832bbfe908bf53ca9d3bfd54bff0c97cf721726b118ba877ae123c76846a8883"
+    },
+    {
+      "bytes": 238756,
+      "path": "web/js/cards.js",
+      "sha256": "aff94e9bf3dd5b4cb136eae4dce6d6833f36e7457909b9de5839ae33118651c1"
+    },
+    {
+      "bytes": 505735,
+      "path": "web/js/catalog.js",
+      "sha256": "dc63e64825915167d6bc5dd3bb12ae9c1eabc41c89ec282c90c91cefe634efc9"
+    },
+    {
+      "bytes": 23510,
+      "path": "web/js/guardrails.js",
+      "sha256": "8d5a6c9064b8cd4f0dfe6a8360e4620bb2848088c4f303d769f32a527a1649de"
+    },
+    {
+      "bytes": 19612,
+      "path": "web/js/recommender.js",
+      "sha256": "8eba2392d384445617ba1d9ae5fdcdfdeea8496071ec02dbbc3ad68bdc26124d"
+    },
+    {
+      "bytes": 1168,
+      "path": "web/js/recommender_learning_pilot.js",
+      "sha256": "e198d852318c1c3c997d5f0cbc6f5391af086d766cecc24a19cd292bbd9feac7"
+    },
+    {
+      "bytes": 23356,
+      "path": "web/js/recommender_residual_shadow_demo.js",
+      "sha256": "ab8a4cee6f0c1256c79dd6c57de1ea8fc98125011e23be35a5dab2f30f3e50b2"
+    },
+    {
+      "bytes": 16570,
+      "path": "web/js/recommender_residual_slice.js",
+      "sha256": "71e930ec9f19ea93dc5aa5aad1b07c32bb8127eb9362998578be1f2d4790bb88"
+    },
+    {
+      "bytes": 21332,
+      "path": "web/js/recommender_v2.js",
+      "sha256": "2938b1555ec68abe8ebd1449e2c7b939e582f20f0007d56009f87ba4eb250f30"
+    },
+    {
+      "bytes": 59923,
+      "path": "web/js/routine.js",
+      "sha256": "f727df1be7b2d9b797924f20807fdbef390f4549f8ee2f4ab9b0fe32456f9e5d"
+    },
+    {
+      "bytes": 197295,
+      "path": "web/js/shortlist.js",
+      "sha256": "ca04200f6272a26f904b80ba4cdbc89af831668e4b0e7b746631eb04534e61f5"
+    },
+    {
+      "bytes": 60340,
+      "path": "web/js/state.js",
+      "sha256": "78f4f3fadae6c715962c6b33372b5b940022aba5a080cc465486db1c8975d907"
+    },
+    {
+      "bytes": 4612,
+      "path": "web/public-preflight.js",
+      "sha256": "273a82716393af17cc07ea5954a0fb5757dee45f25945458f290050a4f19521a"
+    },
+    {
+      "bytes": 398,
+      "path": "web/shortlist/index.html",
+      "sha256": "4bcf8f8f4abcf4ffd07513c6cf958734c6715b743a4dc5276c85c81b197a0e21"
+    },
+    {
+      "bytes": 12106,
+      "path": "web/skincare_guardrails.json",
+      "sha256": "da0e1a93da5197c15192a32d664cad6a693a8d082b3e8a841c49f55a57db8b34"
+    },
+    {
+      "bytes": 543713,
+      "path": "web/styles.css",
+      "sha256": "196734dd2c89f49fec9bbb62ac4800c8b37f18568c7a34b6e726bc6df1966817"
+    },
+    {
+      "bytes": 398,
+      "path": "web/workplace/index.html",
+      "sha256": "deb9d4d81298be4458a6c276be66c8162f40a38c02d9b89ec89c6a437f24d620"
+    },
+    {
+      "bytes": 398,
+      "path": "web/workspace/index.html",
+      "sha256": "deb9d4d81298be4458a6c276be66c8162f40a38c02d9b89ec89c6a437f24d620"
+    }
+  ],
+  "schemaVersion": "skincare-hub-publication-manifest-v1"
+}

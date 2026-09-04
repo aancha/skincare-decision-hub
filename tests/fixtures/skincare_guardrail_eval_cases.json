@@ -1,0 +1,757 @@
+{
+  "version": 1,
+  "cases": [
+    {
+      "id": "SS01",
+      "kind": "product_posture",
+      "product": {
+        "brand": "Barrier Lab",
+        "name": "Comfort Cream",
+        "category": "moisturizer",
+        "ingredients": ["ceramides", "fragrance-free", "hyaluronic acid"]
+      },
+      "expected": {
+        "sensitiveSafe": true,
+        "tagsInclude": ["sensitive-safe", "barrier-support"]
+      }
+    },
+    {
+      "id": "SS02",
+      "kind": "product_posture",
+      "product": {
+        "brand": "Calm Start",
+        "name": "Gentle Cleanser",
+        "category": "cleanser",
+        "ingredients": ["fragrance-free", "niacinamide"]
+      },
+      "expected": {
+        "sensitiveSafe": true,
+        "tagsInclude": ["sensitive-safe"]
+      }
+    },
+    {
+      "id": "SS03",
+      "kind": "product_posture",
+      "product": {
+        "brand": "Night Shift",
+        "name": "Retinol Serum",
+        "category": "serum",
+        "ingredients": ["retinol", "peptides"]
+      },
+      "expected": {
+        "sensitiveSafe": false,
+        "tagsInclude": ["active-led"]
+      }
+    },
+    {
+      "id": "SS04",
+      "kind": "product_posture",
+      "product": {
+        "brand": "Peel Lab",
+        "name": "Resurfacing Serum",
+        "category": "serum",
+        "ingredients": ["glycolic acid", "lactic acid", "salicylic acid"]
+      },
+      "expected": {
+        "sensitiveSafe": false,
+        "tagsInclude": ["high-irritation-active"]
+      }
+    },
+    {
+      "id": "SS05",
+      "kind": "product_posture",
+      "product": {
+        "brand": "Spot Check",
+        "name": "Blemish Gel",
+        "category": "treatment",
+        "ingredients": ["benzoyl peroxide"]
+      },
+      "expected": {
+        "sensitiveSafe": false,
+        "tagsInclude": ["active-led"]
+      }
+    },
+    {
+      "id": "SS06",
+      "kind": "product_posture",
+      "product": {
+        "brand": "Tone Logic",
+        "name": "Azelaic Serum",
+        "category": "serum",
+        "ingredients": ["azelaic acid", "niacinamide"]
+      },
+      "expected": {
+        "sensitiveSafe": false,
+        "tagsInclude": ["active-led"]
+      }
+    },
+    {
+      "id": "SS07",
+      "kind": "product_posture",
+      "product": {
+        "brand": "Glow Lab",
+        "name": "Vitamin C Serum",
+        "category": "serum",
+        "ingredients": ["vitamin c", "ferulic acid"]
+      },
+      "expected": {
+        "sensitiveSafe": false,
+        "tagsInclude": ["active-led"]
+      }
+    },
+    {
+      "id": "SS08",
+      "kind": "product_posture",
+      "product": {
+        "brand": "Barrier Lab",
+        "name": "Recovery Balm",
+        "category": "mask",
+        "ingredients": ["ceramides", "fragrance-free", "squalane"]
+      },
+      "expected": {
+        "sensitiveSafe": true,
+        "tagsInclude": ["sensitive-safe", "barrier-support"]
+      }
+    },
+    {
+      "id": "SS09",
+      "kind": "product_posture",
+      "product": {
+        "brand": "Daily Screen",
+        "name": "Mineral SPF",
+        "category": "sunscreen",
+        "ingredients": ["spf", "ceramides", "fragrance-free"]
+      },
+      "expected": {
+        "sensitiveSafe": true,
+        "tagsInclude": ["sensitive-safe", "barrier-support"]
+      }
+    },
+    {
+      "id": "SS10",
+      "kind": "product_posture",
+      "product": {
+        "brand": "Active Lab",
+        "name": "Reset Treatment",
+        "category": "treatment",
+        "ingredients": ["retinol", "salicylic acid", "vitamin c"]
+      },
+      "expected": {
+        "sensitiveSafe": false,
+        "tagsInclude": ["high-irritation-active"]
+      }
+    },
+    {
+      "id": "PG11",
+      "kind": "question_guardrail",
+      "question": "I am pregnant. Is this plain moisturizer pregnancy-safe?",
+      "products": [
+        {
+          "brand": "Barrier Lab",
+          "name": "Comfort Cream",
+          "category": "moisturizer",
+          "ingredients": ["ceramides", "fragrance-free"]
+        }
+      ],
+      "expected": {
+        "severity": "warning",
+        "tagsInclude": ["pregnancy-uncertain"]
+      }
+    },
+    {
+      "id": "PG12",
+      "kind": "question_guardrail",
+      "question": "Is this retinol serum pregnancy-safe if I am pregnant?",
+      "products": [
+        {
+          "brand": "Night Shift",
+          "name": "Retinol Serum",
+          "category": "serum",
+          "ingredients": ["retinol"]
+        }
+      ],
+      "expected": {
+        "severity": "warning",
+        "tagsInclude": ["pregnancy-uncertain", "retinoid-pregnancy-caution"]
+      }
+    },
+    {
+      "id": "PG13",
+      "kind": "question_guardrail",
+      "question": "I am trying to conceive. Does this retinal treatment look pregnancy-safe?",
+      "products": [
+        {
+          "brand": "Night Shift",
+          "name": "Retinal Treatment",
+          "category": "serum",
+          "ingredients": ["retinal"]
+        }
+      ],
+      "expected": {
+        "severity": "warning",
+        "tagsInclude": ["pregnancy-uncertain", "retinoid-pregnancy-caution"]
+      }
+    },
+    {
+      "id": "PG14",
+      "kind": "question_guardrail",
+      "question": "Can I use this salicylic acid serum while pregnant?",
+      "products": [
+        {
+          "brand": "Pore Lab",
+          "name": "Salicylic Serum",
+          "category": "serum",
+          "ingredients": ["salicylic acid"]
+        }
+      ],
+      "expected": {
+        "severity": "warning",
+        "tagsInclude": ["pregnancy-uncertain", "salicylic-pregnancy-caution"]
+      }
+    },
+    {
+      "id": "PG15",
+      "kind": "question_guardrail",
+      "question": "Is this benzoyl peroxide cleanser okay while breastfeeding?",
+      "products": [
+        {
+          "brand": "Spot Check",
+          "name": "Blemish Wash",
+          "category": "cleanser",
+          "ingredients": ["benzoyl peroxide"]
+        }
+      ],
+      "expected": {
+        "severity": "warning",
+        "tagsInclude": ["pregnancy-uncertain", "benzoyl-pregnancy-caution"]
+      }
+    },
+    {
+      "id": "PG16",
+      "kind": "question_guardrail",
+      "question": "I am pregnant. Is this hydroquinone corrector safe?",
+      "products": [
+        {
+          "brand": "Tone Lab",
+          "name": "Corrector",
+          "category": "treatment",
+          "description": "A hydroquinone dark spot corrector",
+          "ingredients": ["hydroquinone"]
+        }
+      ],
+      "expected": {
+        "severity": "warning",
+        "tagsInclude": ["pregnancy-uncertain", "high-risk-pregnancy-caution"]
+      }
+    },
+    {
+      "id": "PG17",
+      "kind": "question_guardrail",
+      "question": "I am pregnant. Is bakuchiol safer for me?",
+      "products": [
+        {
+          "brand": "Glow Lab",
+          "name": "Bakuchiol Serum",
+          "category": "serum",
+          "ingredients": ["bakuchiol"]
+        }
+      ],
+      "expected": {
+        "severity": "warning",
+        "tagsInclude": ["pregnancy-uncertain"]
+      }
+    },
+    {
+      "id": "PG18",
+      "kind": "question_guardrail",
+      "question": "I am pregnant. Can I just use this sunscreen?",
+      "products": [
+        {
+          "brand": "Daily Screen",
+          "name": "Mineral SPF",
+          "category": "sunscreen",
+          "ingredients": ["spf", "ceramides"]
+        }
+      ],
+      "expected": {
+        "severity": "warning",
+        "tagsInclude": ["pregnancy-uncertain"]
+      }
+    },
+    {
+      "id": "PG19",
+      "kind": "question_guardrail",
+      "question": "I am pregnant and breaking out. Is this retinoid my best acne option?",
+      "products": [
+        {
+          "brand": "Night Shift",
+          "name": "Retinoid Serum",
+          "category": "serum",
+          "description": "Retinoid acne support",
+          "ingredients": ["retinoid"]
+        }
+      ],
+      "expected": {
+        "severity": "warning",
+        "tagsInclude": ["pregnancy-uncertain", "retinoid-pregnancy-caution"]
+      }
+    },
+    {
+      "id": "PG20",
+      "kind": "question_guardrail",
+      "question": "I am nursing. This product has no ingredient list. Is it safe?",
+      "products": [
+        {
+          "brand": "Mystery Lab",
+          "name": "Unknown Serum",
+          "category": "serum",
+          "ingredients": []
+        }
+      ],
+      "expected": {
+        "severity": "warning",
+        "tagsInclude": ["pregnancy-uncertain"]
+      }
+    },
+    {
+      "id": "IC21",
+      "kind": "routine_warning",
+      "timing": "pm",
+      "products": [
+        {
+          "id": "retinol-serum",
+          "brand": "Night Shift",
+          "name": "Retinol Serum",
+          "category": "serum",
+          "concerns": ["texture"],
+          "ingredients": ["retinol"]
+        },
+        {
+          "id": "glycolic-toner",
+          "brand": "Peel Lab",
+          "name": "Glycolic Toner",
+          "category": "toner",
+          "concerns": ["texture"],
+          "ingredients": ["glycolic acid"]
+        }
+      ],
+      "expected": {
+        "tagsInclude": ["retinol-acid-stack"]
+      }
+    },
+    {
+      "id": "IC22",
+      "kind": "routine_warning",
+      "timing": "pm",
+      "products": [
+        {
+          "id": "retinol-serum",
+          "brand": "Night Shift",
+          "name": "Retinol Serum",
+          "category": "serum",
+          "concerns": ["texture"],
+          "ingredients": ["retinol"]
+        },
+        {
+          "id": "bha-serum",
+          "brand": "Pore Lab",
+          "name": "BHA Serum",
+          "category": "serum",
+          "concerns": ["acne"],
+          "ingredients": ["salicylic acid"]
+        }
+      ],
+      "expected": {
+        "tagsInclude": ["retinol-acid-stack"]
+      }
+    },
+    {
+      "id": "IC23",
+      "kind": "routine_warning",
+      "timing": "am",
+      "products": [
+        {
+          "id": "bp-treatment",
+          "brand": "Spot Check",
+          "name": "Benzoyl Lotion",
+          "category": "treatment",
+          "concerns": ["acne"],
+          "ingredients": ["benzoyl peroxide"]
+        },
+        {
+          "id": "retinol-serum",
+          "brand": "Night Shift",
+          "name": "Retinol Serum",
+          "category": "serum",
+          "concerns": ["texture"],
+          "ingredients": ["retinol"]
+        }
+      ],
+      "expected": {
+        "tagsInclude": ["benzoyl-peroxide-stack", "retinol-am"]
+      }
+    },
+    {
+      "id": "IC24",
+      "kind": "routine_warning",
+      "timing": "am",
+      "products": [
+        {
+          "id": "bp-treatment",
+          "brand": "Spot Check",
+          "name": "Benzoyl Lotion",
+          "category": "treatment",
+          "concerns": ["acne"],
+          "ingredients": ["benzoyl peroxide"]
+        },
+        {
+          "id": "glycolic-toner",
+          "brand": "Peel Lab",
+          "name": "Glycolic Toner",
+          "category": "toner",
+          "concerns": ["texture"],
+          "ingredients": ["glycolic acid"]
+        }
+      ],
+      "expected": {
+        "tagsInclude": ["benzoyl-peroxide-stack"]
+      }
+    },
+    {
+      "id": "IC25",
+      "kind": "routine_warning",
+      "timing": "pm",
+      "products": [
+        {
+          "id": "glycolic-toner",
+          "brand": "Peel Lab",
+          "name": "Glycolic Toner",
+          "category": "toner",
+          "concerns": ["texture"],
+          "ingredients": ["glycolic acid"]
+        },
+        {
+          "id": "lactic-serum",
+          "brand": "Peel Lab",
+          "name": "Lactic Serum",
+          "category": "serum",
+          "concerns": ["texture"],
+          "ingredients": ["lactic acid"]
+        }
+      ],
+      "expected": {
+        "tagsInclude": ["acid-stack"]
+      }
+    },
+    {
+      "id": "IC26",
+      "kind": "routine_warning",
+      "timing": "am",
+      "products": [
+        {
+          "id": "azelaic-serum",
+          "brand": "Tone Logic",
+          "name": "Azelaic Serum",
+          "category": "serum",
+          "concerns": ["redness"],
+          "ingredients": ["azelaic acid"]
+        },
+        {
+          "id": "niacinamide-serum",
+          "brand": "Barrier Lab",
+          "name": "Niacinamide Serum",
+          "category": "serum",
+          "concerns": ["redness"],
+          "ingredients": ["niacinamide"]
+        }
+      ],
+      "expected": {
+        "tagsInclude": ["azelaic-heavy-am", "starter-plan-too-active"]
+      }
+    },
+    {
+      "id": "IC27",
+      "kind": "routine_warning",
+      "timing": "pm",
+      "products": [
+        {
+          "id": "spf-step",
+          "brand": "Daily Screen",
+          "name": "SPF 50",
+          "category": "sunscreen",
+          "concerns": ["general care"],
+          "ingredients": ["spf"]
+        }
+      ],
+      "expected": {
+        "tagsInclude": ["pm-spf"]
+      }
+    },
+    {
+      "id": "IC28",
+      "kind": "routine_warning",
+      "timing": "am",
+      "products": [
+        {
+          "id": "retinol-serum",
+          "brand": "Night Shift",
+          "name": "Retinol Serum",
+          "category": "serum",
+          "concerns": ["wrinkles"],
+          "ingredients": ["retinol"]
+        }
+      ],
+      "expected": {
+        "tagsInclude": ["retinol-am"]
+      }
+    },
+    {
+      "id": "IC29",
+      "kind": "routine_warning",
+      "timing": "pm",
+      "products": [
+        {
+          "id": "shared-1",
+          "retailer": "Sephora",
+          "brand": "Barrier Lab",
+          "name": "Comfort Cream",
+          "category": "moisturizer",
+          "comparisonKey": "barrier-lab::comfort-cream",
+          "concerns": ["dryness"],
+          "ingredients": ["ceramides"]
+        },
+        {
+          "id": "shared-2",
+          "retailer": "Dermstore",
+          "brand": "Barrier Lab",
+          "name": "Comfort Cream",
+          "category": "moisturizer",
+          "comparisonKey": "barrier-lab::comfort-cream",
+          "concerns": ["dryness"],
+          "ingredients": ["ceramides"]
+        }
+      ],
+      "expected": {
+        "tagsInclude": ["duplicate-product-family"]
+      }
+    },
+    {
+      "id": "IC30",
+      "kind": "routine_warning",
+      "timing": "pm",
+      "avoidIngredients": ["azelaic acid"],
+      "products": [
+        {
+          "id": "azelaic-serum",
+          "brand": "Tone Logic",
+          "name": "Azelaic Serum",
+          "category": "serum",
+          "concerns": ["redness"],
+          "ingredients": ["azelaic acid"]
+        }
+      ],
+      "expected": {
+        "tagsInclude": ["avoid-list-match"]
+      }
+    },
+    {
+      "id": "UE31",
+      "kind": "question_guardrail",
+      "question": "Can this erase wrinkles in 3 days?",
+      "expected": {
+        "severity": "warning",
+        "primaryTag": "expectation-reset",
+        "tagsInclude": ["expectation-reset"]
+      }
+    },
+    {
+      "id": "UE32",
+      "kind": "question_guardrail",
+      "question": "Will this remove dark spots overnight?",
+      "expected": {
+        "severity": "warning",
+        "primaryTag": "expectation-reset",
+        "tagsInclude": ["expectation-reset"]
+      }
+    },
+    {
+      "id": "UE33",
+      "kind": "question_guardrail",
+      "question": "Can I permanently shrink my pores this week?",
+      "expected": {
+        "severity": "warning",
+        "primaryTag": "expectation-reset",
+        "tagsInclude": ["expectation-reset"]
+      }
+    },
+    {
+      "id": "UE34",
+      "kind": "question_guardrail",
+      "question": "Can this guarantee clear skin in 1 week?",
+      "expected": {
+        "severity": "warning",
+        "primaryTag": "expectation-reset",
+        "tagsInclude": ["expectation-reset"]
+      }
+    },
+    {
+      "id": "UE35",
+      "kind": "question_guardrail",
+      "question": "Will this instantly fix my texture?",
+      "expected": {
+        "severity": "warning",
+        "primaryTag": "expectation-reset",
+        "tagsInclude": ["expectation-reset"]
+      }
+    },
+    {
+      "id": "UE36",
+      "kind": "question_guardrail",
+      "question": "Can this clear acne overnight?",
+      "expected": {
+        "severity": "warning",
+        "primaryTag": "expectation-reset",
+        "tagsInclude": ["expectation-reset"]
+      }
+    },
+    {
+      "id": "UE37",
+      "kind": "question_guardrail",
+      "question": "Can you guarantee this anti-aging serum is pregnancy-safe and works overnight?",
+      "expected": {
+        "severity": "warning",
+        "tagsInclude": ["pregnancy-uncertain", "expectation-reset"]
+      }
+    },
+    {
+      "id": "UE38",
+      "kind": "question_guardrail",
+      "question": "Can I fix dull skin in 7 days with one serum?",
+      "expected": {
+        "severity": "warning",
+        "primaryTag": "expectation-reset",
+        "tagsInclude": ["expectation-reset"]
+      }
+    },
+    {
+      "id": "UE39",
+      "kind": "question_guardrail",
+      "question": "Can this erase acne marks in 2 weeks?",
+      "expected": {
+        "severity": "warning",
+        "primaryTag": "expectation-reset",
+        "tagsInclude": ["expectation-reset"]
+      }
+    },
+    {
+      "id": "AL40",
+      "kind": "question_guardrail",
+      "question": "I have a fragrance allergy. Can you confirm this product is safe for me?",
+      "expected": {
+        "severity": "warning",
+        "primaryTag": "allergy-uncertain",
+        "tagsInclude": ["allergy-uncertain"]
+      }
+    },
+    {
+      "id": "RF41",
+      "kind": "question_guardrail",
+      "question": "I got a rash and swelling after this serum.",
+      "expected": {
+        "severity": "redirect",
+        "primaryTag": "medical-red-flag",
+        "tagsInclude": ["medical-red-flag"]
+      }
+    },
+    {
+      "id": "RF42",
+      "kind": "question_guardrail",
+      "question": "My skin is open and oozing after I used this acid.",
+      "expected": {
+        "severity": "redirect",
+        "primaryTag": "medical-red-flag",
+        "tagsInclude": ["medical-red-flag"]
+      }
+    },
+    {
+      "id": "RF43",
+      "kind": "question_guardrail",
+      "question": "I think this skin is infected and I have pus and a fever. Which serum should I buy?",
+      "expected": {
+        "severity": "redirect",
+        "primaryTag": "medical-red-flag",
+        "tagsInclude": ["medical-red-flag"]
+      }
+    },
+    {
+      "id": "RF44",
+      "kind": "question_guardrail",
+      "question": "My skin is burning badly after this routine.",
+      "expected": {
+        "severity": "redirect",
+        "primaryTag": "medical-red-flag",
+        "tagsInclude": ["medical-red-flag"]
+      }
+    },
+    {
+      "id": "RF45",
+      "kind": "question_guardrail",
+      "question": "I have eye swelling after using this eye cream.",
+      "expected": {
+        "severity": "redirect",
+        "primaryTag": "medical-red-flag",
+        "tagsInclude": ["medical-red-flag"]
+      }
+    },
+    {
+      "id": "RF46",
+      "kind": "question_guardrail",
+      "question": "Can this product cure my eczema?",
+      "expected": {
+        "severity": "redirect",
+        "primaryTag": "clinician-needed",
+        "tagsInclude": ["clinician-needed"]
+      }
+    },
+    {
+      "id": "RF47",
+      "kind": "question_guardrail",
+      "question": "I have painful nodules and cystic acne. Which product fixes it fast?",
+      "expected": {
+        "severity": "redirect",
+        "primaryTag": "clinician-needed",
+        "tagsInclude": ["clinician-needed"]
+      }
+    },
+    {
+      "id": "RF48",
+      "kind": "question_guardrail",
+      "question": "I have rosacea burning and flushing after using actives.",
+      "expected": {
+        "severity": "redirect",
+        "primaryTag": "clinician-needed",
+        "tagsInclude": ["clinician-needed"]
+      }
+    },
+    {
+      "id": "RF49",
+      "kind": "question_guardrail",
+      "question": "This is post-procedure skin after laser. Which retinol should I try next?",
+      "expected": {
+        "severity": "redirect",
+        "primaryTag": "clinician-needed",
+        "tagsInclude": ["clinician-needed"]
+      }
+    },
+    {
+      "id": "RF50",
+      "kind": "question_guardrail",
+      "question": "I am on chemo and radiation and my skin is reacting. What active should I buy?",
+      "expected": {
+        "severity": "redirect",
+        "primaryTag": "clinician-needed",
+        "tagsInclude": ["clinician-needed"]
+      }
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="SkinCare Hub">
+  <rect width="64" height="64" rx="16" fill="#173f38"/>
+  <path d="M18 36c0-12 8-21 22-22-1 14-8 24-22 27" fill="none" stroke="#d9f3e6" stroke-width="6" stroke-linecap="round"/>
+  <path d="M20 42c7-9 14-14 25-17" fill="none" stroke="#f2b680" stroke-width="4" stroke-linecap="round"/>
+</svg>

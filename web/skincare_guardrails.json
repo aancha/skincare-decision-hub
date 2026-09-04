@@ -1,0 +1,316 @@
+{
+  "version": 1,
+  "ingredientRules": {
+    "niacinamide": ["niacinamide"],
+    "retinol": ["retinol", "retinal", "retinoid", "retinaldehyde"],
+    "vitamin c": ["vitamin c", "ascorbic", "ferulic", "tetrahexyldecyl"],
+    "ceramides": ["ceramide"],
+    "salicylic acid": ["salicylic", "bha"],
+    "hyaluronic acid": ["hyaluronic", "sodium hyaluronate"],
+    "glycolic acid": ["glycolic"],
+    "lactic acid": ["lactic acid"],
+    "peptides": ["peptide", "collagen"],
+    "squalane": ["squalane"],
+    "spf": ["spf", "sunscreen", "sun protection", "uv defense"],
+    "fragrance-free": ["fragrance-free", "fragrance free", "no fragrance"],
+    "azelaic acid": ["azelaic"],
+    "benzoyl peroxide": ["benzoyl peroxide"],
+    "bakuchiol": ["bakuchiol"],
+    "tranexamic acid": ["tranexamic"],
+    "kojic acid": ["kojic"],
+    "caffeine": ["caffeine", "guarana"],
+    "green tea": ["green tea"],
+    "centella": ["centella", "centella asiatica", "madecassoside"],
+    "urea": ["urea"],
+    "zinc": ["zinc"],
+    "sulfur": ["sulfur"],
+    "hydroquinone": ["hydroquinone"]
+  },
+  "equivalentIngredientGroups": {
+    "vitamin c": ["vitamin c", "ascorbic acid", "tetrahexyldecyl ascorbate"],
+    "retinoid": ["retinol", "retinal", "retinoid", "bakuchiol"],
+    "blemish active": ["salicylic acid", "bha", "benzoyl peroxide", "sulfur"],
+    "exfoliating acid": ["glycolic acid", "lactic acid", "mandelic acid", "aha", "pha"],
+    "tone active": ["azelaic acid", "tranexamic acid", "kojic acid", "alpha arbutin"],
+    "barrier hydration": ["ceramides", "ceramide", "squalane", "hyaluronic acid", "glycerin", "urea"],
+    "niacinamide": ["niacinamide"],
+    "peptides": ["peptides", "peptide"],
+    "calming": ["centella", "green tea", "aloe", "colloidal oatmeal"],
+    "spf": ["spf", "zinc oxide", "titanium dioxide", "avobenzone"]
+  },
+  "avoidIngredientOptions": [
+    "retinol",
+    "glycolic acid",
+    "lactic acid",
+    "salicylic acid",
+    "vitamin c",
+    "niacinamide"
+  ],
+  "skinProfiles": {
+    "all": {
+      "label": "All skin profiles",
+      "concerns": [],
+      "ingredients": [],
+      "categories": []
+    },
+    "dry-sensitive": {
+      "label": "Dry + Sensitive",
+      "concerns": ["dryness", "redness"],
+      "ingredients": ["ceramides", "hyaluronic acid", "fragrance-free"],
+      "categories": ["moisturizer", "cleanser", "sunscreen"]
+    },
+    "oily-acne": {
+      "label": "Oily + Acne-Prone",
+      "concerns": ["acne", "pores", "texture"],
+      "ingredients": ["salicylic acid", "niacinamide", "retinol"],
+      "categories": ["cleanser", "toner", "serum", "treatment"]
+    },
+    "dark-spot-texture": {
+      "label": "Dark Spots + Texture",
+      "concerns": ["dark spots", "texture", "dullness"],
+      "ingredients": ["vitamin c", "retinol", "glycolic acid", "lactic acid", "niacinamide"],
+      "categories": ["serum", "toner", "treatment", "sunscreen"]
+    },
+    "mature-dehydrated": {
+      "label": "Mature + Dehydrated",
+      "concerns": ["wrinkles", "dryness", "dullness"],
+      "ingredients": ["retinol", "peptides", "hyaluronic acid", "ceramides"],
+      "categories": ["serum", "moisturizer", "sunscreen"]
+    },
+    "balanced-maintenance": {
+      "label": "Balanced + Maintenance",
+      "concerns": ["general care", "dullness"],
+      "ingredients": ["vitamin c", "spf", "hyaluronic acid", "niacinamide"],
+      "categories": ["cleanser", "serum", "moisturizer", "sunscreen"]
+    }
+  },
+  "concernStrategies": {
+    "acne": { "lookFor": ["salicylic acid", "niacinamide", "retinol"] },
+    "dryness": { "lookFor": ["ceramides", "hyaluronic acid", "squalane"] },
+    "redness": { "lookFor": ["ceramides", "hyaluronic acid", "fragrance-free"] },
+    "dark spots": { "lookFor": ["vitamin c", "niacinamide", "spf"] },
+    "texture": { "lookFor": ["retinol", "glycolic acid", "lactic acid"] },
+    "wrinkles": { "lookFor": ["retinol", "peptides", "spf"] },
+    "general care": { "lookFor": ["hyaluronic acid", "ceramides", "spf"] }
+  },
+  "sourceConcernAliases": {
+    "bluemercury": {
+      "acne and blemishes": "acne",
+      "dark spots": "dark spots",
+      "dry skin": "dryness",
+      "dryness": "dryness",
+      "dullness": "dullness",
+      "fine lines and wrinkles": "wrinkles",
+      "hyperpigmentation and uneven skin tone": "dark spots",
+      "loss of firmness": "wrinkles",
+      "pore size": "pores",
+      "redness and irritation": "redness",
+      "rough / bumpy skin": "texture",
+      "textured skin": "texture",
+      "uneven skin tone / hyperpigmentation": "dark spots"
+    }
+  },
+  "routine": {
+    "stepPriority": {
+      "am": {
+        "cleanser": "core",
+        "moisturizer": "core",
+        "sunscreen": "core",
+        "toner": "optional",
+        "serum": "optional",
+        "treatment": "optional"
+      },
+      "pm": {
+        "cleanser": "core",
+        "moisturizer": "core",
+        "treatment": "core",
+        "toner": "optional",
+        "serum": "optional",
+        "mask": "optional"
+      }
+    },
+    "strongActiveIngredients": [
+      "retinol",
+      "glycolic acid",
+      "lactic acid",
+      "salicylic acid",
+      "vitamin c",
+      "benzoyl peroxide",
+      "azelaic acid",
+      "hydroquinone"
+    ],
+    "exfoliatingAcids": ["glycolic acid", "lactic acid", "salicylic acid"],
+    "barrierSupportIngredients": ["ceramides", "hyaluronic acid", "fragrance-free", "squalane"],
+    "barrierFirstConcerns": ["dryness", "redness", "general care"],
+    "activeLedConcerns": ["acne", "dark spots", "dullness", "pores", "texture", "wrinkles"],
+    "sensitiveSafeCategories": ["cleanser", "moisturizer", "sunscreen", "mask"],
+    "highActivesCategories": ["treatment", "toner"]
+  },
+  "recommendationGuardrails": {
+    "shortlistPromptRules": [
+      "Do not give medical diagnosis or treatment claims.",
+      "If the question mentions pregnancy, trying to conceive, or breastfeeding, stay conservative and do not claim that a product is definitively pregnancy-safe.",
+      "If the question mentions severe irritation, swelling, rash, open skin, infection signs, eye swelling, or post-procedure, chemotherapy, or radiation skin, redirect toward medical guidance instead of escalating product use.",
+      "Reset unrealistic expectations such as overnight fixes, guarantees, or permanent pore changes."
+    ],
+    "questionSignals": [
+      {
+        "id": "pregnancy-request",
+        "tag": "pregnancy-uncertain",
+        "severity": "warning",
+        "patterns": [
+          "\\bpregnan",
+          "\\btrying to conceive\\b",
+          "\\bttc\\b",
+          "\\bbreastfeed",
+          "\\bnursing\\b",
+          "\\bexpectant\\b"
+        ],
+        "message": "Pregnancy-related questions need a conservative read. Keep the routine simple and confirm treatment ingredients with a clinician."
+      },
+      {
+        "id": "expectation-reset",
+        "tag": "expectation-reset",
+        "severity": "warning",
+        "patterns": [
+          "\\bovernight\\b",
+          "\\bguaranteed?\\b",
+          "\\binstantly?\\b",
+          "\\berase\\b.*\\bwrinkle",
+          "\\bremove\\b.*\\bdark spots?\\b",
+          "\\bpermanent(?:ly)?\\b.*\\bpores?\\b",
+          "\\b(?:1|2|3|4|5|6|7)\\s*(?:day|days|week|weeks)\\b.*\\b(?:erase|remove|clear|fix|fade)\\b",
+          "\\b(?:erase|remove|clear|fix|fade)\\b.*\\b(?:1|2|3|4|5|6|7)\\s*(?:day|days|week|weeks)\\b"
+        ],
+        "message": "That result window is not realistic for skincare. Favor a steady routine and judge progress over weeks, not overnight."
+      },
+      {
+        "id": "red-flag-medical-claim",
+        "tag": "clinician-needed",
+        "severity": "redirect",
+        "patterns": [
+          "\\bcure\\b.*\\beczema\\b",
+          "\\beczema\\b.*\\bcure\\b"
+        ],
+        "message": "Do not treat skincare products as cures for medical skin conditions. Use clinician guidance for eczema treatment claims."
+      },
+      {
+        "id": "red-flag-severe-reaction",
+        "tag": "medical-red-flag",
+        "severity": "redirect",
+        "patterns": [
+          "\\brash\\b",
+          "\\bhives\\b",
+          "\\bswelling\\b",
+          "\\bsevere irritation\\b",
+          "\\bsevere burning\\b",
+          "\\bskin is burning\\b",
+          "\\bburning\\b.*\\bafter\\b",
+          "\\boozing\\b",
+          "\\bweeping\\b",
+          "\\bopen skin\\b",
+          "\\bbleeding\\b",
+          "\\bpus\\b",
+          "\\binfection\\b",
+          "\\binfected\\b",
+          "\\bfever\\b",
+          "\\beye swelling\\b"
+        ],
+        "message": "Those symptoms sound beyond normal product shopping guidance. Stop new actives and get medical advice."
+      },
+      {
+        "id": "prescription-active-context",
+        "tag": "prescription-active-caution",
+        "severity": "warning",
+        "patterns": [
+          "\\bprescription\\b",
+          "\\btretinoin\\b",
+          "\\badapalene\\b",
+          "\\bclindamycin\\b"
+        ],
+        "message": "Prescription active routines need a conservative read. Do not add more actives without clinician guidance."
+      },
+      {
+        "id": "allergy-context",
+        "tag": "allergy-uncertain",
+        "severity": "warning",
+        "patterns": [
+          "\\ballerg(?:y|ies|ic)\\b",
+          "\\bknown allergen\\b"
+        ],
+        "message": "Catalog data cannot confirm allergy safety. Check the complete ingredient list and use clinician guidance when reaction history or ingredient uncertainty is involved."
+      },
+      {
+        "id": "red-flag-post-procedure",
+        "tag": "clinician-needed",
+        "severity": "redirect",
+        "patterns": [
+          "\\bpost-procedure\\b",
+          "\\bafter laser\\b",
+          "\\bafter peel\\b",
+          "\\bchemo(?:therapy)?\\b",
+          "\\bradiation\\b"
+        ],
+        "message": "Post-procedure or medically treated skin needs clinician-specific guidance before adding actives."
+      },
+      {
+        "id": "red-flag-cystic",
+        "tag": "clinician-needed",
+        "severity": "redirect",
+        "patterns": [
+          "\\bcystic acne\\b",
+          "\\bpainful nodules?\\b",
+          "\\bscarring\\b.*\\bacne\\b"
+        ],
+        "message": "Painful or scarring acne can need clinician-level care, not just a stronger shopping recommendation."
+      },
+      {
+        "id": "red-flag-eczema-rosacea",
+        "tag": "clinician-needed",
+        "severity": "redirect",
+        "patterns": [
+          "\\beczema flare\\b",
+          "\\brosacea\\b.*\\bburning\\b",
+          "\\bflushing\\b.*\\bburning\\b"
+        ],
+        "message": "A flare with burning, cracking, or persistent redness needs a conservative routine and medical guidance if it is active or worsening."
+      }
+    ],
+    "ingredientGroups": {
+      "retinoids": ["retinol", "retinal", "retinoid"],
+      "salicylates": ["salicylic acid", "bha"],
+      "benzoyl": ["benzoyl peroxide"],
+      "hydroquinones": ["hydroquinone"]
+    },
+    "pregnancyIngredientRules": [
+      {
+        "id": "pregnancy-retinoid",
+        "tag": "retinoid-pregnancy-caution",
+        "severity": "warning",
+        "ingredientGroupsAny": ["retinoids"],
+        "message": "Retinoids are not a conservative first call for pregnancy-related questions."
+      },
+      {
+        "id": "pregnancy-hydroquinone",
+        "tag": "high-risk-pregnancy-caution",
+        "severity": "warning",
+        "ingredientGroupsAny": ["hydroquinones"],
+        "message": "Hydroquinone is not a conservative first call for pregnancy-related questions."
+      },
+      {
+        "id": "pregnancy-salicylic",
+        "tag": "salicylic-pregnancy-caution",
+        "severity": "warning",
+        "ingredientGroupsAny": ["salicylates"],
+        "message": "Salicylic-acid treatments need a more conservative read during pregnancy-related questions."
+      },
+      {
+        "id": "pregnancy-benzoyl",
+        "tag": "benzoyl-pregnancy-caution",
+        "severity": "warning",
+        "ingredientGroupsAny": ["benzoyl"],
+        "message": "Benzoyl peroxide questions during pregnancy should stay conservative and clinician-confirmed."
+      }
+    ]
+  }
+}

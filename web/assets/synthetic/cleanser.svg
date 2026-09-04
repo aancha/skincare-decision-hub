@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="240" viewBox="0 0 800 240" role="img" aria-labelledby="title desc">
+  <title id="title">Synthetic cleanser bottle</title><desc id="desc">A fictional mint cleanser bottle marked DEMO.</desc>
+  <rect width="800" height="240" rx="28" fill="#edf4ee"/>
+  <circle cx="104" cy="48" r="120" fill="#dcebe0"/>
+  <ellipse cx="430" cy="204" rx="78" ry="12" fill="#c4d5c9"/>
+  <rect x="382" y="30" width="96" height="174" rx="24" fill="#739d86"/>
+  <rect x="404" y="8" width="52" height="38" rx="8" fill="#395b49"/>
+  <rect x="396" y="92" width="68" height="54" rx="8" fill="#f8faf6"/>
+  <text x="430" y="124" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#395b49">DEMO</text>
+  <text x="542" y="104" font-family="system-ui, sans-serif" font-size="24" font-weight="700" fill="#395b49">FICTIONAL</text>
+  <text x="542" y="136" font-family="system-ui, sans-serif" font-size="18" fill="#557263">CLEANSER</text>
+</svg>

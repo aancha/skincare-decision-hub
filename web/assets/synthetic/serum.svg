@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="240" viewBox="0 0 800 240" role="img" aria-labelledby="title desc">
+  <title id="title">Synthetic serum bottle</title><desc id="desc">A fictional amber serum bottle marked DEMO.</desc>
+  <rect width="800" height="240" rx="28" fill="#f6efe5"/>
+  <circle cx="692" cy="202" r="138" fill="#eddfcc"/>
+  <ellipse cx="360" cy="208" rx="66" ry="10" fill="#ddc5aa"/>
+  <rect x="314" y="66" width="92" height="142" rx="26" fill="#b77943"/>
+  <rect x="330" y="28" width="60" height="54" rx="14" fill="#4d3a31"/>
+  <path d="M350 28V8h20v20" fill="none" stroke="#4d3a31" stroke-width="12" stroke-linecap="round"/>
+  <rect x="326" y="112" width="68" height="50" rx="8" fill="#fff9f1"/>
+  <text x="360" y="142" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#67452f">DEMO</text>
+  <text x="448" y="108" font-family="system-ui, sans-serif" font-size="24" font-weight="700" fill="#67452f">FICTIONAL</text>
+  <text x="448" y="140" font-family="system-ui, sans-serif" font-size="18" fill="#8b6445">SERUM</text>
+</svg>
