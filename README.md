@@ -4,7 +4,7 @@
 
 A skincare decision-support product combining **GPT-grounded explanations**, **MCP product tools**, and **evaluated learning-to-rank**—with deterministic safety and ranking authority. This public checkout uses synthetic data.
 
-[**Open the live product**](https://skincarehub.app/) · [3-minute AI replay and walkthrough](docs/portfolio/demo-walkthrough.md) · [Architecture](docs/architecture/overview.md) · [Responsible-ML case study](docs/portfolio/responsible-ml.md)
+[**Open the live product**](https://skincarehub.app/) · [**Live ML comparison**](https://skincarehub.app/catalog/?mlDemo=1) ([setup recipe](docs/portfolio/responsible-ml.md#try-the-bounded-live-comparison)) · [3-minute AI replay and walkthrough](docs/portfolio/demo-walkthrough.md) · [Architecture](docs/architecture/overview.md) · [Responsible-ML case study](docs/portfolio/responsible-ml.md)
 
 Designed, built, tested, and operated end to end by **Aanchal**. Stack: Python, SQLite, server-sent events, and browser-native HTML/CSS/JavaScript—no frontend build step.
 
