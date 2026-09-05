@@ -4,14 +4,14 @@ Every headline claim is labeled by evidence type: publicly reproducible, publicl
 
 ## AI evidence status
 
-Do not collapse these six statuses into a single “working AI” claim. This table distinguishes inspected private implementation, historical evidence and newly tested local examples. The new candidate has not been published.
+Do not collapse these six statuses into a single “working AI” claim. This table distinguishes inspected private implementation, historical evidence and published synthetic examples. [PR #1](https://github.com/aancha/skincare-decision-hub/pull/1) merged as `07bd8dd78641cb56064921f5fb12b647a9aebbd1`; its anonymous main clone passed 24 top-level tests, 50 guardrail cases and 25 syntax checks. [Post-merge CI](https://github.com/aancha/skincare-decision-hub/actions/runs/33934888489) passed. These results describe that commit, not unverified future changes.
 
 | Capability | Implemented | Tested offline | Real model exercised | Deployed | Publicly reproducible | Independently evaluated |
 |---|---|---|---|---|---|---|
-| Four GPT explanation surfaces | Inspected private implementation; synthetic Shortlist extraction | Local pipeline and injected Responses-transport tests pass | No provider call made by this audit | Historical application records; current model path not reverified | Local example runnable; new public release pending | Fresh agents reproduced offline behavior; human usefulness pending |
-| MCP product tools | Inspected custom private bridge; synthetic three-tool subset | Local tests and separate stdio client pass | Tool invocation is not model evidence | Historical bridge records; current hosted transport not reverified | Local server/client runnable; new public release pending | Fresh agents reproduced client/tests; independent SDK conformance pending |
-| Learned ranking | Historical experiment; separate synthetic logistic pipeline | Synthetic training/export/50-case Python-JS parity tested | Not a GPT model | Existing bounded live comparison rechecked; no ranking authority | Synthetic teacher-imitation example runnable; new release pending | Two fresh agents understood limits; one reran artifact verification; no independent real-user quality study |
-| Deterministic safety | Shared Python/JavaScript implementation | Public fixed 50-case suite | Not applicable | Historical product baseline | Yes, using checked-in synthetic fixtures | Historical agent review; new candidate review pending; no human/clinical claim |
+| Four GPT explanation surfaces | Inspected private implementation; synthetic Shortlist extraction | Local pipeline and injected Responses-transport tests pass | No provider call made by this audit | Historical application records; current model path not reverified | Published synthetic Shortlist example runnable offline | Fresh agents reproduced offline behavior; human usefulness pending |
+| MCP product tools | Inspected custom private bridge; synthetic three-tool subset | Local tests and separate stdio client pass | Tool invocation is not model evidence | Historical bridge records; current hosted transport not reverified | Published local server/client runnable offline | Fresh agents reproduced client/tests; independent SDK conformance pending |
+| Learned ranking | Historical experiment; separate synthetic logistic pipeline | Synthetic training/export/50-case Python-JS parity tested | Not a GPT model | Existing bounded live comparison rechecked; no ranking authority | Published synthetic teacher-imitation example runnable | Two fresh agents understood limits; one reran artifact verification; no independent real-user quality study |
+| Deterministic safety | Shared Python/JavaScript implementation | Public fixed 50-case suite | Not applicable | Historical product baseline | Yes, using checked-in synthetic fixtures | Agent review and anonymous-clone regression; no human/clinical claim |
 
 The API code default is `gpt-5-mini`; environment configuration can change the four surface models. A default does not prove a live response used that model. GPT output validity, factual support and usefulness require different checks. Local MCP interoperability does not prove hosted ChatGPT integration or app-directory approval.
 
@@ -29,7 +29,7 @@ python3 -B -m unittest discover -s examples/evaluation -p 'test_*.py' -v
 
 The [Shortlist example](../../examples/shortlist_ai/README.md) covers context projection, strict output validation, citations, escaped rendering, provider failures and an opt-in real HTTP adapter tested with an injected transport. The ordinary CLI is offline. The [MCP example](../../examples/mcp/README.md) tests three read-only tools through a real local process exchange, including denied network/private reads. The [evaluation harness](../../examples/evaluation/README.md) records paired outputs and hashes but leaves real-model quality, latency, cost and human scores unmeasured.
 
-See the [captioned replay and matching walkthrough](demo-walkthrough.md), [five-minute code tour](code-tour.md), [interview preparation](interview-guide.md) and [unfamiliar-review protocol](unfamiliar-review.md). The replay is a captured offline demonstration, not live-model evidence; human checks remain pending.
+See the [captioned replay and matching walkthrough](demo-walkthrough.md), [five-minute code tour](code-tour.md) and [unfamiliar-review protocol](unfamiliar-review.md). The replay is a captured offline demonstration, not live-model evidence; human checks remain pending.
 
 The [synthetic ML pipeline](../../examples/ml_ranking/README.md) trains a pairwise logistic model from zero on disjoint family groups, reproduces seven frozen artifacts, and verifies Python/browser JavaScript inference. Its final 76/80 pairwise agreement measures deterministic-teacher imitation, not improved shopper recommendations or replication of the historical private study.
 
@@ -62,4 +62,5 @@ The clean-start smoke test uses an equivalent standard-library `ThreadingHTTPSer
 - An available live URL establishes deploy reachability, not retailer freshness.
 - Fresh-context agent evaluation is not unfamiliar-human validation.
 - A failed ML promotion gate is evidence of disciplined evaluation, not a production ML recommender.
-- Historical release checks do not verify subsequently edited files. New examples need fresh clean-checkout, privacy, protocol, link and publication verification before being labeled released.
+- Historical release checks do not verify subsequently edited files. The AI portfolio has separate clean-checkout and publication evidence above; no new tag or release was created.
+- Dedicated generated-Shortlist HTML desktop/mobile inspection and continuous-playback usability acceptance were explicitly deferred by the owner, not passed. Automated safe-rendering tests and decoded replay-frame review do not establish those outcomes.
