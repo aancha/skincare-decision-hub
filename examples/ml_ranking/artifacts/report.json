@@ -1,0 +1,63 @@
+{
+  "evidence": "synthetic baseline imitation only",
+  "labelSource": "deterministic synthetic teacher; baseline imitation, not human preference",
+  "metricScope": "raw learned scores before the demonstration-only movement cap",
+  "modelHash": "e77510d2a92a671f3beef6aa639f843373facec4571500b826ac603865c6adaa",
+  "splits": {
+    "development": {
+      "learned": {
+        "nonTiedPairs": 79,
+        "pairwiseCorrect": 75,
+        "pairwiseTeacherAgreement": 0.949367,
+        "queries": 8,
+        "topChoiceCorrect": 8,
+        "topChoiceTeacherAgreement": 1.0
+      },
+      "teacherBaseline": {
+        "nonTiedPairs": 79,
+        "pairwiseCorrect": 79,
+        "pairwiseTeacherAgreement": 1.0,
+        "queries": 8,
+        "topChoiceCorrect": 8,
+        "topChoiceTeacherAgreement": 1.0
+      }
+    },
+    "final": {
+      "learned": {
+        "nonTiedPairs": 80,
+        "pairwiseCorrect": 76,
+        "pairwiseTeacherAgreement": 0.95,
+        "queries": 8,
+        "topChoiceCorrect": 6,
+        "topChoiceTeacherAgreement": 0.75
+      },
+      "teacherBaseline": {
+        "nonTiedPairs": 80,
+        "pairwiseCorrect": 80,
+        "pairwiseTeacherAgreement": 1.0,
+        "queries": 8,
+        "topChoiceCorrect": 8,
+        "topChoiceTeacherAgreement": 1.0
+      }
+    },
+    "train": {
+      "learned": {
+        "nonTiedPairs": 320,
+        "pairwiseCorrect": 311,
+        "pairwiseTeacherAgreement": 0.971875,
+        "queries": 32,
+        "topChoiceCorrect": 32,
+        "topChoiceTeacherAgreement": 1.0
+      },
+      "teacherBaseline": {
+        "nonTiedPairs": 320,
+        "pairwiseCorrect": 320,
+        "pairwiseTeacherAgreement": 1.0,
+        "queries": 32,
+        "topChoiceCorrect": 32,
+        "topChoiceTeacherAgreement": 1.0
+      }
+    }
+  },
+  "version": "synthetic-ranking-imitation-v1"
+}

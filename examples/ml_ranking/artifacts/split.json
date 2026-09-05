@@ -1,0 +1,37 @@
+{
+  "families": {
+    "development": [
+      "family-03",
+      "family-15",
+      "family-10",
+      "family-16"
+    ],
+    "final": [
+      "family-23",
+      "family-02",
+      "family-08",
+      "family-18"
+    ],
+    "train": [
+      "family-11",
+      "family-22",
+      "family-06",
+      "family-13",
+      "family-01",
+      "family-17",
+      "family-05",
+      "family-20",
+      "family-12",
+      "family-09",
+      "family-14",
+      "family-21",
+      "family-19",
+      "family-04",
+      "family-00",
+      "family-07"
+    ]
+  },
+  "policy": "Both correlated query families and product families are disjoint between splits.",
+  "seed": 20260905,
+  "version": "synthetic-ranking-imitation-v1"
+}

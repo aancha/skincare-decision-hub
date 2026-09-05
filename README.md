@@ -2,9 +2,9 @@
 
 [![Public showcase CI](https://github.com/aancha/skincare-decision-hub/actions/workflows/ci.yml/badge.svg)](https://github.com/aancha/skincare-decision-hub/actions/workflows/ci.yml)
 
-A privacy-safe skincare comparison and decision-support experience featuring synthetic product data, explainable recommendations, routine planning, and conservative safety guardrails.
+A skincare decision-support product combining **GPT-grounded explanations**, **MCP product tools**, and **evaluated learning-to-rank**—with deterministic safety and ranking authority. This public checkout uses synthetic data.
 
-[**Open the live product**](https://skincarehub.app/) · [2-minute text walkthrough](docs/portfolio/demo-walkthrough.md) · [Architecture](docs/architecture/overview.md) · [Responsible-ML case study](docs/portfolio/responsible-ml.md)
+[**Open the live product**](https://skincarehub.app/) · [3-minute AI replay and walkthrough](docs/portfolio/demo-walkthrough.md) · [Architecture](docs/architecture/overview.md) · [Responsible-ML case study](docs/portfolio/responsible-ml.md)
 
 Designed, built, tested, and operated end to end by **Aanchal**. Stack: Python, SQLite, server-sent events, and browser-native HTML/CSS/JavaScript—no frontend build step.
 
@@ -35,8 +35,18 @@ This is decision support, not medical advice. Red-flag symptoms, pregnancy or br
 | Data engineering | **Documented private evidence:** three connectors normalized 8,762 products in a dated September 4, 2026 snapshot |
 | Live architecture | **Partly public:** the static client and SSE contract are inspectable; the Python/SQLite service stays private |
 | Safety | **Publicly reproducible in Python and browser JavaScript:** the same deterministic 50-case fixture checks required product-posture, shopper-question, and routine-warning contracts in both runtimes |
+| GPT application engineering | **Implementation inspected privately:** Shortlist, retailer comparison, routine rationale, and Learn use bounded context, structured output, citation checks and deterministic fallbacks; real-model quality is not established by offline tests |
+| MCP integration | **Implementation inspected privately:** tools expose product capabilities to a client; tool execution is distinct from GPT explanation generation and is not evidence of autonomous-agent behavior |
 | Responsible ML | **Public aggregate evidence:** learned rankers missed promotion gates, so deterministic ranking retained authority; private labels/models are excluded |
-| Verification | **Prepared public CI; local release-candidate status as of September 4, 2026 is 18/18:** front-door, link, manifest, quick-start, desktop/mobile browser flow, synthetic-data, 50-case Python/browser safety, and Python syntax checks pass |
+| Verification | **Historical release:** the September 4, 2026 publication passed its recorded 18-check local suite. New AI examples and documentation require fresh verification; see the [evidence guide](docs/portfolio/evidence.md) |
+
+## Three AI engineering stories
+
+- **GPT explains decisions:** the application assembles product context before calling a model, validates structured responses and citation identifiers, and provides a deterministic fallback when context or provider output is unusable. Citation validation is not proof that every claim is supported.
+- **MCP exposes bounded tools:** discovery and invocation connect a client to product capabilities. Protocol compatibility, enforced access restrictions, hosted operation, and actual ChatGPT invocation are separate things to verify.
+- **Learning-to-rank tests a hypothesis:** a trained model was compared against a baseline and withheld from authoritative ranking when promotion criteria failed. GPT does not supply the learned ranker's scores.
+
+The live application, this static synthetic checkout, and recorded demonstrations are separate evidence surfaces. The static website does not contact a model or private MCP service. Try the [offline GPT pipeline](examples/shortlist_ai/README.md), [real local MCP exchange](examples/mcp/README.md), or [paired evaluation harness](examples/evaluation/README.md). These newly added examples are locally tested; live-provider measurements and the next public release remain pending.
 
 ## Architecture
 
@@ -64,7 +74,7 @@ The public showcase uses a small fictional fixture. Retailer-derived catalogs, i
 
 Learned approaches were evaluated against explicit deterministic baselines. The final residual-slice experiment missed five required promotion gates, including the predeclared improvement threshold. The deterministic system therefore retained ranking authority.
 
-A later interview-only comparison remained default-off, hash-verified, bounded to an already eligible top-five set, and non-authoritative. It did not silently turn SkinCare Hub into a production ML recommender. That refusal to promote an underqualified model is the strongest ML result in the project.
+A later interview-only comparison remained default-off, hash-verified, bounded to an already eligible top-five set, and non-authoritative. It did not silently turn SkinCare Hub into a production ML recommender. Inspect the [live comparison entry point](https://skincarehub.app/catalog/?mlDemo=1) with the [scenario and limitations](docs/portfolio/responsible-ml.md); an ineligible scenario can legitimately show deterministic fallback. Separately, [reproduce synthetic training and browser parity](examples/ml_ranking/README.md): this measures teacher imitation, not real recommendation quality.
 
 ## Run locally
 
@@ -76,7 +86,7 @@ python3 -m http.server 8000 --bind 127.0.0.1
 
 Open [http://127.0.0.1:8000/web/](http://127.0.0.1:8000/web/), then stop the server with `Ctrl-C`.
 
-The page loads `data/generated/catalog.json` from the repository root. The separate public-showcase export replaces that private operational catalog with deterministic synthetic products.
+The page loads this checkout's fictional `data/generated/catalog.json` from the repository root. No private operational catalog is needed or included.
 
 ## Limitations
 

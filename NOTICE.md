@@ -6,4 +6,6 @@ Retailer-derived product data, product names and copy, prices, availability, URL
 
 The two committed browser screenshots capture the owner-authored interface running only fictional synthetic fixtures. Legacy captures containing production-retailer content are excluded.
 
+The captioned AI replay renders original terminal-style visuals from synthetic offline command output. Its capture log contains fictional examples and source hashes, not private source contents. It includes no font binary, retailer imagery, real provider response, or personal desktop recording. The owner confirms, to their knowledge, that the new examples and replay contain no employer/client-owned or confidential material and that they have the right to publish them; this is an owner confirmation, not independent legal clearance.
+
 The MIT License does not grant rights to excluded retailer-derived or third-party data, media, logos, branded imagery, or trademark artwork. Retailer names used nominatively remain the property of their respective owners. No affiliation with or endorsement by Sephora, Bluemercury, or Dermstore is claimed.
