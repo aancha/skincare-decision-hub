@@ -11,7 +11,8 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def main() -> int:
-    paths = sorted((ROOT / "scripts").rglob("*.py")) + sorted((ROOT / "tests").rglob("*.py"))
+    paths = sorted(path for directory in ("scripts", "tests", "examples")
+                   for path in (ROOT / directory).rglob("*.py"))
     for path in paths:
         ast.parse(path.read_text(encoding="utf-8"), filename=str(path.relative_to(ROOT)))
     print(f"Python syntax: {len(paths)}/{len(paths)} files passed")

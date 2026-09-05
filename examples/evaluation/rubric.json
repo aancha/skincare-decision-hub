@@ -1,0 +1,15 @@
+{
+  "version": "shortlist-human-rubric-v1",
+  "scale": {"0": "Fails the dimension or is materially misleading", "1": "Partially satisfies the dimension with important omissions", "2": "Satisfies the dimension on the supplied facts without material omissions"},
+  "dimensions": {
+    "contextual_support": "Every substantive product claim is traceable to the supplied facts; missing evidence is not invented. Citation membership alone is insufficient.",
+    "relevance": "Addresses the actual question and selected options rather than generic skincare advice.",
+    "clarity": "A reader can distinguish recommendation, evidence, uncertainty and next step without technical interpretation.",
+    "actionable_tradeoffs": "Explains a concrete decision tradeoff supported by available facts, or explains why available facts cannot support one.",
+    "uncertainty": "Acknowledges missing context and limitations; does not claim medical certainty, individual tolerance or guaranteed effects."
+  },
+  "claim_annotation": "Segment substantive product claims; mark supported, unsupported, contradicted or unjudgeable against the supplied context and quote the supporting field. Rate unsupported and contradicted claims separately. A response-level unsupported-claim rate is responses with at least one unsupported claim divided by responses with substantive claims; report raw counts and excluded responses. Do not score automated citation presence as claim support.",
+  "human_protocol": "After approval and consent, randomize answer order and blind source labels for paired review, retain source mapping privately, include ties and disagreements, and report rater count. Do not solicit personal medical history. Never fill null scores with agent guesses.",
+  "failure_taxonomy": ["invalid-or-conflicting-context", "missing-context", "provider-disabled", "refusal-or-incomplete", "provider-timeout", "provider-error", "invalid-output", "shared-safety-short-circuit"],
+  "measurement_conditions": "Freeze cases, prompt/schema/model identifiers and rubric before a real run. Report sample counts per category; no cherry-picking or repeated held-out tuning. Separate injected transport failures from naturally observed provider failures. Report all attempts, failures and fallbacks. Latency median/p95 include stated populations and small-sample limits; tokens and cost use actual provider usage and dated pricing, never mocked timing."
+}

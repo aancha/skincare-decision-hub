@@ -29,6 +29,8 @@ ALLOWED_PUBLIC_FILES = {
     "docs/architecture/overview.md",
     "docs/assets/catalog-desktop-synthetic.png",
     "docs/assets/demo-video-poster.png",
+    "docs/assets/ai-engineering-replay.webm",
+    "docs/assets/ai-engineering-capture.json",
     "docs/assets/demo-video-poster.svg",
     "docs/assets/github-social-preview-1280x640.png",
     "docs/assets/github-social-preview-1280x640.svg",
@@ -38,9 +40,45 @@ ALLOWED_PUBLIC_FILES = {
     "docs/portfolio/engineering-decisions.md",
     "docs/portfolio/evidence.md",
     "docs/portfolio/responsible-ml.md",
+    "docs/portfolio/code-tour.md",
+    "docs/portfolio/interview-guide.md",
+    "docs/portfolio/unfamiliar-review.md",
     "docs/research/ml/README.md",
     "docs/research/ml/data-card.md",
     "docs/research/ml/model-card.md",
+    "examples/shortlist_ai/README.md",
+    "examples/shortlist_ai/shortlist.py",
+    "examples/shortlist_ai/responses_provider.py",
+    "examples/shortlist_ai/test_responses_provider.py",
+    "examples/shortlist_ai/test_shortlist.py",
+    "examples/evaluation/README.md",
+    "examples/evaluation/evaluate.py",
+    "examples/evaluation/rubric.json",
+    "examples/evaluation/scenarios.json",
+    "examples/evaluation/test_evaluation.py",
+    "examples/mcp/README.md",
+    "examples/mcp/contracts-and-provenance.md",
+    "examples/mcp/client.py",
+    "examples/mcp/server.py",
+    "examples/mcp/tool_logic.py",
+    "examples/mcp/fixtures/products.json",
+    "examples/mcp/tests/test_mcp.py",
+    "examples/mcp/tests/silent_server.py",
+    "examples/mcp/tests/restricted_server.py",
+    "examples/ml_ranking/README.md",
+    "examples/ml_ranking/pipeline.py",
+    "examples/ml_ranking/inference.js",
+    "examples/ml_ranking/browser.html",
+    "examples/ml_ranking/browser.js",
+    "examples/ml_ranking/test_pipeline.py",
+    "examples/ml_ranking/test_browser.py",
+    "examples/ml_ranking/artifacts/dataset.json",
+    "examples/ml_ranking/artifacts/design.json",
+    "examples/ml_ranking/artifacts/split.json",
+    "examples/ml_ranking/artifacts/manifest.json",
+    "examples/ml_ranking/artifacts/model.json",
+    "examples/ml_ranking/artifacts/report.json",
+    "examples/ml_ranking/artifacts/parity.json",
     "scripts/evaluate_skincare_guardrails.py",
     "scripts/check_python_syntax.py",
     "scripts/publication_manifest.py",
@@ -50,6 +88,7 @@ ALLOWED_PUBLIC_FILES = {
     "tests/browser-smoke.html",
     "tests/fixtures/skincare_guardrail_eval_cases.json",
     "tests/test_browser_smoke.py",
+    "tests/test_ai_examples.py",
     "tests/test_release_proofs.py",
     "tests/test_showcase.py",
     "web/affiliate-config.js",
@@ -128,6 +167,7 @@ class ShowcaseTests(unittest.TestCase):
             "README.md",
             "data",
             "docs",
+            "examples",
             "scripts",
             "tests",
             "web",
@@ -193,7 +233,7 @@ class ShowcaseTests(unittest.TestCase):
             ".tmp",
             ".zip",
         }
-        binary_suffixes = {".png"}
+        binary_suffixes = {".png", ".webm"}
         secret_or_path_pattern = re.compile(
             r"/(?:Users|home)/|[A-Za-z]:\\Users\\|"
             r"-----BEGIN (?:RSA |OPENSSH |EC )?PRIVATE KEY-----|"
@@ -254,7 +294,10 @@ class ShowcaseTests(unittest.TestCase):
             readme,
         )
         self.assertIn("https://skincarehub.app/", readme)
-        self.assertIn("local release-candidate status as of September 4, 2026 is 18/18", readme)
+        # A historical release count must not masquerade as current verification.
+        self.assertIn("Historical release", readme)
+        self.assertIn("require fresh verification", readme)
+        self.assertIn("docs/portfolio/evidence.md", readme)
         self.assertIn("decision support, not medical advice", readme)
         self.assertIn("not affiliated with or endorsed", readme)
         self.assertIn("ML has no production ranking authority", readme)
@@ -263,7 +306,10 @@ class ShowcaseTests(unittest.TestCase):
 
         first_screen = "\n".join(readme.splitlines()[:14])
         for required_front_door_signal in (
-            "A privacy-safe skincare comparison and decision-support experience",
+            "A skincare decision-support product",
+            "GPT-grounded explanations",
+            "MCP product tools",
+            "evaluated learning-to-rank",
             "[**Open the live product**](https://skincarehub.app/)",
             "Designed, built, tested, and operated end to end by **Aanchal**",
             "Stack: Python, SQLite, server-sent events",
@@ -379,6 +425,21 @@ class ShowcaseTests(unittest.TestCase):
             content = (ROOT / relative).read_bytes()
             self.assertEqual(entry.get("bytes"), len(content), relative)
             self.assertEqual(entry.get("sha256"), hashlib.sha256(content).hexdigest(), relative)
+
+    def test_reviewed_replay_and_capture_are_exact(self):
+        expected = {
+            "docs/assets/ai-engineering-replay.webm": "a046ed8389ed0da9d8d334a8514c3cc9a00426c6021021fcfe7ecf5d068fcc20",
+            "docs/assets/ai-engineering-capture.json": "30002c27d5971f73db398821b38d8414c7cd5066d3fa82f9e30f8414680a3f2e",
+        }
+        for relative, digest in expected.items():
+            self.assertEqual(hashlib.sha256((ROOT / relative).read_bytes()).hexdigest(), digest)
+        record = json.loads((ROOT / "docs/assets/ai-engineering-capture.json").read_text())
+        self.assertEqual(sum(scene["seconds"] for scene in record["timeline"]), 180)
+        self.assertEqual(len(record["runs"]), 8)
+        for run in record["runs"].values():
+            self.assertEqual(run["exitCode"], 0)
+            self.assertEqual(run["stderr"], "")
+            self.assertEqual(hashlib.sha256(run["stdout"].encode()).hexdigest(), run["stdoutSha256"])
 
     def test_required_visual_assets_exist_at_exact_dimensions(self):
         expected = {
