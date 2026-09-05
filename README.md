@@ -38,7 +38,7 @@ This is decision support, not medical advice. Red-flag symptoms, pregnancy or br
 | GPT application engineering | **Implementation inspected privately:** Shortlist, retailer comparison, routine rationale, and Learn use bounded context, structured output, citation checks and deterministic fallbacks; real-model quality is not established by offline tests |
 | MCP integration | **Implementation inspected privately:** tools expose product capabilities to a client; tool execution is distinct from GPT explanation generation and is not evidence of autonomous-agent behavior |
 | Responsible ML | **Public aggregate evidence:** learned rankers missed promotion gates, so deterministic ranking retained authority; private labels/models are excluded |
-| Verification | **Historical release:** the September 4, 2026 publication passed its recorded 18-check local suite. New AI examples and documentation require fresh verification; see the [evidence guide](docs/portfolio/evidence.md) |
+| Verification | **Published AI portfolio:** [PR #1](https://github.com/aancha/skincare-decision-hub/pull/1) merged with passing CI; a fresh anonymous main clone passed 24 tests, 50 guardrail cases and 25 syntax checks. See the [evidence guide](docs/portfolio/evidence.md) for scope and deferred checks |
 
 ## Three AI engineering stories
 
@@ -46,7 +46,7 @@ This is decision support, not medical advice. Red-flag symptoms, pregnancy or br
 - **MCP exposes bounded tools:** discovery and invocation connect a client to product capabilities. Protocol compatibility, enforced access restrictions, hosted operation, and actual ChatGPT invocation are separate things to verify.
 - **Learning-to-rank tests a hypothesis:** a trained model was compared against a baseline and withheld from authoritative ranking when promotion criteria failed. GPT does not supply the learned ranker's scores.
 
-The live application, this static synthetic checkout, and recorded demonstrations are separate evidence surfaces. The static website does not contact a model or private MCP service. Try the [offline GPT pipeline](examples/shortlist_ai/README.md), [real local MCP exchange](examples/mcp/README.md), or [paired evaluation harness](examples/evaluation/README.md). These newly added examples are locally tested; live-provider measurements and the next public release remain pending.
+The live application, this static synthetic checkout, and recorded demonstrations are separate evidence surfaces. The static website does not contact a model or private MCP service. Try the [offline GPT pipeline](examples/shortlist_ai/README.md), [real local MCP exchange](examples/mcp/README.md), or [paired evaluation harness](examples/evaluation/README.md). These examples are published and offline-tested; live-provider measurements and unfamiliar-human validation remain pending. Historical release tag `portfolio-2026-09` is unchanged.
 
 ## Architecture
 

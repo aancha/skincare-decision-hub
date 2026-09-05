@@ -294,9 +294,14 @@ class ShowcaseTests(unittest.TestCase):
             readme,
         )
         self.assertIn("https://skincarehub.app/", readme)
-        # A historical release count must not masquerade as current verification.
+        # Keep historical release identity separate from verified AI publication.
         self.assertIn("Historical release", readme)
-        self.assertIn("require fresh verification", readme)
+        self.assertIn("Published AI portfolio", readme)
+        self.assertIn("https://github.com/aancha/skincare-decision-hub/pull/1", readme)
+        self.assertIn("fresh anonymous main clone passed 24 tests", readme)
+        self.assertIn("deferred checks", readme)
+        self.assertNotIn("New AI examples and documentation require fresh verification", readme)
+        self.assertNotIn("next public release remain pending", readme)
         self.assertIn("docs/portfolio/evidence.md", readme)
         self.assertIn("decision support, not medical advice", readme)
         self.assertIn("not affiliated with or endorsed", readme)

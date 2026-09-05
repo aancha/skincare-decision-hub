@@ -26,9 +26,9 @@
       "sha256": "a354615981d8696dfb1c2df2327cc9bc830af24eb5636b596236fbfd1552e654"
     },
     {
-      "bytes": 8161,
+      "bytes": 8295,
       "path": "README.md",
-      "sha256": "0d2010eb05c11733b520ddf0041d1bf67ff192551832bea106abea1616bf29e0"
+      "sha256": "be9f97e7aaddfb5f078a4ab132fbd2ba63e4a369603bdc13a4fbe960c8d5cd89"
     },
     {
       "bytes": 67,
@@ -101,19 +101,19 @@
       "sha256": "08df645a18ce0046f859d4d6c8cfa0980605793ff13198fa85f8dfae9aed2c37"
     },
     {
-      "bytes": 4046,
+      "bytes": 4136,
       "path": "docs/portfolio/case-study.md",
-      "sha256": "16c0b37a30e1b8489abb96ccce72bb5cd88db0000e36a65383916903c6e575bb"
+      "sha256": "89df7eb1971379a8a548985816acdcf53c568e6e5b4078f290e6d079db1f5ebf"
     },
     {
-      "bytes": 2880,
+      "bytes": 2965,
       "path": "docs/portfolio/code-tour.md",
-      "sha256": "67a573059c7d9af4a24260610b3743ab1d92b44602e6ba3db7c408405f2303db"
+      "sha256": "1f7792fc8c2213c4dd699772669a95c85498b8d2c87324c194a9dd1fbe86bdf3"
     },
     {
-      "bytes": 4109,
+      "bytes": 4144,
       "path": "docs/portfolio/demo-walkthrough.md",
-      "sha256": "4cc88a8402844cc9f63c021595c1a326b7674b9acaec8eb0f0b55fcd2f349c46"
+      "sha256": "c97add9378f16faa46d1126581233213ddd6cfee62cbc771305decf8bb4afabf"
     },
     {
       "bytes": 3845,
@@ -121,14 +121,14 @@
       "sha256": "c130cf643c28d6b16c52599c119ad7a3f48b06198be83d300c33af3ede5052c8"
     },
     {
-      "bytes": 7174,
+      "bytes": 7725,
       "path": "docs/portfolio/evidence.md",
-      "sha256": "498f4219662c7a6d9cc389261aa87ff8c2001b59cd7f09fd3b2576fc8d062398"
+      "sha256": "6feaa4b76cb57281f21ca8fb40ded74ea00bf0c66ebe584c818b8b2c6ee21884"
     },
     {
-      "bytes": 6805,
+      "bytes": 6721,
       "path": "docs/portfolio/interview-guide.md",
-      "sha256": "0414661548d293d15846680b58fc3a95b6fa314a7afb5049877d0ff2e12b6551"
+      "sha256": "34d564f317fcb0238429b11a0e98107351616194f9b47c6646295331f90d8f0d"
     },
     {
       "bytes": 4719,
@@ -136,9 +136,9 @@
       "sha256": "d58c613b7b5fe7e92656d0f06fd8722a8920f4138530f6e374d3b4f00eee1fa3"
     },
     {
-      "bytes": 3352,
+      "bytes": 3417,
       "path": "docs/portfolio/unfamiliar-review.md",
-      "sha256": "11a3ebfdf4b19c511af65edf6add1c525f44d600a7b5cb7e217b217a0629705d"
+      "sha256": "5ae6d3b2c10a859047c3a66cf4cf2c65c427e2c63e7422e20e35771add46533e"
     },
     {
       "bytes": 880,
@@ -376,9 +376,9 @@
       "sha256": "2aabd3641d89a1c613896426d177798dbf33bfeb1c0ff162a3fa74faa8bd3861"
     },
     {
-      "bytes": 23830,
+      "bytes": 24207,
       "path": "tests/test_showcase.py",
-      "sha256": "c720c955c98caa7167cf19c476fdfe962102d84992160437b9fb192e4c0afe27"
+      "sha256": "ae3a456c5780cca311eb3cd4e1f94d3a7609dbaf70abcc0300b5674857bb6ba1"
     },
     {
       "bytes": 526,

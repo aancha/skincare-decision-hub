@@ -23,4 +23,4 @@ python3 examples/evaluation/evaluate.py
 
 Expect a deterministic timeout fallback, a local MCP `PASS` with three discovered tools, and eight development contract rows. None is a real GPT-quality result. The ordinary Shortlist CLI is offline; the separate provider entrypoint prints a preview unless explicitly enabled following approval.
 
-The tour's completion is measured by a fresh reviewer finding and explaining these boundaries, not by the presence of this document. New-candidate timed review remains pending.
+Fresh-context agents located validation and reproduced offline examples within 30 seconds during the recorded review. This establishes agent navigation and reproduction, not a human's five-minute tour experience. See [review scope and limitations](evidence.md).

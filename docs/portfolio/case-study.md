@@ -27,7 +27,7 @@ The system combines volatile retailer data with safety-sensitive decision suppor
 
 ## What the public checkout proves
 
-The static synthetic application and deterministic safety fixtures are directly reproducible. The private deployment architecture and existing GPT/MCP implementations are documented boundaries, not provider-connected functionality in the static public page. New [Shortlist](../../examples/shortlist_ai/README.md), [MCP](../../examples/mcp/README.md) and [evaluation](../../examples/evaluation/README.md) programs are locally tested and separately runnable; publication and independent review of the new candidate remain pending.
+The static synthetic application and deterministic safety fixtures are directly reproducible. The private deployment architecture and existing GPT/MCP implementations are documented boundaries, not provider-connected functionality in the static public page. Published [Shortlist](../../examples/shortlist_ai/README.md), [MCP](../../examples/mcp/README.md) and [evaluation](../../examples/evaluation/README.md) programs are offline-tested and separately runnable. Fresh-context agents reproduced examples; this is not human usefulness or real-model quality evidence. See [verification and deferred checks](evidence.md).
 
 The technical story is the integration: deterministic controls decide eligibility and ranking; GPT explains supplied evidence; MCP exposes bounded product capabilities; the learned ranker remains a separate experiment. Neither GPT nor MCP receives authority to bypass safety or change production ranking.
 
