@@ -641,6 +641,37 @@
           requireCondition(!view.__publicRoutineXss, "stored routine concern executed script");
           requireVisibleSyntheticEvidence(page, "Routine");
 
+          const routineApp = view.SkinCareHubApp;
+          const originalRoutineState = {
+            routineTime: routineApp.state.routineTime,
+            routineConcern: routineApp.state.routineConcern,
+            routineBudget: routineApp.state.routineBudget,
+            routineDraft: routineApp.state.routineDraft,
+          };
+          try {
+            Object.assign(routineApp.state, {
+              routineTime: "pm",
+              routineConcern: "redness",
+              routineBudget: "under-75",
+              routineDraft: {},
+            });
+            routineApp.renderRoutineBuilder({ force: true });
+            const heldTreatment = page.querySelector('[data-routine-step-key="pm:treat"]');
+            requireCondition(heldTreatment, "routine treatment step is missing");
+            requireCondition(heldTreatment?.textContent.includes("Optional for later"), "budget-held treatment was mislabeled as a missing match");
+            requireCondition(heldTreatment.textContent.includes("Held out to keep the core routine inside"), "budget-held treatment lost its explanation");
+            requireCondition(page.querySelector("#routine-summary").textContent.includes("1 optional held"), "routine summary lost the budget-held treatment");
+            routineApp.state.routineBudget = "smart";
+            routineApp.renderRoutineBuilder({ force: true });
+            requireCondition(
+              page.querySelector('[data-routine-step-key="pm:treat"]')?.textContent.includes("Calm Signal Serum"),
+              "the matching treatment did not return with sufficient budget",
+            );
+          } finally {
+            Object.assign(routineApp.state, originalRoutineState);
+            routineApp.renderRoutineBuilder({ force: true });
+          }
+
           page.querySelector("#market-view-tab").click();
           await waitFor(() => !page.querySelector("#market-view-panel").hidden, "the Market and retailer-picks panel");
           requireVisibleSyntheticEvidence(page, "Market and retailer picks");

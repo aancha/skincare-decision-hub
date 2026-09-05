@@ -26,9 +26,9 @@
       "sha256": "a354615981d8696dfb1c2df2327cc9bc830af24eb5636b596236fbfd1552e654"
     },
     {
-      "bytes": 8295,
+      "bytes": 8449,
       "path": "README.md",
-      "sha256": "be9f97e7aaddfb5f078a4ab132fbd2ba63e4a369603bdc13a4fbe960c8d5cd89"
+      "sha256": "0eb8a2e1f70b297381d0b33a16c032783d197d3945215f7534ef15b6b7049f45"
     },
     {
       "bytes": 67,
@@ -346,9 +346,9 @@
       "sha256": "cdb750d8f0e1d10b047f482aff5e839ab2d12f5ee6a85ae7da821705fed79e18"
     },
     {
-      "bytes": 40140,
+      "bytes": 41919,
       "path": "tests/browser-smoke.html",
-      "sha256": "9cbf4e85154c950718cad072e54f23b1934806445510a37004558c5725770ba3"
+      "sha256": "bd4f5bd71223e9c2095c15e7bb7141b9f5d766e44049e329c85e83e671b5a6c7"
     },
     {
       "bytes": 20138,
@@ -466,9 +466,9 @@
       "sha256": "2938b1555ec68abe8ebd1449e2c7b939e582f20f0007d56009f87ba4eb250f30"
     },
     {
-      "bytes": 59923,
+      "bytes": 59939,
       "path": "web/js/routine.js",
-      "sha256": "f727df1be7b2d9b797924f20807fdbef390f4549f8ee2f4ab9b0fe32456f9e5d"
+      "sha256": "766bcbc5e03bec0029a5f9bb6d4c2a34a5683d63c34214c75c1eee0a481c3f5e"
     },
     {
       "bytes": 197295,

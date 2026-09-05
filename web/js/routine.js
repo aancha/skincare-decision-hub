@@ -1335,7 +1335,7 @@ export function renderRoutineBuilder({ force = false } = {}) {
       ? isActionableShortlistProduct(localChosen?.id)
       : (backendStep?.fromSavedSet ?? isActionableShortlistProduct(localChosen?.id));
     const chosen = effectiveRemoved ? null : localOverridePending ? localChosen : backendStep?.product || localChosen;
-    const deferredReason = localOverridePending
+    const deferredReason = localOverridePending || !backendStep
       ? localDeferredReason
       : (backendStep?.deferred ? backendStep.reason || "Held out to keep the core routine inside the current budget target first." : "");
     const isDeferredByBudget = Boolean(deferredReason) && !chosen;
