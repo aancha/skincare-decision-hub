@@ -41,7 +41,6 @@ ALLOWED_PUBLIC_FILES = {
     "docs/portfolio/evidence.md",
     "docs/portfolio/responsible-ml.md",
     "docs/portfolio/code-tour.md",
-    "docs/portfolio/interview-guide.md",
     "docs/portfolio/unfamiliar-review.md",
     "docs/research/ml/README.md",
     "docs/research/ml/data-card.md",
@@ -154,6 +153,7 @@ def png_chunk_types(path: Path) -> list[bytes]:
 
 class ShowcaseTests(unittest.TestCase):
     def test_public_boundary_excludes_private_material(self):
+        self.assertFalse((ROOT / "docs/portfolio/interview-guide.md").exists())
         repository_metadata = {".git"}
         root_names = {
             path.name

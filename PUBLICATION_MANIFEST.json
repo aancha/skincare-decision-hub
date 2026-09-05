@@ -46,9 +46,9 @@
       "sha256": "d32be695caef2ef82149d479c62077ce9b9962d7bfec8022820f995525b072a5"
     },
     {
-      "bytes": 948,
+      "bytes": 896,
       "path": "docs/README.md",
-      "sha256": "de88f433806557a50b1dc6a94f484d056389a62a87559725aedc2a7c19fa1b30"
+      "sha256": "af3c0c05bae6468c899f21c3e07b0178a6fc57684df226f03ce0447042bf04ed"
     },
     {
       "bytes": 814,
@@ -121,14 +121,9 @@
       "sha256": "c130cf643c28d6b16c52599c119ad7a3f48b06198be83d300c33af3ede5052c8"
     },
     {
-      "bytes": 7725,
+      "bytes": 7680,
       "path": "docs/portfolio/evidence.md",
-      "sha256": "6feaa4b76cb57281f21ca8fb40ded74ea00bf0c66ebe584c818b8b2c6ee21884"
-    },
-    {
-      "bytes": 6721,
-      "path": "docs/portfolio/interview-guide.md",
-      "sha256": "34d564f317fcb0238429b11a0e98107351616194f9b47c6646295331f90d8f0d"
+      "sha256": "bc705908d60c210ed58e1e04d95bcd11460416f4192da6319a3e515a740e07a6"
     },
     {
       "bytes": 4719,
@@ -376,9 +371,9 @@
       "sha256": "2aabd3641d89a1c613896426d177798dbf33bfeb1c0ff162a3fa74faa8bd3861"
     },
     {
-      "bytes": 24207,
+      "bytes": 24246,
       "path": "tests/test_showcase.py",
-      "sha256": "ae3a456c5780cca311eb3cd4e1f94d3a7609dbaf70abcc0300b5674857bb6ba1"
+      "sha256": "331c79ceb1163c1e7dc4107a473f1571de54bda221d8728616eb79614f274c74"
     },
     {
       "bytes": 526,

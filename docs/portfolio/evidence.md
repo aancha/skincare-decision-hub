@@ -29,7 +29,7 @@ python3 -B -m unittest discover -s examples/evaluation -p 'test_*.py' -v
 
 The [Shortlist example](../../examples/shortlist_ai/README.md) covers context projection, strict output validation, citations, escaped rendering, provider failures and an opt-in real HTTP adapter tested with an injected transport. The ordinary CLI is offline. The [MCP example](../../examples/mcp/README.md) tests three read-only tools through a real local process exchange, including denied network/private reads. The [evaluation harness](../../examples/evaluation/README.md) records paired outputs and hashes but leaves real-model quality, latency, cost and human scores unmeasured.
 
-See the [captioned replay and matching walkthrough](demo-walkthrough.md), [five-minute code tour](code-tour.md), [interview preparation](interview-guide.md) and [unfamiliar-review protocol](unfamiliar-review.md). The replay is a captured offline demonstration, not live-model evidence; human checks remain pending.
+See the [captioned replay and matching walkthrough](demo-walkthrough.md), [five-minute code tour](code-tour.md) and [unfamiliar-review protocol](unfamiliar-review.md). The replay is a captured offline demonstration, not live-model evidence; human checks remain pending.
 
 The [synthetic ML pipeline](../../examples/ml_ranking/README.md) trains a pairwise logistic model from zero on disjoint family groups, reproduces seven frozen artifacts, and verifies Python/browser JavaScript inference. Its final 76/80 pairwise agreement measures deterministic-teacher imitation, not improved shopper recommendations or replication of the historical private study.
 
