@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="240" viewBox="0 0 800 240" role="img" aria-labelledby="title desc">
+  <title id="title">Synthetic moisturizer jar</title><desc id="desc">A fictional blue moisturizer jar marked DEMO.</desc>
+  <rect width="800" height="240" rx="28" fill="#edf1f7"/>
+  <circle cx="88" cy="196" r="138" fill="#dbe3ef"/>
+  <ellipse cx="420" cy="208" rx="100" ry="12" fill="#c5d0df"/>
+  <rect x="326" y="92" width="188" height="112" rx="32" fill="#7692b7"/>
+  <rect x="316" y="60" width="208" height="48" rx="18" fill="#334a69"/>
+  <rect x="374" y="126" width="92" height="48" rx="8" fill="#f7f9fc"/>
+  <text x="420" y="156" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#334a69">DEMO</text>
+  <text x="548" y="110" font-family="system-ui, sans-serif" font-size="24" font-weight="700" fill="#334a69">FICTIONAL</text>
+  <text x="548" y="142" font-family="system-ui, sans-serif" font-size="18" fill="#56708f">CREAM</text>
+</svg>

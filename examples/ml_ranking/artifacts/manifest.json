@@ -1,0 +1,11 @@
+{
+  "sha256": {
+    "dataset.json": "fb45426f7fa483616cf717b12d3dc2906a753b96bd7710be18ccf8d2f39635e9",
+    "design.json": "c3fde048a4648d75be7439ca7e6bd0fabdf19ae4fdac0f901f8943e9c83a436b",
+    "model.json": "e77510d2a92a671f3beef6aa639f843373facec4571500b826ac603865c6adaa",
+    "parity.json": "c1efe5b73baf7c862438f70b6ca354807e215292b5da1c27521a6c40408ca1c2",
+    "report.json": "70a0fc3c6c811040e137322c98e9c63ff87562e0443c83aebfdbdfe2e6224655",
+    "split.json": "8f207cfeb7f8149865cf89dd118a6a7373a2f27d37a98aec203214cf7a067f50"
+  },
+  "version": "synthetic-ranking-imitation-v1"
+}

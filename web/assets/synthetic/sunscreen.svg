@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="240" viewBox="0 0 800 240" role="img" aria-labelledby="title desc">
+  <title id="title">Synthetic sunscreen tube</title><desc id="desc">A fictional coral sunscreen tube marked DEMO.</desc>
+  <rect width="800" height="240" rx="28" fill="#fff2e8"/>
+  <circle cx="704" cy="42" r="132" fill="#f8dfca"/>
+  <ellipse cx="374" cy="208" rx="72" ry="10" fill="#e9cab4"/>
+  <path d="M320 32h108l24 172H296z" fill="#df8c69"/>
+  <rect x="328" y="180" width="92" height="30" rx="8" fill="#713e31"/>
+  <circle cx="374" cy="104" r="38" fill="#fff8f0"/>
+  <text x="374" y="110" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#8b4f3d">DEMO</text>
+  <text x="482" y="104" font-family="system-ui, sans-serif" font-size="24" font-weight="700" fill="#8b4f3d">FICTIONAL</text>
+  <text x="482" y="136" font-family="system-ui, sans-serif" font-size="18" fill="#a3614c">SPF</text>
+</svg>

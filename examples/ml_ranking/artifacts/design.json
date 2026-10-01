@@ -1,0 +1,39 @@
+{
+  "families": 24,
+  "featureOrder": [
+    "concern_match",
+    "ingredient_match",
+    "budget_fit",
+    "evidence_completeness",
+    "active_fit"
+  ],
+  "labelSource": "deterministic synthetic teacher; baseline imitation, not human preference",
+  "metrics": [
+    "pairwise_teacher_agreement",
+    "top_choice_teacher_agreement"
+  ],
+  "productsPerFamily": 5,
+  "queriesPerFamily": 2,
+  "realRecommendationQuality": "not measured",
+  "seed": 20260905,
+  "selection": "One predeclared configuration; development is diagnostic only; no final-set selection.",
+  "splitCounts": {
+    "development": 4,
+    "final": 4,
+    "train": 16
+  },
+  "teacherWeights": [
+    1.8,
+    1.2,
+    0.8,
+    0.4,
+    0.6
+  ],
+  "training": {
+    "epochs": 300,
+    "initialWeights": "all zero",
+    "l2": 0.02,
+    "learningRate": 0.35
+  },
+  "version": "synthetic-ranking-imitation-v1"
+}

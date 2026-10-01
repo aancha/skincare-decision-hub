@@ -1,0 +1,550 @@
+{
+  "files": [
+    {
+      "bytes": 891,
+      "path": ".github/SECURITY.md",
+      "sha256": "e1cfb33e0a1410d9891b464bb854db8bb1dfdad0489a1b76490733c48e30af17"
+    },
+    {
+      "bytes": 737,
+      "path": ".github/workflows/ci.yml",
+      "sha256": "f7dfd3decd4547035ec7b915a8d96c10afeead86cea954fd48d0803393a4dadd"
+    },
+    {
+      "bytes": 507,
+      "path": ".gitignore",
+      "sha256": "ed10e23f402b527b0c97d8518b7d2921b6c371af3129ed11d95ca7a9d25852cc"
+    },
+    {
+      "bytes": 1064,
+      "path": "LICENSE",
+      "sha256": "95d59afbfe25d325bb3d5018f6069b62017aa30839ad83a0e54ad186bee7d306"
+    },
+    {
+      "bytes": 1691,
+      "path": "NOTICE.md",
+      "sha256": "a354615981d8696dfb1c2df2327cc9bc830af24eb5636b596236fbfd1552e654"
+    },
+    {
+      "bytes": 5609,
+      "path": "README.md",
+      "sha256": "f931ccd5e94a451aa78697121a58ede08ba7dc7602513419c78f4000bf528826"
+    },
+    {
+      "bytes": 67,
+      "path": "data/generated/articles.json",
+      "sha256": "5eb15db648081919eca504a25bcbcce72cbdfa918d59fc38ee54b45cf6da31f2"
+    },
+    {
+      "bytes": 14183,
+      "path": "data/generated/catalog.json",
+      "sha256": "acf3f93665a4c32b419634bff95fede0aab677b4cdb317b36b86c8848b484759"
+    },
+    {
+      "bytes": 66,
+      "path": "data/generated/ratings.json",
+      "sha256": "d32be695caef2ef82149d479c62077ce9b9962d7bfec8022820f995525b072a5"
+    },
+    {
+      "bytes": 1697,
+      "path": "docs/README.md",
+      "sha256": "a62b2a6ac2e6db48d19456070522c30179d35b8125f76115cce80470d6c413e8"
+    },
+    {
+      "bytes": 814,
+      "path": "docs/architecture/data-pipeline.md",
+      "sha256": "1c69362e90766add1590846870f07dbe0e4f9552434dc1d76f4384d720694712"
+    },
+    {
+      "bytes": 5194,
+      "path": "docs/architecture/overview.md",
+      "sha256": "d612528ad13f965fd82f6e02a5523b1e0057a304bb6f1f6ef3fe7557dd999101"
+    },
+    {
+      "bytes": 71337,
+      "path": "docs/assets/ai-engineering-capture.json",
+      "sha256": "0a22b33891b1f37a941adbf44f0b96695e983c2a5c19c42a27f741441b25ae9c"
+    },
+    {
+      "bytes": 1187139,
+      "path": "docs/assets/ai-engineering-replay.webm",
+      "sha256": "a046ed8389ed0da9d8d334a8514c3cc9a00426c6021021fcfe7ecf5d068fcc20"
+    },
+    {
+      "bytes": 262844,
+      "path": "docs/assets/catalog-desktop-synthetic.png",
+      "sha256": "12a5cd71a1d093942b976d3a022f71c2ffa00b5c631eb34018a2ffa067b3d2d5"
+    },
+    {
+      "bytes": 212310,
+      "path": "docs/assets/demo-video-poster.png",
+      "sha256": "a0b573e90d70902de8918852a13d1317ccbe2b6472c46026dac83f34ecd12db6"
+    },
+    {
+      "bytes": 3900,
+      "path": "docs/assets/demo-video-poster.svg",
+      "sha256": "411ba8180daa27a2e76186908573e039d414571896fb003ce39a43260105328d"
+    },
+    {
+      "bytes": 142107,
+      "path": "docs/assets/github-social-preview-1280x640.png",
+      "sha256": "9323290214ef8923d918af9f725682abadc8f921bbba79bfc56f218c93ef24eb"
+    },
+    {
+      "bytes": 3749,
+      "path": "docs/assets/github-social-preview-1280x640.svg",
+      "sha256": "f5f4913c7c2edfe6c58f35d66487b385172d830284111f3525f4a94274e53b2d"
+    },
+    {
+      "bytes": 87096,
+      "path": "docs/assets/shortlist-mobile-synthetic.png",
+      "sha256": "08df645a18ce0046f859d4d6c8cfa0980605793ff13198fa85f8dfae9aed2c37"
+    },
+    {
+      "bytes": 3554,
+      "path": "docs/portfolio/case-study.md",
+      "sha256": "eef0fab50998f88d6b626e5d10f2027e76d68fe04cab3c1a7b0c49a2c033f65e"
+    },
+    {
+      "bytes": 2572,
+      "path": "docs/portfolio/code-tour.md",
+      "sha256": "10a3f8e66447c258aa0228e6b0327378b756ac063c8b2695dbdfc3cf6c4d6d1b"
+    },
+    {
+      "bytes": 4361,
+      "path": "docs/portfolio/demo-walkthrough.md",
+      "sha256": "1ed2561ed30c42a57a288f754812dfc43314dcc89c033c8f007e8193480be0df"
+    },
+    {
+      "bytes": 3845,
+      "path": "docs/portfolio/engineering-decisions.md",
+      "sha256": "c130cf643c28d6b16c52599c119ad7a3f48b06198be83d300c33af3ede5052c8"
+    },
+    {
+      "bytes": 497,
+      "path": "docs/portfolio/engineering-download-notice.md",
+      "sha256": "9ec3fac27e924e7cf47a05c9e83ead7c2e6b3ff95e2ba7357f69e16efc0e3846"
+    },
+    {
+      "bytes": 3630,
+      "path": "docs/portfolio/engineering-examples.md",
+      "sha256": "689a5bbad660d530ee0795176b029562fcee4f1163707f671e92caf04f12a3ec"
+    },
+    {
+      "bytes": 13122,
+      "path": "docs/portfolio/evidence.md",
+      "sha256": "aa10c0dc63ce3b02ee943fa4ba6a029bef3bd2c4a0d16453f6b9f8f12a6c53f8"
+    },
+    {
+      "bytes": 4716,
+      "path": "docs/portfolio/responsible-ml.md",
+      "sha256": "0e70e08d10d1769d8258cb3466b0b1c2fc7334054bb7ae3769889491a6baf741"
+    },
+    {
+      "bytes": 3427,
+      "path": "docs/portfolio/unfamiliar-review.md",
+      "sha256": "e4e9038688d36ea47e308cdd9f9982606af576583a0cf99cd85eec5d83a8c859"
+    },
+    {
+      "bytes": 880,
+      "path": "docs/research/ml/README.md",
+      "sha256": "caafe06754d76667339c183dc8de50e3b05bb25e26f3f3d0ca094ba51c1038ab"
+    },
+    {
+      "bytes": 698,
+      "path": "docs/research/ml/data-card.md",
+      "sha256": "5490767a66958960ba7aafb442b07a128a9c03c80434467e57515a0402e06604"
+    },
+    {
+      "bytes": 732,
+      "path": "docs/research/ml/model-card.md",
+      "sha256": "3d4753b897b291556a2ff57be4d9cfbdc94edea45a2df21c5c42e9122915525e"
+    },
+    {
+      "bytes": 3598,
+      "path": "examples/evaluation/README.md",
+      "sha256": "ce4a4630fff44cafb211bb113b81ea56362bc4f09498ae1fdb11244db7320927"
+    },
+    {
+      "bytes": 4324,
+      "path": "examples/evaluation/evaluate.py",
+      "sha256": "86565516b02eee08546da7d24d0edb367a7b15da1220a84c0093bbb6cf751b9a"
+    },
+    {
+      "bytes": 2427,
+      "path": "examples/evaluation/rubric.json",
+      "sha256": "5ed08e804e389434580100df85277495eff3ddb877d238912a3194a7855eda93"
+    },
+    {
+      "bytes": 2914,
+      "path": "examples/evaluation/scenarios.json",
+      "sha256": "6054b4afc470dfabc56b1a53c5868db95c09177e1ade9fa3520d2d2a8db64c67"
+    },
+    {
+      "bytes": 2358,
+      "path": "examples/evaluation/test_evaluation.py",
+      "sha256": "3357fd330d1a596b82d6c0a07ceacaadafe3ce8598b159dc687758b35aa3d680"
+    },
+    {
+      "bytes": 7471,
+      "path": "examples/mcp/README.md",
+      "sha256": "ad2a340ada67dfa8d158d7d9dac4b564eb1e2c59de6d317edead9eac47c5d92c"
+    },
+    {
+      "bytes": 11347,
+      "path": "examples/mcp/client.py",
+      "sha256": "d336705ffa1193a2c8522f47fbba0efd4b4812c77527511947482675df9ad6fd"
+    },
+    {
+      "bytes": 7585,
+      "path": "examples/mcp/contracts-and-provenance.md",
+      "sha256": "9e0e5d2b8397977268dffd4aecb5e6287a1fc9c963914d9de6715293d36f2d5e"
+    },
+    {
+      "bytes": 1400,
+      "path": "examples/mcp/fixtures/products.json",
+      "sha256": "5f49bf37cd6658504fb48e40dd5bddb9b9f65466625d78eefff1f4c671469257"
+    },
+    {
+      "bytes": 6197,
+      "path": "examples/mcp/server.py",
+      "sha256": "a141a77b5bad9fdb693ef78cf093043a95ab12dd4ed7ffbc8d35caacfb39f595"
+    },
+    {
+      "bytes": 1634,
+      "path": "examples/mcp/tests/restricted_server.py",
+      "sha256": "71fb48dce63363b8acdd5521018df1e1d7058f9bb76863a98f8499983dcb1839"
+    },
+    {
+      "bytes": 170,
+      "path": "examples/mcp/tests/silent_server.py",
+      "sha256": "4319dd8ab6a081fc70c3ddea6a06b6e2fe5b6e364ea7fdd6592e98550bedb0f3"
+    },
+    {
+      "bytes": 10783,
+      "path": "examples/mcp/tests/test_mcp.py",
+      "sha256": "96190715acf740720df905f9dc5485dcd40af82931ae1121976af2cd3afcb33d"
+    },
+    {
+      "bytes": 11006,
+      "path": "examples/mcp/tool_logic.py",
+      "sha256": "32dfbeb501f8303ebc2c101ebf102918b5781ceb0fc287f3ba7c9a292e63959d"
+    },
+    {
+      "bytes": 8850,
+      "path": "examples/ml_ranking/README.md",
+      "sha256": "a3bea802d106bbd38ca7c5e0fcd99b35b178c10ab4d40c5744f42235abba7484"
+    },
+    {
+      "bytes": 61395,
+      "path": "examples/ml_ranking/artifacts/dataset.json",
+      "sha256": "fb45426f7fa483616cf717b12d3dc2906a753b96bd7710be18ccf8d2f39635e9"
+    },
+    {
+      "bytes": 872,
+      "path": "examples/ml_ranking/artifacts/design.json",
+      "sha256": "c3fde048a4648d75be7439ca7e6bd0fabdf19ae4fdac0f901f8943e9c83a436b"
+    },
+    {
+      "bytes": 589,
+      "path": "examples/ml_ranking/artifacts/manifest.json",
+      "sha256": "20243a7726ac870f9036db6ab069119a861d5787a415593cfeef68e54abc1c0e"
+    },
+    {
+      "bytes": 763,
+      "path": "examples/ml_ranking/artifacts/model.json",
+      "sha256": "e77510d2a92a671f3beef6aa639f843373facec4571500b826ac603865c6adaa"
+    },
+    {
+      "bytes": 91704,
+      "path": "examples/ml_ranking/artifacts/parity.json",
+      "sha256": "c1efe5b73baf7c862438f70b6ca354807e215292b5da1c27521a6c40408ca1c2"
+    },
+    {
+      "bytes": 1823,
+      "path": "examples/ml_ranking/artifacts/report.json",
+      "sha256": "70a0fc3c6c811040e137322c98e9c63ff87562e0443c83aebfdbdfe2e6224655"
+    },
+    {
+      "bytes": 711,
+      "path": "examples/ml_ranking/artifacts/split.json",
+      "sha256": "8f207cfeb7f8149865cf89dd118a6a7373a2f27d37a98aec203214cf7a067f50"
+    },
+    {
+      "bytes": 1598,
+      "path": "examples/ml_ranking/browser.html",
+      "sha256": "616d2d84d17c1534c3089e1452f1bfbd788124c6ffff14714fdda3b4880cbc41"
+    },
+    {
+      "bytes": 3983,
+      "path": "examples/ml_ranking/browser.js",
+      "sha256": "934ee4eaea5a285254b4c41a5e548b90730440c70a1f362573f58f3106915da6"
+    },
+    {
+      "bytes": 4089,
+      "path": "examples/ml_ranking/inference.js",
+      "sha256": "38047dfd360965cdfc750741db6b83a59bdd87b9de1f604a0dc3624f60315260"
+    },
+    {
+      "bytes": 14531,
+      "path": "examples/ml_ranking/pipeline.py",
+      "sha256": "e73ead6582d251117a8992dcca24cac36126ae189cbc5dda7636b1db2169a193"
+    },
+    {
+      "bytes": 4629,
+      "path": "examples/ml_ranking/test_browser.py",
+      "sha256": "2ef2806d0516d3eab3a1938bd574ad25d54055b10ae319ef4f7fe1b580d3ae2d"
+    },
+    {
+      "bytes": 8037,
+      "path": "examples/ml_ranking/test_pipeline.py",
+      "sha256": "9e62d056da4b4c898565aa734a53ac0049518936d4c331c74266a5d9f29192df"
+    },
+    {
+      "bytes": 8954,
+      "path": "examples/shortlist_ai/README.md",
+      "sha256": "fd0276bb6653d0fd645c401f54fdefce51ff1455e7c098e48af980136f8adeb7"
+    },
+    {
+      "bytes": 8537,
+      "path": "examples/shortlist_ai/responses_provider.py",
+      "sha256": "e424aa44f4610c96616ea4c7fe49d006bc04b8689edbc7d28640645937036877"
+    },
+    {
+      "bytes": 13756,
+      "path": "examples/shortlist_ai/shortlist.py",
+      "sha256": "02c54b78313f9f047b40d1f4f23db94a606dfc8419ef6c2198f249d94ab17d8b"
+    },
+    {
+      "bytes": 9554,
+      "path": "examples/shortlist_ai/test_responses_provider.py",
+      "sha256": "a0bce773dbe96bcce0129f09fa2f3611703c785af1664e2aae7741569d964c36"
+    },
+    {
+      "bytes": 11412,
+      "path": "examples/shortlist_ai/test_shortlist.py",
+      "sha256": "c24dad6116e3b7ddea10b5cd9baf4814de9263b595000eaa021493cbffd122ae"
+    },
+    {
+      "bytes": 6027,
+      "path": "scripts/build_engineering_site.py",
+      "sha256": "057639c30b766e19ea1f7ef23105a20df802b5b773a93cbfcee5f141ac9a1e22"
+    },
+    {
+      "bytes": 630,
+      "path": "scripts/check_python_syntax.py",
+      "sha256": "2ef539083a28e8dbae9e0243eaf756d6d6cc1034837553f63e35007c159d6752"
+    },
+    {
+      "bytes": 4646,
+      "path": "scripts/evaluate_skincare_guardrails.py",
+      "sha256": "eb4d8507b6aa0075aea05efb6087f2470f04fe14988b81a8a4f7633e009a3924"
+    },
+    {
+      "bytes": 5824,
+      "path": "scripts/publication_manifest.py",
+      "sha256": "b0cbf1192d08a5c7cd397c1743f718e6369f6c30e29cf3244b3c40696a67dcda"
+    },
+    {
+      "bytes": 37014,
+      "path": "scripts/routine_planner.py",
+      "sha256": "dd85ec80c64e650c0a33955bd14985537b1d30360255a561f161d9c92c1adbb2"
+    },
+    {
+      "bytes": 9140,
+      "path": "scripts/skincare_guardrails.py",
+      "sha256": "5b1142cfafadf2f29607566b529858f8952f0595e69c1ba8ea2ed170b89fad94"
+    },
+    {
+      "bytes": 11208,
+      "path": "scripts/verify_fresh_repository.py",
+      "sha256": "cdb750d8f0e1d10b047f482aff5e839ab2d12f5ee6a85ae7da821705fed79e18"
+    },
+    {
+      "bytes": 45597,
+      "path": "tests/browser-smoke.html",
+      "sha256": "01386d93f12225f89559aad53a494345c73d4b02ef3a361f8bfe0bb225b42be8"
+    },
+    {
+      "bytes": 20627,
+      "path": "tests/fixtures/skincare_guardrail_eval_cases.json",
+      "sha256": "b80a2ba982c7ef46d4d06f215a584a47f7fbff7d6a2060e77def07687e25a598"
+    },
+    {
+      "bytes": 2042,
+      "path": "tests/test_ai_examples.py",
+      "sha256": "521e0079c0d2768454c90c563d9600cfb6f31ad85584b2354e08e37a8fd9d504"
+    },
+    {
+      "bytes": 5199,
+      "path": "tests/test_browser_smoke.py",
+      "sha256": "0dc0b297555b25c474e70ea6c56d3e6d1f022587b4e383e9fedf0a2dd800036e"
+    },
+    {
+      "bytes": 5735,
+      "path": "tests/test_engineering_site.py",
+      "sha256": "dc023a754ee19addf2c310ce9354fcecf8c6c8ab5aad19b06b41c2337cfc1b2e"
+    },
+    {
+      "bytes": 20243,
+      "path": "tests/test_release_proofs.py",
+      "sha256": "2aabd3641d89a1c613896426d177798dbf33bfeb1c0ff162a3fa74faa8bd3861"
+    },
+    {
+      "bytes": 24793,
+      "path": "tests/test_showcase.py",
+      "sha256": "ba97c8c7b0bd6a3e39cd63ef0e599c69db392d4769639b2f89bb63e84c593226"
+    },
+    {
+      "bytes": 526,
+      "path": "web/affiliate-config.js",
+      "sha256": "83611c983681268643969f04146e1c2751a2297255ed02d09181c0d81403cbac"
+    },
+    {
+      "bytes": 3361,
+      "path": "web/app.js",
+      "sha256": "d124ba871c4dcb838eaf7049be245a896e28e9d923ef69a286d82ab2abffcf04"
+    },
+    {
+      "bytes": 1012,
+      "path": "web/assets/synthetic/cleanser.svg",
+      "sha256": "89285591554a6ae33fce884de37c655cf13456be8df72e20f862c0f4bf68614a"
+    },
+    {
+      "bytes": 1015,
+      "path": "web/assets/synthetic/moisturizer.svg",
+      "sha256": "21514479afdd60114f65d035fe8b219612d6392549184973673e5e7c8f6649bc"
+    },
+    {
+      "bytes": 1108,
+      "path": "web/assets/synthetic/serum.svg",
+      "sha256": "dec3d1060c16f7cf9172550f2d0486d5a16dd007bd3edc34332cb18ee458ed07"
+    },
+    {
+      "bytes": 971,
+      "path": "web/assets/synthetic/sunscreen.svg",
+      "sha256": "111a2382e15c7ca309bdf8f8f1b30027b7df477e465e5b46d98f059b01d32823"
+    },
+    {
+      "bytes": 390,
+      "path": "web/catalog/index.html",
+      "sha256": "d8b8df0286d77fb95703345eecd0c7780ca836865513a3dd3980e5076d7d263f"
+    },
+    {
+      "bytes": 3578,
+      "path": "web/engineering/examples-template.html",
+      "sha256": "30865b28e47290697886d286698efc58a6f7fd833b2e55b9a682b7ee633c107b"
+    },
+    {
+      "bytes": 10135,
+      "path": "web/engineering/index.html",
+      "sha256": "8ac969f03bfbc8c1551d99e6bcda11f39075375c2d21c80ecebeaae06bb5fb27"
+    },
+    {
+      "bytes": 9683,
+      "path": "web/engineering/styles.css",
+      "sha256": "3221883f5fd884aea4e93466ff78fc6d6fe5f44f9721290ff9d209b9cff9679f"
+    },
+    {
+      "bytes": 389,
+      "path": "web/favicon.svg",
+      "sha256": "ebe263714df2214fad7b77f4de14fb9de82b0c7bd089710d0038dbf9abc7c40a"
+    },
+    {
+      "bytes": 74635,
+      "path": "web/index.html",
+      "sha256": "c13be5ad97c845728799d21cd2272d8abd55ffdc6ff205567120a61779b03b05"
+    },
+    {
+      "bytes": 57885,
+      "path": "web/js/api.js",
+      "sha256": "832bbfe908bf53ca9d3bfd54bff0c97cf721726b118ba877ae123c76846a8883"
+    },
+    {
+      "bytes": 238756,
+      "path": "web/js/cards.js",
+      "sha256": "aff94e9bf3dd5b4cb136eae4dce6d6833f36e7457909b9de5839ae33118651c1"
+    },
+    {
+      "bytes": 505735,
+      "path": "web/js/catalog.js",
+      "sha256": "dc63e64825915167d6bc5dd3bb12ae9c1eabc41c89ec282c90c91cefe634efc9"
+    },
+    {
+      "bytes": 23510,
+      "path": "web/js/guardrails.js",
+      "sha256": "8d5a6c9064b8cd4f0dfe6a8360e4620bb2848088c4f303d769f32a527a1649de"
+    },
+    {
+      "bytes": 19612,
+      "path": "web/js/recommender.js",
+      "sha256": "8eba2392d384445617ba1d9ae5fdcdfdeea8496071ec02dbbc3ad68bdc26124d"
+    },
+    {
+      "bytes": 1168,
+      "path": "web/js/recommender_learning_pilot.js",
+      "sha256": "e198d852318c1c3c997d5f0cbc6f5391af086d766cecc24a19cd292bbd9feac7"
+    },
+    {
+      "bytes": 23356,
+      "path": "web/js/recommender_residual_shadow_demo.js",
+      "sha256": "ab8a4cee6f0c1256c79dd6c57de1ea8fc98125011e23be35a5dab2f30f3e50b2"
+    },
+    {
+      "bytes": 16570,
+      "path": "web/js/recommender_residual_slice.js",
+      "sha256": "71e930ec9f19ea93dc5aa5aad1b07c32bb8127eb9362998578be1f2d4790bb88"
+    },
+    {
+      "bytes": 21332,
+      "path": "web/js/recommender_v2.js",
+      "sha256": "2938b1555ec68abe8ebd1449e2c7b939e582f20f0007d56009f87ba4eb250f30"
+    },
+    {
+      "bytes": 59939,
+      "path": "web/js/routine.js",
+      "sha256": "766bcbc5e03bec0029a5f9bb6d4c2a34a5683d63c34214c75c1eee0a481c3f5e"
+    },
+    {
+      "bytes": 194960,
+      "path": "web/js/shortlist.js",
+      "sha256": "75dee39a340379b171f77b7ba83c959e745ec5e1e9ff38121049e607f6d6233e"
+    },
+    {
+      "bytes": 60340,
+      "path": "web/js/state.js",
+      "sha256": "78f4f3fadae6c715962c6b33372b5b940022aba5a080cc465486db1c8975d907"
+    },
+    {
+      "bytes": 4612,
+      "path": "web/public-preflight.js",
+      "sha256": "273a82716393af17cc07ea5954a0fb5757dee45f25945458f290050a4f19521a"
+    },
+    {
+      "bytes": 398,
+      "path": "web/shortlist/index.html",
+      "sha256": "4bcf8f8f4abcf4ffd07513c6cf958734c6715b743a4dc5276c85c81b197a0e21"
+    },
+    {
+      "bytes": 12118,
+      "path": "web/skincare_guardrails.json",
+      "sha256": "c572f2bcdde5750ecf569bb39cbe91d7435a50213f1286e6d11f2c9f9cca34c3"
+    },
+    {
+      "bytes": 543713,
+      "path": "web/styles.css",
+      "sha256": "196734dd2c89f49fec9bbb62ac4800c8b37f18568c7a34b6e726bc6df1966817"
+    },
+    {
+      "bytes": 398,
+      "path": "web/workplace/index.html",
+      "sha256": "deb9d4d81298be4458a6c276be66c8162f40a38c02d9b89ec89c6a437f24d620"
+    },
+    {
+      "bytes": 398,
+      "path": "web/workspace/index.html",
+      "sha256": "deb9d4d81298be4458a6c276be66c8162f40a38c02d9b89ec89c6a437f24d620"
+    }
+  ],
+  "schemaVersion": "skincare-hub-publication-manifest-v1"
+}

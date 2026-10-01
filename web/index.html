@@ -1,0 +1,1332 @@
+<!doctype html>
+<html lang="en" data-public-showcase="true">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>SkinCare Hub — Public Showcase</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+    <script>
+      (function () {
+        var path = window.location.pathname.replace(/\/{2,}/g, "/");
+        var routePath = path.replace(/\/index\.html$/i, "/");
+        var routeMatch = routePath.match(/^(.*?)(?:\/)?(catalog|workspace|workplace|shortlist)\/?$/i);
+        var appBasePath = routeMatch
+          ? (routeMatch[1] || "/")
+          : routePath === "/web" || routePath.indexOf("/web/") === 0
+            ? "/web"
+            : routePath;
+        appBasePath = (appBasePath || "/").replace(/\/{2,}/g, "/");
+        if (appBasePath.charAt(appBasePath.length - 1) !== "/") appBasePath += "/";
+        var params = new URLSearchParams(window.location.search);
+        var queryView = params.get("view");
+        var pathView = routeMatch
+          ? routeMatch[2].toLowerCase()
+          : "overview";
+        if (pathView === "workplace") pathView = "workspace";
+        var view = /^(overview|catalog|workspace|shortlist)$/.test(queryView || "")
+          ? queryView
+          : pathView;
+        var base = document.createElement("base");
+        base.href = appBasePath;
+        document.head.appendChild(base);
+        document.documentElement.dataset.shellBasePath = appBasePath;
+        document.documentElement.dataset.initialShellView = view;
+        var browserSmokeAllowed = /^(127\.0\.0\.1|localhost|\[::1\])$/.test(window.location.hostname);
+        if (browserSmokeAllowed && params.has("public-showcase-browser-smoke")) {
+          var audit = {
+            fetches: [],
+            xhrs: [],
+            eventSources: [],
+            serviceWorkerRegistrations: [],
+            serviceWorkerRegistrationLookups: 0,
+            serviceWorkerUnregistrations: 0,
+            notificationPermissionRequests: 0,
+            notificationDeliveries: 0,
+            pushSubscriptions: 0,
+            pushUnsubscriptions: 0,
+            windowOpens: [],
+            liveProductCtaClicks: [],
+          };
+          window.__publicShowcaseNetworkAudit = audit;
+          var storageDenied = params.has("public-showcase-browser-smoke-deny-storage");
+          if (window.fetch) {
+            var originalFetch = window.fetch.bind(window);
+            window.fetch = function (input, options) {
+              var requestedUrl = String(input && input.url ? input.url : input);
+              audit.fetches.push(requestedUrl);
+              if (browserSmokeAllowed && params.has("public-showcase-browser-smoke-fail-catalog") && requestedUrl.indexOf("catalog.json") !== -1) {
+                return Promise.reject(new Error("Forced public catalog failure"));
+              }
+              return originalFetch(input, options);
+            };
+          }
+          if (window.XMLHttpRequest) {
+            var originalXhrOpen = window.XMLHttpRequest.prototype.open;
+            window.XMLHttpRequest.prototype.open = function (method, url) {
+              audit.xhrs.push(String(url));
+              return originalXhrOpen.apply(this, arguments);
+            };
+          }
+          if (window.EventSource) {
+            var OriginalEventSource = window.EventSource;
+            window.EventSource = function (url, options) {
+              audit.eventSources.push(String(url));
+              return new OriginalEventSource(url, options);
+            };
+            window.EventSource.prototype = OriginalEventSource.prototype;
+          }
+          var auditRegistration = {
+            scope: new URL("./", document.baseURI).href,
+            installed: true,
+            pushManager: {
+              getSubscription: function () {
+                return Promise.resolve({
+                  unsubscribe: function () {
+                    audit.pushUnsubscriptions += 1;
+                    return Promise.resolve(true);
+                  },
+                });
+              },
+            },
+            showNotification: function () {
+              audit.notificationDeliveries += 1;
+              return Promise.resolve();
+            },
+            unregister: function () {
+              audit.serviceWorkerUnregistrations += 1;
+              auditRegistration.installed = false;
+              return Promise.resolve(true);
+            },
+            active: { scriptURL: new URL(["./service", "worker.js"].join("-"), document.baseURI).href },
+          };
+          try {
+            Object.defineProperty(navigator, "serviceWorker", {
+              configurable: true,
+              value: {
+                ready: Promise.resolve(auditRegistration),
+                getRegistrations: function () {
+                  audit.serviceWorkerRegistrationLookups += 1;
+                  return Promise.resolve(auditRegistration.installed ? [auditRegistration] : []);
+                },
+                register: function (url) {
+                  audit.serviceWorkerRegistrations.push(String(url));
+                  return Promise.resolve(auditRegistration);
+                },
+              },
+            });
+          } catch {
+            if (navigator.serviceWorker && navigator.serviceWorker.register) {
+              var originalServiceWorkerRegister = navigator.serviceWorker.register.bind(navigator.serviceWorker);
+              navigator.serviceWorker.register = function (url, options) {
+                audit.serviceWorkerRegistrations.push(String(url));
+                return originalServiceWorkerRegister(url, options);
+              };
+            }
+          }
+          if (storageDenied) {
+            var denyStorageAccess = function () { throw new DOMException("Browser storage denied", "SecurityError"); };
+            Object.defineProperty(window, "localStorage", { configurable: true, get: denyStorageAccess });
+            Object.defineProperty(window, "sessionStorage", { configurable: true, get: denyStorageAccess });
+          } else {
+            window.localStorage.setItem("skincare-hub-api-origin", "https://attacker.invalid");
+          window.localStorage.setItem(
+            "skincare-hub-user-profile",
+            JSON.stringify({
+              name: '<img id="public-profile-xss" src="x" onerror="window.__publicProfileXss=1">',
+              goal: '<img id="public-profile-goal-xss" src="x" onerror="window.__publicProfileGoalXss=1">',
+            }),
+          );
+          window.localStorage.setItem(
+            "skincare-hub-profiles",
+            JSON.stringify([
+              {
+                id: '"><img id="public-preset-xss" src="x" onerror="window.__publicPresetXss=1"><span data-id="',
+                label: "Hostile storage fixture",
+                savedAt: "2026-01-01T00:00:00Z",
+                filters: {
+                  profile: "all",
+                  goal: "dryness",
+                  retailer: '<img id="public-preset-filter-xss" src="x" onerror="window.__publicPresetFilterXss=1">',
+                  brand: "toString",
+                  category: "constructor",
+                  ingredient: "__proto__",
+                  sort: "valueOf",
+                  browseLaneKey: "hasOwnProperty",
+                },
+              },
+            ]),
+          );
+          window.localStorage.setItem(
+            "skincare-hub-routines",
+            JSON.stringify([
+              {
+                id: "hostile-routine-preset",
+                label: "Hostile routine fixture",
+                config: {
+                  routineConcern: '<img id="public-saved-routine-xss" src="x" onerror="window.__publicSavedRoutineXss=1">',
+                  routineTime: "am",
+                  routineBudget: "smart",
+                  retailer: "all",
+                  profile: "all",
+                  avoidIngredients: [],
+                  routineDraft: {},
+                },
+              },
+            ]),
+          );
+          window.localStorage.setItem("skincare-hub-favorites", "{}");
+          window.localStorage.setItem("skincare-hub-tracked-alerts", "null");
+          window.localStorage.setItem("skincare-hub-articles", "{}");
+            window.localStorage.setItem(
+              "skincare-hub-routine-planner-session",
+              JSON.stringify({
+                draftId: "hostile-storage-fixture",
+                concern: '<img id="public-routine-xss" src="x" onerror="window.__publicRoutineXss=1">',
+                timing: "am",
+                budgetLane: "smart",
+                draftState: {},
+                updatedAt: "2026-01-01T00:00:00Z",
+              }),
+            );
+          }
+          function AuditNotification() {
+            audit.notificationDeliveries += 1;
+          }
+          AuditNotification.permission = "granted";
+          AuditNotification.requestPermission = function () {
+            audit.notificationPermissionRequests += 1;
+            return Promise.resolve("granted");
+          };
+          try {
+            window.Notification = AuditNotification;
+          } catch {
+            if (window.Notification && window.Notification.requestPermission) {
+              var originalNotificationRequest = window.Notification.requestPermission.bind(window.Notification);
+              window.Notification.requestPermission = function () {
+                audit.notificationPermissionRequests += 1;
+                return originalNotificationRequest();
+              };
+            }
+          }
+          if (window.PushManager && window.PushManager.prototype.subscribe) {
+            var originalPushSubscribe = window.PushManager.prototype.subscribe;
+            window.PushManager.prototype.subscribe = function () {
+              audit.pushSubscriptions += 1;
+              return originalPushSubscribe.apply(this, arguments);
+            };
+          }
+          var originalWindowOpen = window.open.bind(window);
+          window.open = function (url) {
+            audit.windowOpens.push(String(url));
+            return originalWindowOpen.apply(window, arguments);
+          };
+          document.addEventListener("click", function (event) {
+            var link = event.target.closest && event.target.closest("a.public-live-product-cta");
+            if (!link) return;
+            audit.liveProductCtaClicks.push(link.href);
+            event.preventDefault();
+          }, true);
+        }
+      })();
+    </script>
+    <link rel="stylesheet" href="./styles.css?v=20260517-routine-budget-rail">
+  </head>
+  <body>
+    <div class="backdrop backdrop-a"></div>
+    <div class="backdrop backdrop-b"></div>
+    <main class="shell">
+      <header class="workspace-supernav-shell" data-active-view="overview">
+        <div class="workspace-supernav-copy">
+          <p class="eyebrow">Clinical Decision Desk</p>
+          <div class="workspace-active-row">
+            <strong id="workspace-active-title" class="workspace-active-title">Overview</strong>
+            <span id="workspace-active-chip" class="workspace-active-chip">Start case</span>
+          </div>
+          <p id="workspace-active-note" class="workspace-supernav-note">One working case across four views.</p>
+        </div>
+        <div class="workspace-supernav-rail" aria-label="Current workspace context">
+          <span id="workspace-shell-rail-label" class="workspace-shell-rail-label">Case</span>
+          <div class="workspace-shell-rail-items" aria-live="polite">
+            <span id="workspace-shell-rail-primary" class="workspace-shell-rail-item workspace-shell-rail-item-primary">Concern-first case</span>
+            <span id="workspace-shell-rail-secondary" class="workspace-shell-rail-item">Broad view</span>
+            <span id="workspace-shell-rail-tertiary" class="workspace-shell-rail-item"></span>
+          </div>
+        </div>
+        <div class="workspace-supernav-navcluster">
+          <nav class="workspace-supernav" aria-label="Primary workspace navigation">
+            <button class="workspace-nav-button active" type="button" data-shell-view="overview" aria-controls="shell-view-overview" aria-current="true">Overview</button>
+            <button class="workspace-nav-button" type="button" data-shell-view="catalog" aria-controls="shell-view-catalog">Catalog</button>
+            <button class="workspace-nav-button" type="button" data-shell-view="workspace" aria-controls="shell-view-workspace">Workspace</button>
+            <button class="workspace-nav-button" type="button" data-shell-view="shortlist" aria-controls="shell-view-shortlist">Shortlist</button>
+          </nav>
+        </div>
+      </header>
+
+      <p class="public-demo-note" role="note">
+        Public showcase · fictional synthetic data · independent, not retailer-endorsed · decision support, not medical advice
+        <a class="public-live-product-cta" href="https://skincarehub.app/" target="_blank" rel="noreferrer">Open live product</a>
+      </p>
+
+      <section id="work-mode-case-header" class="work-mode-case-header" aria-label="Working case summary" hidden>
+        <div class="work-mode-case-item work-mode-case-item-action">
+          <button id="edit-user-profile" class="lens-summary-trigger" type="button" aria-controls="lens-drawer-panel" aria-expanded="false">
+            <span class="lens-summary-trigger-label">Skin lens</span>
+            <strong id="lens-summary-title">All skin profiles</strong>
+            <span id="lens-summary-meta" class="lens-summary-trigger-meta">General care · Open budget</span>
+          </button>
+          <button id="open-user-profile-editor" class="lens-summary-edit-button" type="button" aria-controls="lens-drawer-panel" aria-expanded="false">Edit</button>
+        </div>
+        <div id="work-mode-casebar" class="work-mode-casebar" aria-label="Working case metrics"></div>
+      </section>
+
+      <section id="shell-view-overview" class="shell-view shell-view-overview" data-shell-view-panel="overview">
+        <section id="overview-panel" class="hero">
+          <div class="overview-landing-copy">
+            <p class="eyebrow">Overview landing</p>
+            <h1>Start with one skin concern.</h1>
+            <p class="hero-subtitle">Turn a messy shopper question into one focused path. Product proof appears only after the focus is chosen.</p>
+          </div>
+
+          <section class="overview-intake-panel" aria-labelledby="overview-intake-title">
+            <div class="overview-section-head">
+              <div>
+                <span class="overview-section-kicker">Tell us what you are solving</span>
+                <strong id="overview-intake-title">One concern first.</strong>
+              </div>
+              <span>Catalog, Shortlist, Routine, and Learn stay as handoff destinations.</span>
+            </div>
+            <div class="overview-concern-control">
+              <label class="overview-concern-field" for="overview-concern-input">
+                <span>Concern</span>
+                <input id="overview-concern-input" type="text" placeholder="Dry, tight, reactive after cleansing..." autocomplete="off">
+              </label>
+              <button id="overview-primary-action" class="overview-primary-action" type="button" data-overview-intake-action="primary">Analyze concern</button>
+            </div>
+            <p id="overview-concern-validation" class="overview-concern-validation" role="status" aria-live="polite"></p>
+            <div class="overview-quick-starts" aria-label="Quick-start concern chips">
+              <span>Quick starts</span>
+              <button type="button" data-overview-concern-chip="dryness">Dryness</button>
+              <button type="button" data-overview-concern-chip="sensitive">Sensitive</button>
+              <button type="button" data-overview-concern-chip="acne">Acne</button>
+              <button type="button" data-overview-concern-chip="dark-spots">Dark spots</button>
+              <button type="button" data-overview-concern-chip="under-50">Under $50</button>
+            </div>
+          </section>
+
+          <aside class="overview-progress-panel" aria-labelledby="overview-progress-title">
+            <div class="overview-section-head">
+              <div>
+                <span class="overview-section-kicker">Overview contract</span>
+                <strong id="overview-progress-title">Triage before ranking.</strong>
+              </div>
+              <span>No named products before focus.</span>
+            </div>
+            <p>Start with one concern, choose a focus, then compare only the proof that belongs to that path.</p>
+            <div class="overview-stepper" aria-label="Overview decision progress">
+              <div class="overview-step is-active">
+                <span>1</span>
+                <strong>Concern</strong>
+              </div>
+              <div class="overview-step-line" aria-hidden="true"></div>
+              <div class="overview-step">
+                <span>2</span>
+                <strong>Focus</strong>
+              </div>
+              <div class="overview-step-line" aria-hidden="true"></div>
+              <div class="overview-step">
+                <span>3</span>
+                <strong>Compare</strong>
+              </div>
+              <div class="overview-step-line" aria-hidden="true"></div>
+              <div class="overview-step">
+                <span>4</span>
+                <strong>Save</strong>
+              </div>
+            </div>
+          </aside>
+
+          <section id="overview-focus-panel" class="overview-focus-panel" aria-labelledby="overview-focus-title">
+            <div class="overview-section-head">
+              <div>
+                <span class="overview-section-kicker">Suggested focus</span>
+                <strong id="overview-focus-title">Choose the decision path first.</strong>
+              </div>
+              <span>Focus cards explain why the path exists and what proof unlocks.</span>
+            </div>
+            <div id="overview-focus-deck" class="overview-focus-deck"></div>
+          </section>
+
+          <aside id="overview-routing-panel" class="overview-routing-panel" aria-labelledby="overview-routing-title">
+            <div class="overview-section-head">
+              <div>
+                <span class="overview-section-kicker">Concern routing only</span>
+                <strong id="overview-routing-title">Turn concern into focus.</strong>
+              </div>
+            </div>
+            <div class="overview-route-block">
+              <span>What shopper said</span>
+              <p id="overview-shopper-said">Waiting for one concern.</p>
+            </div>
+            <div class="overview-route-block">
+              <span>What I heard</span>
+              <div id="overview-heard-chips" class="overview-heard-chips"></div>
+            </div>
+            <div id="overview-safety-gate" class="overview-safety-gate"></div>
+            <div class="overview-route-block">
+              <span>Suggested focus</span>
+              <strong id="overview-suggested-focus">Waiting for concern</strong>
+            </div>
+            <button id="overview-routing-action" class="overview-action-button" type="button" disabled>Waiting for concern</button>
+          </aside>
+
+          <aside class="hero-spotlight panel-inset overview-decision-panel overview-proof-panel">
+            <div class="overview-live-panel">
+              <div class="overview-section-head">
+                <div>
+                  <span class="overview-section-kicker">Product proof</span>
+                  <h2 id="spotlight-title">Proof unlocks after focus.</h2>
+                </div>
+                <span>Three choices, three jobs.</span>
+              </div>
+              <p id="spotlight-copy" class="spotlight-copy"></p>
+              <div id="overview-proof-lock" class="overview-proof-lock"></div>
+              <div id="overview-decision-board" class="overview-decision-board"></div>
+              <div id="overview-proof-handoff" class="overview-proof-handoff" hidden></div>
+            </div>
+          </aside>
+
+          <aside class="overview-handoff-panel" aria-labelledby="overview-handoff-title">
+            <div class="overview-section-head">
+              <div>
+                <span class="overview-section-kicker">Compact handoff</span>
+                <strong id="overview-handoff-title">Use the right workspace after focus.</strong>
+              </div>
+              <span>Side paths stay bounded.</span>
+            </div>
+            <div class="overview-handoff-grid">
+              <button type="button" data-overview-action="open-shortlist">
+                <strong>Shortlist</strong>
+                <span>Approve saved picks.</span>
+              </button>
+              <button type="button" data-overview-action="open-routine">
+                <strong>Routine</strong>
+                <span>Pressure-test steps.</span>
+              </button>
+              <button type="button" data-overview-action="open-article-library">
+                <strong>Learn</strong>
+                <span>Read safety basics.</span>
+              </button>
+              <button type="button" data-overview-action="open-catalog">
+                <strong>Catalog</strong>
+                <span>Rank with focus.</span>
+              </button>
+            </div>
+          </aside>
+
+          <div id="overview-mobile-sticky-action" class="overview-mobile-sticky-action">
+            <button id="overview-mobile-primary-action" type="button" data-overview-intake-action="primary">Analyze concern</button>
+            <span id="overview-mobile-primary-meta">1 step before products</span>
+          </div>
+        </section>
+
+        <div id="quick-concerns" class="quick-concerns" hidden></div>
+        <div id="retailer-coverage" class="metric-stack" hidden></div>
+        <div id="hero-stats" class="hero-stats" hidden></div>
+        <div id="top-concerns" class="metric-stack" hidden></div>
+      </section>
+
+      <div id="lens-drawer-backdrop" class="lens-drawer-backdrop" hidden></div>
+      <section id="lens-drawer" class="lens-drawer" hidden>
+        <div class="panel user-profile-panel" id="lens-drawer-panel" role="dialog" aria-modal="true" aria-labelledby="lens-drawer-title" tabindex="-1">
+          <div class="lens-drawer-head">
+            <div class="lens-drawer-copy">
+              <p class="eyebrow">Skin lens</p>
+              <h2 id="lens-drawer-title">Skin lens</h2>
+              <p class="user-profile-intro">One saved lens drives ranking, retailer call, and routine caution.</p>
+            </div>
+            <div class="lens-drawer-actions">
+              <span id="profile-status" class="profile-status" data-state="static">
+                <span class="profile-status-label">Lens applied</span>
+                <span class="profile-status-meta">Ranking and routine use this setup</span>
+              </span>
+              <button id="close-user-profile-drawer" class="lens-drawer-close" type="button" aria-label="Close lens drawer">Close</button>
+            </div>
+          </div>
+          <section id="lens-dirty-confirm" class="lens-dirty-confirm" hidden aria-live="polite">
+            <p id="lens-dirty-confirm-copy" class="lens-dirty-confirm-copy">You have unsaved lens edits.</p>
+            <div class="lens-dirty-confirm-actions">
+              <button id="lens-dirty-save" class="profile-action-button primary" type="button">Save</button>
+              <button id="lens-dirty-discard" class="profile-action-button secondary" type="button">Discard</button>
+              <button id="lens-dirty-keep" class="profile-inline-action subtle" type="button">Keep editing</button>
+            </div>
+          </section>
+          <div id="lens-drawer-scroll" class="lens-drawer-scroll">
+            <article class="user-summary-card">
+              <div class="user-summary-head lens-bar-head">
+                <div class="user-summary-copy-block lens-bar-copy">
+                  <span class="sidebar-subeyebrow profile-summary-eyebrow">Skin profile lens</span>
+                  <div class="lens-bar-title-row">
+                    <h3 id="user-summary-title">Current setup</h3>
+                    <span id="user-profile-save-state" class="profile-save-state" data-state="saved">Saved</span>
+                  </div>
+                  <p id="user-summary-meta" class="profile-summary-meta"></p>
+                </div>
+              </div>
+              <div class="profile-summary-nav" role="tablist" aria-label="Profile view">
+                <button id="user-profile-nav-overview" class="profile-summary-tab active" type="button" role="tab" aria-selected="true" aria-controls="user-profile-overview-panel">Lens</button>
+                <button id="user-profile-nav-saved" class="profile-summary-tab" type="button" role="tab" aria-selected="false" aria-controls="user-profile-saved-panel">Saved</button>
+                <button id="user-profile-nav-edit" class="profile-summary-tab" type="button" role="tab" aria-selected="false" aria-controls="user-profile-card">Edit</button>
+              </div>
+              <section id="user-profile-overview-panel" class="profile-summary-panel" role="tabpanel" tabindex="0" aria-labelledby="user-profile-nav-overview">
+                <div class="profile-lens-ribbon">
+                  <span id="user-summary-context" class="profile-lens-context"></span>
+                  <strong id="user-summary-priority" class="profile-lens-goal"></strong>
+                  <p id="user-summary-copy" class="user-summary-copy"></p>
+                </div>
+                <div class="profile-lens-meta">
+                  <span id="user-profile-activity-state" class="profile-activity-state"></span>
+                  <p id="user-profile-activity-meta" class="profile-activity-meta"></p>
+                </div>
+                <div id="lens-impact-row" class="lens-impact-row" aria-label="Lens impact">
+                  <span>ranking</span>
+                  <span>caution level</span>
+                  <span>routine aggressiveness</span>
+                </div>
+                <div id="user-profile-summary-rows" class="profile-summary-rows compact"></div>
+                <p id="user-profile-impact-inline" class="profile-impact-inline-copy profile-impact-inline-compact"></p>
+                <div id="lens-quick-presets" class="lens-quick-presets" aria-label="Lens presets"></div>
+                <p id="lens-tension-warning" class="lens-tension-warning" hidden></p>
+                <div class="profile-inline-actions">
+                  <button id="save-current-profile-inline" class="profile-inline-action" type="button">Save this setup</button>
+                  <button id="user-profile-open-saved" class="profile-inline-action subtle" type="button">Open saved setups</button>
+                </div>
+                <p id="user-profile-save-note" class="profile-save-note"></p>
+              </section>
+              <section id="user-profile-saved-panel" class="profile-summary-panel" role="tabpanel" tabindex="0" aria-labelledby="user-profile-nav-saved" hidden>
+                <div class="profile-saved-panel-head">
+                  <div class="profile-card-heading compact">
+                    <span class="profile-impact-label">Saved lenses</span>
+                    <p>Reuse a saved setup.</p>
+                  </div>
+                </div>
+                <div id="user-profile-quick-switches" class="profile-quick-switches"></div>
+                <section id="continuity-card" class="continuity-card" data-state="local" aria-label="Device continuity">
+                  <div class="continuity-card-head">
+                    <div class="profile-card-heading compact">
+                      <span class="profile-impact-label">Device continuity</span>
+                      <p id="continuity-status-copy">Saved state is staying local on this browser right now.</p>
+                    </div>
+                    <div class="continuity-inline-actions">
+                      <button id="continuity-create-code" class="profile-inline-action subtle" type="button">Show code</button>
+                      <button
+                        id="continuity-join-toggle"
+                        class="profile-inline-action subtle"
+                        type="button"
+                        aria-controls="continuity-join-panel"
+                        aria-expanded="false"
+                      >
+                        Join with code
+                      </button>
+                    </div>
+                  </div>
+                  <p id="continuity-status-meta" class="continuity-status-meta">
+                    The current local-first behavior stays in place whenever the API is unavailable.
+                  </p>
+                  <div class="continuity-code-panel">
+                    <strong id="continuity-pair-code" class="continuity-pair-code" hidden></strong>
+                    <span id="continuity-pair-expires" class="continuity-pair-expires">
+                      Create a short code on one device, then enter it on another.
+                    </span>
+                  </div>
+                  <div id="continuity-join-panel" class="continuity-join-panel" hidden>
+                    <label class="field continuity-join-field" for="continuity-join-code">
+                      <span>Enter code</span>
+                      <div class="continuity-join-row">
+                        <input
+                          id="continuity-join-code"
+                          type="text"
+                          inputmode="text"
+                          autocomplete="off"
+                          autocapitalize="characters"
+                          spellcheck="false"
+                          maxlength="8"
+                          placeholder="AB12CD34"
+                        />
+                        <button id="continuity-join-submit" class="profile-inline-action" type="button">Join</button>
+                      </div>
+                    </label>
+                    <p id="continuity-join-message" class="continuity-join-message" hidden></p>
+                  </div>
+                  <div class="continuity-data-controls">
+                    <p>
+                      Shared server data is removed after 90 days without workspace activity. Reset disconnects paired browsers;
+                      delete removes this server workspace. Other browsers may still hold offline copies.
+                    </p>
+                    <div class="continuity-data-links">
+                      <a href="../NOTICE.md">Data &amp; license notice</a>
+                    </div>
+                    <div class="continuity-data-actions">
+                      <button id="continuity-reset-data" class="profile-inline-action subtle" type="button">Reset shared data</button>
+                      <button id="continuity-delete-workspace" class="profile-inline-action danger" type="button">Delete shared workspace</button>
+                    </div>
+                    <p id="continuity-data-message" class="continuity-data-message" role="status" aria-live="polite" hidden></p>
+                  </div>
+                </section>
+              </section>
+            </article>
+            <article id="user-profile-card" class="user-profile-card" role="tabpanel" tabindex="0" aria-labelledby="user-profile-nav-edit" hidden>
+              <div class="sidebar-subhead">
+                <div>
+                  <span class="sidebar-subeyebrow">Edit lens</span>
+                  <p>Update the demo ranking lens.</p>
+                </div>
+                <span id="user-profile-form-state" class="profile-form-state" data-state="clean">Draft</span>
+              </div>
+              <div class="profile-editor-overview">
+                <div class="profile-editor-impact-row">
+                  <span>Catalog ranking</span>
+                  <span>Retailer check</span>
+                  <span>Routine planning</span>
+                </div>
+                <div id="user-profile-draft-preview" class="profile-draft-preview"></div>
+              </div>
+              <section class="profile-form-section">
+                <div class="profile-form-section-head">
+                  <span class="profile-step-label">Step 1</span>
+                  <h3>Skin profile</h3>
+                  <p>Sets fit, caution, and routine intensity.</p>
+                </div>
+                <div class="user-profile-grid">
+                  <div class="field">
+                    <label for="user-skin-profile">Skin profile</label>
+                    <select id="user-skin-profile">
+                      <option value="all">All skin profiles</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label for="user-sensitivity">Sensitivity level</label>
+                    <select id="user-sensitivity">
+                      <option value="moderate">Moderate</option>
+                      <option value="high">High sensitivity</option>
+                      <option value="low">Low sensitivity</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label for="user-actives-comfort">Actives comfort</label>
+                    <select id="user-actives-comfort">
+                      <option value="medium">Balanced actives</option>
+                      <option value="low">Keep actives gentle</option>
+                      <option value="high">Comfortable with stronger actives</option>
+                    </select>
+                  </div>
+                </div>
+              </section>
+              <section class="profile-form-section">
+                <div class="profile-form-section-head">
+                  <span class="profile-step-label">Step 2</span>
+                  <h3>Decision goal</h3>
+                  <p>Set the main problem and spend lane.</p>
+                </div>
+                <div class="user-profile-grid">
+                  <div class="field">
+                    <label for="user-goal">Main goal right now</label>
+                    <select id="user-goal"></select>
+                  </div>
+                  <div class="field">
+                    <label for="user-budget">Budget style</label>
+                    <select id="user-budget">
+                      <option value="any">Open budget</option>
+                      <option value="budget">Value first</option>
+                      <option value="balanced">Balanced spend</option>
+                      <option value="premium">Premium okay</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label for="user-name">Profile label (optional)</label>
+                    <input id="user-name" type="text" placeholder="Aanchal">
+                  </div>
+                </div>
+              </section>
+              <section class="profile-form-section">
+                <div class="profile-form-section-head">
+                  <span class="profile-step-label">Step 3</span>
+                  <h3>Guardrails</h3>
+                  <p>Keep off-limit ingredients out.</p>
+                </div>
+                <div class="field field-stack">
+                  <label for="avoid-ingredients">Avoid in recommendations</label>
+                  <div id="avoid-ingredients" class="toggle-chip-group" aria-label="Avoid ingredients"></div>
+                </div>
+              </section>
+              <button id="reset-user-profile" class="profile-reset-button" type="button">Reset lens draft to defaults</button>
+            </article>
+          </div>
+          <div id="lens-editor-footer" class="lens-editor-footer" hidden>
+            <div class="user-profile-actions" aria-label="Lens editor actions">
+              <button id="save-user-profile" class="profile-action-button primary" type="button">Save changes</button>
+              <button id="cancel-user-profile" class="profile-action-button secondary" type="button">Done</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="shell-view-catalog" class="shell-view shell-view-catalog" data-shell-view-panel="catalog" hidden>
+        <section class="workspace-layout">
+          <div class="workspace-main">
+      <section id="catalog-section" class="catalog-section">
+        <section class="panel controls">
+          <div class="controls-head">
+            <div class="controls-head-copy">
+              <p class="eyebrow">Catalog</p>
+              <h2 id="catalog-view-heading" tabindex="-1">Compare the current case.</h2>
+            </div>
+            <div class="controls-head-actions">
+              <div class="catalog-density-toggle" role="tablist" aria-label="Catalog density">
+                <button id="density-decision" class="catalog-density-button active" type="button" role="tab" data-density="decision" aria-selected="true">Decision view</button>
+                <button id="density-compact" class="catalog-density-button" type="button" role="tab" data-density="compact" aria-selected="false">Compact scan</button>
+              </div>
+              <button id="catalog-focus-toggle" class="panel-action-button secondary catalog-focus-toggle" type="button" aria-expanded="false" aria-controls="browse-lanes">Focus</button>
+              <button id="catalog-more-filters" class="panel-action-button secondary catalog-more-filters" type="button" aria-expanded="false" aria-controls="catalog-secondary-filters">More filters</button>
+            </div>
+          </div>
+
+          <div class="controls-primary-row">
+            <div class="field search-field control-primary">
+              <label for="search">Search products</label>
+              <input id="search" type="search" placeholder="brand, ingredient, product, or concern">
+            </div>
+            <div class="field control-primary">
+              <label for="retailer-filter">Retailer</label>
+              <select id="retailer-filter">
+                <option value="all">All retailers</option>
+              </select>
+            </div>
+            <div class="field control-primary">
+              <label for="category-filter">Product type</label>
+              <select id="category-filter">
+                <option value="all">All categories</option>
+              </select>
+            </div>
+            <div class="field control-primary">
+              <label for="sort-filter">Show</label>
+              <select id="sort-filter">
+                <option value="relevance">Best match</option>
+                <option value="top-rated">Top rated</option>
+                <option value="most-reviewed">Most reviewed</option>
+                <option value="price-asc">Price: low to high</option>
+                <option value="price-desc">Price: high to low</option>
+                <option value="brand">Brand A-Z</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="catalog-secondary-filters" class="catalog-secondary-filters" hidden>
+            <div class="controls-secondary-row">
+              <div class="field control-secondary">
+                <label for="brand-filter">Brand</label>
+                <select id="brand-filter">
+                  <option value="all">All brands</option>
+                </select>
+              </div>
+              <div class="field control-secondary">
+                <label for="ingredient-filter">Ingredient</label>
+                <select id="ingredient-filter">
+                  <option value="all">All ingredients</option>
+                </select>
+              </div>
+              <div class="field control-secondary">
+                <label for="profile-filter">Skin profile</label>
+                <select id="profile-filter">
+                  <option value="all">All skin profiles</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div id="catalog-command-bar" class="catalog-command-bar" aria-label="Catalog decision ledger"></div>
+          <section class="active-filters-bar" aria-label="Current catalog context">
+            <div id="active-filters" class="active-filters"></div>
+            <button id="clear-filters" class="clear-filters" type="button" hidden>Clear case</button>
+          </section>
+        </section>
+
+        <section class="catalog-browse-bar" aria-label="Catalog focus rail">
+          <div class="catalog-browse-copy">
+            <p class="eyebrow">Focus rail</p>
+            <p class="catalog-browse-title">Quick starts and concerns stay close.</p>
+          </div>
+          <div id="browse-lanes" class="browse-lanes"></div>
+          <div class="browse-concern-row">
+            <p class="browse-concern-label">Concern</p>
+            <div class="concern-chips" id="concern-chips"></div>
+          </div>
+        </section>
+
+        <section class="decision-strip lead-recommendation-strip" id="decision-strip" aria-label="Catalog product signal"></section>
+
+        <section class="catalog-results-layout" aria-label="Catalog results and saved set">
+          <div class="catalog-results-main">
+            <section class="results-head">
+              <div class="results-copy">
+                <p class="eyebrow">Results</p>
+                <h2 id="results-title">Loading products...</h2>
+                <p class="results-caption" id="results-caption"></p>
+                <div id="results-state-line" class="results-state-line" aria-label="Current catalog result state"></div>
+              </div>
+              <div class="results-actions">
+                <p id="results-next-step" class="results-next-step">Tighten the case to surface a clearer lead.</p>
+                <button id="catalog-open-shortlist" class="catalog-saved-review-button is-empty" type="button" data-primary-action="focus-catalog-work">Choose focus</button>
+              </div>
+            </section>
+
+            <aside class="workspace-shortlist-rail" id="catalog-shortlist-rail" aria-label="Current shortlist summary">
+              <section class="panel catalog-shortlist-panel">
+                <div class="section-heading">
+                  <div>
+                    <p class="eyebrow">Saved set</p>
+                    <h2>Saved set</h2>
+                  </div>
+                </div>
+                <div id="catalog-shortlist-metrics" class="catalog-shortlist-metrics"></div>
+                <p id="catalog-shortlist-summary" class="catalog-shortlist-summary">Save a starting point to begin the saved set.</p>
+              </section>
+            </aside>
+
+            <section class="freshness-bar" id="freshness-bar"></section>
+
+            <section class="catalog-layout">
+              <section id="product-grid" class="product-grid" aria-busy="true">
+                <div class="catalog-loading-state" role="status" aria-live="polite">
+                  <article class="catalog-skeleton-card" aria-hidden="true">
+                    <span class="catalog-skeleton-media"></span>
+                    <span class="catalog-skeleton-line catalog-skeleton-line-short"></span>
+                    <span class="catalog-skeleton-line"></span>
+                    <span class="catalog-skeleton-line catalog-skeleton-line-mid"></span>
+                    <span class="catalog-skeleton-button"></span>
+                  </article>
+                  <article class="catalog-skeleton-card" aria-hidden="true">
+                    <span class="catalog-skeleton-media"></span>
+                    <span class="catalog-skeleton-line catalog-skeleton-line-short"></span>
+                    <span class="catalog-skeleton-line"></span>
+                    <span class="catalog-skeleton-line catalog-skeleton-line-mid"></span>
+                    <span class="catalog-skeleton-button"></span>
+                  </article>
+                  <article class="catalog-skeleton-card" aria-hidden="true">
+                    <span class="catalog-skeleton-media"></span>
+                    <span class="catalog-skeleton-line catalog-skeleton-line-short"></span>
+                    <span class="catalog-skeleton-line"></span>
+                    <span class="catalog-skeleton-line catalog-skeleton-line-mid"></span>
+                    <span class="catalog-skeleton-button"></span>
+                  </article>
+                </div>
+              </section>
+            </section>
+            <section class="pagination-bar" id="pagination-bar"></section>
+            <p class="affiliate-note" id="affiliate-note">
+              Synthetic demo links are inert; no affiliate tracking is active.
+            </p>
+          </div>
+
+        </section>
+      </section>
+          </div>
+        </section>
+      </section>
+
+      <section id="shell-view-workspace" class="shell-view shell-view-workspace" data-shell-view-panel="workspace" hidden>
+        <section class="support-layer" id="decision-workspace">
+          <div class="support-layer-head">
+            <div class="support-header-copy">
+              <p class="eyebrow">Workspace</p>
+              <h2 id="workspace-view-heading" tabindex="-1">Work the same case without losing context.</h2>
+              <p class="support-header-text">One demo case. One open workspace tab.</p>
+            </div>
+          </div>
+
+          <nav class="support-nav" aria-label="Decision workspace tools" role="tablist">
+            <button id="shopping-brief-tab" class="support-nav-button active" type="button" role="tab" aria-selected="true" aria-controls="shopping-brief-panel" data-workspace-jump="shopping-brief-panel">
+              <span class="support-nav-step">Tool</span>
+              <strong>Brief</strong>
+              <span class="support-nav-meta">Choose focus</span>
+            </button>
+            <button id="market-view-tab" class="support-nav-button" type="button" role="tab" aria-selected="false" aria-controls="market-view-panel" data-workspace-jump="market-view-panel">
+              <span class="support-nav-step">Tool</span>
+              <strong>Stores</strong>
+              <span class="support-nav-meta">Retailer path</span>
+            </button>
+            <button id="routine-builder-tab" class="support-nav-button" type="button" role="tab" aria-selected="false" aria-controls="routine-builder-panel" data-workspace-jump="routine-builder-panel">
+              <span class="support-nav-step">Tool</span>
+              <strong>Routine</strong>
+              <span class="support-nav-meta">Draft fit</span>
+            </button>
+            <button id="saved-presets-tab" class="support-nav-button" type="button" role="tab" aria-selected="false" aria-controls="saved-presets-panel" data-workspace-jump="saved-presets-panel">
+              <span class="support-nav-step">Tool</span>
+              <strong>Saved</strong>
+              <span class="support-nav-meta">Reopen state</span>
+            </button>
+            <button id="learn-workspace-tab" class="support-nav-button" type="button" role="tab" aria-selected="false" aria-controls="learn-workspace-panel" data-workspace-jump="learn-workspace-panel">
+              <span class="support-nav-step">Tool</span>
+              <strong>Learn</strong>
+              <span class="support-nav-meta">Evidence</span>
+            </button>
+          </nav>
+
+          <section class="support-session-strip" id="support-session-strip" aria-label="Current workspace case bar"></section>
+
+          <section class="panel advisor-panel" id="shopping-brief-panel" data-workspace-section role="tabpanel" tabindex="0" aria-labelledby="shopping-brief-tab">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Brief</p>
+                <span class="section-role">Decision workbench</span>
+                <h2>Choose focus or save the candidate.</h2>
+              </div>
+              <div class="section-heading-actions">
+                <button id="advisor-toggle" class="panel-toggle" type="button" aria-expanded="false">Expand</button>
+              </div>
+            </div>
+            <p id="advisor-session-summary" class="panel-session-copy">Reading the current case.</p>
+            <div class="advisor-layout">
+              <article class="advisor-brief">
+                <p id="advisor-summary" class="advisor-summary">Loading current strategy...</p>
+                <div id="advisor-chips" class="advisor-chips"></div>
+                <div id="advisor-guidance" class="advisor-guidance"></div>
+              </article>
+              <div id="advisor-picks" class="advisor-picks"></div>
+            </div>
+            <div class="panel-action-row">
+              <button id="advisor-save-lead" class="panel-action-button primary" type="button">Choose focus</button>
+              <button id="advisor-plan-lead" class="panel-action-button" type="button">Plan around this pick</button>
+            </div>
+          </section>
+
+          <section class="panel market-panel" id="market-view-panel" data-workspace-section role="tabpanel" tabindex="0" aria-labelledby="market-view-tab" hidden>
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Stores</p>
+                  <span class="section-role">Retailer path</span>
+                  <h2>Compare the retailer path.</h2>
+                </div>
+                <div class="section-heading-actions">
+                  <button id="market-toggle" class="panel-toggle" type="button" aria-expanded="false">Expand</button>
+                </div>
+              </div>
+              <p id="market-session-summary" class="panel-session-copy">Reading the current retailer picture.</p>
+              <div id="market-grid" class="market-grid"></div>
+              <div class="panel-action-row">
+                <button id="market-apply-winner" class="panel-action-button primary" type="button">Focus winning store</button>
+                <button id="market-open-basket" class="panel-action-button" type="button">Review checkout path</button>
+              </div>
+              <section class="workspace-subpanel picks-panel" id="retailer-picks-panel">
+                <div class="section-heading">
+                  <div>
+                    <p class="eyebrow">Signature picks</p>
+                    <span class="section-role">Retailer picks</span>
+                    <h2>One signature product at each retailer.</h2>
+                  </div>
+                </div>
+                <div id="pick-modes" class="pick-modes" role="tablist" aria-label="Pick modes"></div>
+                <div id="best-picks" class="best-picks"></div>
+                <div class="panel-action-row">
+                  <button id="picks-save-mode" class="panel-action-button primary" type="button">Save one pick per store</button>
+                </div>
+              </section>
+
+              <section class="panel alerts-panel" id="tracked-alerts-panel" hidden>
+                <div class="section-heading">
+                  <div>
+                    <p class="eyebrow">Notification center</p>
+                    <h2>Watch price and stock signals.</h2>
+                  </div>
+                </div>
+                <div class="alerts-panel-toolbar">
+                  <div class="alerts-panel-tabs" role="tablist" aria-label="Notification center views">
+                    <button id="tracked-alerts-tab-alerts" class="alerts-panel-tab active" type="button" data-alerts-view="alerts" role="tab" aria-selected="true">Alerts</button>
+                    <button id="tracked-alerts-tab-watching" class="alerts-panel-tab" type="button" data-alerts-view="watching" role="tab" aria-selected="false">Watching</button>
+                  </div>
+                  <button id="tracked-alerts-mark-read" class="panel-action-button" type="button" hidden>Mark all read</button>
+                </div>
+                <div id="tracked-alerts-body" class="tracked-alerts-body"></div>
+              </section>
+          </section>
+
+          <section class="panel routine-panel" id="routine-builder-panel" data-workspace-section role="tabpanel" tabindex="0" aria-labelledby="routine-builder-tab" hidden>
+            <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Routine</p>
+                  <span class="section-role">Draft fit</span>
+                  <h2>Draft routine fit.</h2>
+                </div>
+              <p>Use this as a fit draft, not checkout proof.</p>
+              <div class="section-heading-actions routine-heading-actions">
+                <button id="routine-save-current" class="panel-action-button primary routine-save-current" type="button">Save routine draft</button>
+              </div>
+            </div>
+            <div class="routine-controls">
+              <div class="field">
+                <label for="routine-concern">Routine focus</label>
+                <select id="routine-concern">
+                  <option value="dryness">Dryness</option>
+                  <option value="acne">Acne</option>
+                  <option value="dark spots">Dark spots</option>
+                  <option value="redness">Redness</option>
+                  <option value="texture">Texture</option>
+                  <option value="wrinkles">Wrinkles</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="routine-time">Routine timing</label>
+                <select id="routine-time">
+                  <option value="am">AM routine</option>
+                  <option value="pm">PM routine</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="routine-budget">Budget lane</label>
+                <select id="routine-budget">
+                  <option value="open">Open budget</option>
+                  <option value="smart">Smart spend</option>
+                  <option value="under-75">Under $75</option>
+                  <option value="under-120">Under $120</option>
+                  <option value="premium">Premium routine</option>
+                </select>
+              </div>
+            </div>
+            <section id="routine-draft-brief" class="routine-draft-brief" hidden></section>
+            <div class="routine-workspace">
+              <div id="routine-grid" class="routine-grid"></div>
+              <div id="routine-swap-backdrop" class="routine-swap-backdrop" hidden></div>
+              <aside id="routine-swap-drawer" class="routine-swap-drawer" hidden></aside>
+            </div>
+            <div id="routine-summary" class="routine-summary" aria-label="Routine budget summary"></div>
+          </section>
+
+          <aside class="panel workspace-memory-panel" id="saved-presets-panel" data-workspace-section role="tabpanel" tabindex="0" aria-labelledby="saved-presets-tab" hidden>
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Saved</p>
+                  <span class="section-role">Reopen state</span>
+                  <h2>Reopen saved state.</h2>
+                </div>
+                <p>Return to saved lenses and routine drafts without changing the active case first.</p>
+              </div>
+              <div class="workspace-memory-grid">
+                <article class="workspace-memory-group">
+                  <div class="workspace-memory-head">
+                    <div>
+                      <p class="eyebrow">Saved profiles</p>
+                      <h3>Return to a decision lens.</h3>
+                    </div>
+                    <button id="save-profile" class="preset-action" type="button">Save current setup</button>
+                  </div>
+                  <div id="saved-profiles" class="saved-presets"></div>
+                </article>
+                <article class="workspace-memory-group">
+                  <div class="workspace-memory-head">
+                    <div>
+                      <p class="eyebrow">Saved routines</p>
+                      <h3>Keep routine drafts ready to reopen.</h3>
+                    </div>
+                    <button id="save-routine" class="preset-action" type="button">Save current routine</button>
+                  </div>
+                  <div id="saved-routines" class="saved-presets"></div>
+                </article>
+              </div>
+          </aside>
+
+          <section class="panel learn-panel" id="learn-workspace-panel" data-workspace-section role="tabpanel" tabindex="0" aria-labelledby="learn-workspace-tab" hidden>
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Learn</p>
+                <span class="section-role">Evidence</span>
+                <h2>Read evidence tied to this case.</h2>
+              </div>
+              <p>Use Learn as reference, not readiness proof.</p>
+            </div>
+            <div class="learn-layout">
+              <div class="article-rail">
+                <div id="article-groups" class="article-groups" role="tablist" aria-label="Article categories"></div>
+                <div id="saved-articles" class="saved-articles"></div>
+                <div id="article-tabs" class="article-tabs" role="tablist" aria-label="Beauty articles"></div>
+              </div>
+              <article class="article-view">
+                <p class="article-kicker" id="article-kicker">Guide</p>
+                <div class="article-headline">
+                  <h3 id="article-title">Loading article...</h3>
+                  <div class="article-actions">
+                    <button id="article-save" class="article-save" type="button">Save tip</button>
+                    <button id="article-shop-link" class="article-shop-link" type="button">Use this topic</button>
+                    <span id="article-source-link" class="article-source-link disabled" aria-disabled="true">Source link not included in this synthetic showcase</span>
+                  </div>
+                </div>
+                <p class="article-summary" id="article-summary"></p>
+                <p id="article-helper" class="article-helper" hidden>Best available guide for your concern right now</p>
+                <div id="article-meta" class="article-meta"></div>
+                <div id="learn-trust-labels" class="learn-trust-labels"></div>
+                <div id="learn-evidence-notes" class="learn-evidence-notes"></div>
+                <section id="learn-answer" class="learn-answer" data-answer-state="idle">
+                  <div class="learn-answer-head">
+                    <div>
+                      <p class="eyebrow">Grounded answer</p>
+                      <h4>Read this guide against the current case.</h4>
+                    </div>
+                    <p id="learn-answer-meta" class="learn-answer-meta">Grounded in the open guide and your current skin lens.</p>
+                  </div>
+                  <div id="learn-answer-prompts" class="learn-answer-prompts">
+                    <button type="button" class="learn-answer-prompt">What matters most for my current case?</button>
+                    <button type="button" class="learn-answer-prompt">What should I watch before I buy around this?</button>
+                    <button type="button" class="learn-answer-prompt">What is the next practical step from this guide?</button>
+                  </div>
+                  <div class="learn-answer-input-shell">
+                    <label class="learn-answer-label" for="learn-answer-input">Ask from this guide</label>
+                    <textarea id="learn-answer-input" class="learn-answer-input" rows="3" placeholder="Ask what matters, what to avoid, or what to do next."></textarea>
+                    <div class="learn-answer-actions">
+                      <button id="learn-answer-submit" class="article-save" type="button">Run answer</button>
+                    </div>
+                  </div>
+                  <div id="learn-answer-response" class="learn-answer-response" aria-live="polite" aria-atomic="true">
+                    <strong>Grounded answer ready</strong>
+                    <p>Open a prompt or ask your own question to keep the answer tied to this guide and your current case.</p>
+                  </div>
+                </section>
+                <div id="article-body" class="article-body"></div>
+              </article>
+            </div>
+          </section>
+      </section>
+      </section>
+
+      <section id="shell-view-shortlist" class="shell-view shell-view-shortlist" data-shell-view-panel="shortlist" hidden>
+        <div id="shortlist-sheet-backdrop" class="shortlist-sheet-backdrop" hidden></div>
+        <div id="shortlist-dock" class="shortlist-dock shortlist-dock-view" hidden>
+          <section class="panel shortlist-panel" id="shortlist-workspace">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Shortlist</p>
+                <h2 id="shortlist-view-heading" tabindex="-1">Lock a champion before you buy.</h2>
+              </div>
+              <p>Pick the champion, lock one backup, then buy or plan from it.</p>
+              <button id="shortlist-sheet-close" class="shortlist-sheet-close panel-toggle" type="button" aria-label="Close shortlist">Done</button>
+            </div>
+            <div id="shortlist-summary" class="shortlist-summary"></div>
+            <div class="shortlist-primary-actions">
+              <button id="shortlist-build-plan" class="panel-action-button primary" type="button">Choose champion</button>
+              <button id="shortlist-to-routine" class="panel-action-button" type="button">Choose champion first</button>
+            </div>
+            <div id="shortlist-conflicts" class="shortlist-conflicts" hidden></div>
+            <div id="shortlist-ai" class="shortlist-ai" data-assistant-state="ready" hidden>
+              <div class="shortlist-ai-head">
+                <div>
+                  <p class="eyebrow">Decision read</p>
+                  <h3>Structured assistant</h3>
+                </div>
+                <button id="shortlist-ai-toggle" class="panel-toggle" type="button" aria-expanded="false" aria-controls="shortlist-ai-prompts shortlist-ai-input-shell shortlist-ai-response">Expand</button>
+              </div>
+              <p class="shortlist-ai-copy">Ready when you have a saved set. Start with one suggested question or open the full input.</p>
+              <p id="shortlist-ai-meta" class="shortlist-ai-meta">Needs a question and at least one saved product.</p>
+              <div id="shortlist-ai-guardrail" class="shortlist-ai-guardrail" hidden></div>
+              <div class="shortlist-ai-prompts" id="shortlist-ai-prompts">
+                <button type="button" class="shortlist-ai-prompt">Should I buy this first?</button>
+                <button type="button" class="shortlist-ai-prompt">Is this a safe starter for my skin lens?</button>
+                <button type="button" class="shortlist-ai-prompt">What is the main caution before I buy this?</button>
+              </div>
+              <div id="shortlist-ai-input-shell" class="shortlist-ai-input-shell">
+                <label class="shortlist-ai-label" for="shortlist-ai-input">Ask your own question</label>
+                <textarea id="shortlist-ai-input" class="shortlist-ai-input" rows="3" placeholder="Ask what deserves champion status, or what caution matters most."></textarea>
+                <div class="shortlist-ai-actions">
+                  <button id="shortlist-ai-submit" class="hero-button primary" type="button">Run decision read</button>
+                </div>
+              </div>
+              <div id="shortlist-ai-response" class="shortlist-ai-response shortlist-ai-response-idle" aria-live="polite" aria-atomic="true">
+                <strong>Structured decision read ready</strong>
+                <p>Start with a suggested question or open the full input. The answer stays grounded in what you have saved, your skin lens, and routine context.</p>
+              </div>
+            </div>
+            <section class="shortlist-saved-shell">
+              <div class="shortlist-saved-head">
+                <div class="shortlist-saved-headline">
+                  <p class="eyebrow">Saved set</p>
+                  <span id="shortlist-saved-count" class="shortlist-saved-count">No products yet</span>
+                </div>
+                <div class="shortlist-saved-actions">
+                  <button id="shortlist-buy-core" class="shortlist-to-routine secondary" type="button">Refresh final basket</button>
+                </div>
+              </div>
+              <div id="shortlist-gap-summary" class="shortlist-gap-summary" hidden></div>
+              <div id="shortlist-buy-summary" class="shortlist-buy-summary" hidden></div>
+              <div id="saved-empty" class="saved-empty">
+                <strong>No saved products yet.</strong>
+                <span>Save from the catalog to open approval, buy-path, and routine carryover tools.</span>
+                <div class="panel-action-row">
+                  <button id="shortlist-empty-cta" class="panel-action-button primary" type="button">Back to catalog</button>
+                </div>
+              </div>
+              <div id="saved-grid" class="saved-grid shortlist-grid"></div>
+            </section>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <nav id="mobile-shell-nav" class="mobile-shell-nav" aria-label="Mobile workspace navigation" hidden>
+      <button class="mobile-shell-button" type="button" data-shell-view="overview" aria-controls="shell-view-overview">
+        <span>Overview</span>
+      </button>
+      <button class="mobile-shell-button" type="button" data-shell-view="catalog" aria-controls="shell-view-catalog">
+        <span>Catalog</span>
+      </button>
+      <button class="mobile-shell-button" type="button" data-shell-view="workspace" aria-label="Workspace" aria-controls="shell-view-workspace">
+        <span>Work</span>
+      </button>
+      <button class="mobile-shell-button" type="button" data-shell-view="shortlist" aria-controls="shell-view-shortlist">
+        <span>Shortlist</span>
+      </button>
+      <button class="mobile-shell-button" type="button" data-mobile-shell-action="lens" aria-controls="lens-drawer-panel" aria-expanded="false">
+        <span>Lens</span>
+      </button>
+    </nav>
+
+    <button id="scroll-top" class="scroll-top" type="button" aria-label="Scroll to top">↑</button>
+
+    <div id="watch-settings-dialog" class="watch-settings-dialog" hidden>
+      <div id="watch-settings-backdrop" class="watch-settings-backdrop"></div>
+      <section class="watch-settings-sheet" role="dialog" aria-modal="true" aria-labelledby="watch-settings-title" aria-describedby="watch-settings-copy" tabindex="-1">
+        <div class="watch-settings-head">
+          <div>
+            <p class="eyebrow">Watch settings</p>
+            <h3 id="watch-settings-title">Tune this watch.</h3>
+          </div>
+          <button id="watch-settings-close" class="panel-toggle" type="button" aria-label="Close watch settings">Close</button>
+        </div>
+        <p id="watch-settings-copy" class="watch-settings-copy">Choose which price and stock changes deserve an alert.</p>
+        <form id="watch-settings-form" class="watch-settings-form">
+          <section class="watch-settings-section">
+            <p class="watch-settings-label">Alert me when</p>
+            <div class="watch-settings-grid">
+              <label><input type="checkbox" name="priceDrop"> Price drops</label>
+              <label><input type="checkbox" name="lowestTracked"> It hits the lowest tracked price</label>
+              <label><input type="checkbox" name="backInStock"> It comes back in stock</label>
+              <label><input type="checkbox" name="limitedStock"> Stock turns limited</label>
+              <label><input type="checkbox" name="backorder"> It moves to backorder</label>
+              <label><input type="checkbox" name="preorder"> It opens for preorder</label>
+              <label><input type="checkbox" name="discontinued"> It gets discontinued</label>
+            </div>
+          </section>
+          <section class="watch-settings-section">
+            <p class="watch-settings-label">Only notify on price moves when</p>
+            <div class="watch-settings-thresholds">
+              <label>Target price<input id="watch-target-price" type="number" min="0" step="0.01" inputmode="decimal" placeholder="Any price"></label>
+              <label>Min drop<input id="watch-min-absolute" type="number" min="0" step="0.01" inputmode="decimal" placeholder="Any amount"></label>
+              <label>Min percent<input id="watch-min-percent" type="number" min="0" step="0.1" inputmode="decimal" placeholder="Any %"></label>
+            </div>
+          </section>
+          <section class="watch-settings-section">
+            <p class="watch-settings-label">Delivery</p>
+            <div class="watch-settings-grid compact">
+              <label><input type="checkbox" name="deliveryInApp"> In-app inbox</label>
+              <label><input type="checkbox" name="deliveryPush"> Browser notification</label>
+              <label><input type="checkbox" name="deliveryEmail"> Email</label>
+            </div>
+            <p id="watch-settings-delivery-note" class="watch-settings-note"></p>
+          </section>
+          <section class="watch-settings-section">
+            <p class="watch-settings-label">Mute and quiet hours</p>
+            <div class="watch-settings-thresholds">
+              <label>Mute until<input id="watch-muted-until" type="datetime-local"></label>
+              <label>Quiet hours start<input id="watch-quiet-start" type="number" min="0" max="23" step="1"></label>
+              <label>Quiet hours end<input id="watch-quiet-end" type="number" min="0" max="23" step="1"></label>
+            </div>
+            <label class="watch-settings-inline"><input id="watch-quiet-enabled" type="checkbox"> Hold browser and email delivery during quiet hours</label>
+          </section>
+          <section class="watch-settings-section">
+            <p class="watch-settings-label">Email verification</p>
+            <div class="watch-settings-email">
+              <label>Email address<input id="watch-email-input" type="email" inputmode="email" placeholder="Unavailable in public showcase"></label>
+              <button id="watch-email-start" class="panel-action-button" type="button">Start verification</button>
+            </div>
+            <div class="watch-settings-email">
+              <label>Verification code<input id="watch-email-code" type="text" inputmode="numeric" placeholder="6-digit code"></label>
+              <button id="watch-email-verify" class="panel-action-button" type="button">Verify email</button>
+            </div>
+            <p id="watch-email-status" class="watch-settings-note" role="status" aria-live="polite"></p>
+          </section>
+          <div class="watch-settings-actions">
+            <button id="watch-settings-save" class="panel-action-button primary" type="submit">Save watch</button>
+            <button id="watch-settings-remove" class="panel-action-button" type="button">Stop watching</button>
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <template id="product-card-template">
+      <article class="product-card">
+        <div class="product-flag-row" hidden></div>
+        <div class="product-media">
+          <img class="product-image" alt="" width="360" height="240" loading="lazy" decoding="async">
+          <div class="product-image-fallback" aria-hidden="true">skincare-hub</div>
+        </div>
+        <div class="product-body">
+          <div class="product-topline">
+            <span class="retailer-badge"></span>
+            <span class="product-signal-badge" hidden></span>
+          </div>
+          <div class="product-title-block">
+            <p class="brand"></p>
+            <h3 class="name"></h3>
+          </div>
+          <div class="product-fact-row" hidden>
+            <span class="product-fact product-category-fact" hidden></span>
+            <span class="product-fact product-focus-fact" hidden></span>
+          </div>
+          <div class="product-meta">
+            <span class="price"></span>
+            <p class="product-rating" hidden></p>
+          </div>
+          <p class="product-verdict" hidden></p>
+          <p class="product-mobile-catch" hidden></p>
+          <div class="tag-row" hidden></div>
+          <div class="product-snapshot-row" hidden aria-label="Comparison snapshot"></div>
+          <div class="retailer-compare" hidden></div>
+          <details class="product-reasoning" hidden>
+            <summary class="product-reasoning-toggle">
+              <span class="product-reasoning-label">Why this</span>
+              <span class="product-reasoning-state">
+                <span class="product-reasoning-state-collapsed">Expand</span>
+                <span class="product-reasoning-state-expanded">Open</span>
+              </span>
+            </summary>
+            <div class="product-reasoning-body">
+              <div class="product-proof-grid" hidden></div>
+              <div class="product-decision-shell" hidden></div>
+              <p class="why-picked" hidden></p>
+              <p class="product-catch" hidden></p>
+              <div class="product-conflicts" hidden></div>
+              <div class="product-support-stack" hidden></div>
+            </div>
+          </details>
+        </div>
+        <div class="card-footer">
+          <div class="card-actions">
+            <button class="favorite-button" type="button" aria-label="Save to shortlist">Save to shortlist</button>
+            <a class="product-link" target="_blank" rel="noreferrer">Demo link</a>
+          </div>
+        </div>
+      </article>
+    </template>
+
+    <script src="./affiliate-config.js?v=20260316b" defer></script>
+    <script type="module">
+      import { enforcePublicStaticPreflight } from "./public-preflight.js";
+
+      try {
+        await enforcePublicStaticPreflight();
+        await import("./app.js?v=20260522-module-split");
+      } catch {
+        document.querySelector("#results-title").textContent = "Unable to load catalog";
+        document.querySelector("#results-caption").textContent = "The public static-safety preflight did not complete.";
+      }
+    </script>
+  </body>
+</html>

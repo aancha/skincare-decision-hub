@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'unsafe-inline'; connect-src 'self'; img-src 'none'; object-src 'none'; base-uri 'none'">
+<title>Synthetic ranking: Python / JavaScript parity</title>
+<style>body{font:17px/1.55 system-ui,sans-serif;max-width:860px;margin:3rem auto;padding:0 1rem;color:#18302b;background:#f6faf7}h1{line-height:1.2}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#e6eee9;padding:1rem;border-radius:8px}code{overflow-wrap:anywhere}a{color:#205d50}</style>
+<h1>Synthetic learning-to-rank</h1>
+<p>Local-only baseline imitation. Labels come from a fictional deterministic teacher, not people or clinical evidence. This example does not change the skincare application.</p>
+<p>One model trained from zero with pairwise logistic loss. Query and product families stay separate across train, development, and final sets. This page verifies model bytes, runs all exported Python/JavaScript parity cases, and checks invalid and unsupported inputs.</p>
+<h2 id="status" role="status">Checking local artifacts…</h2>
+<pre id="results"></pre>
+<h2>One bounded comparison</h2>
+<p>Only five fictional candidates; maximum two-position movement. The supplied teacher order remains the baseline, not an application mutation.</p>
+<pre id="comparison"></pre>
+<p><a href="README.md">Provenance, reproduction commands, and limitations</a></p>
+<script type="module" src="browser.js"></script>
+</html>

@@ -1,0 +1,29 @@
+{
+  "featureOrder": [
+    "concern_match",
+    "ingredient_match",
+    "budget_fit",
+    "evidence_completeness",
+    "active_fit"
+  ],
+  "kind": "pairwise-logistic-baseline-imitation",
+  "policy": {
+    "authoritative": false,
+    "candidateCount": 5,
+    "maximumDisplacement": 2,
+    "scope": "fictional-comparison"
+  },
+  "trainingHashes": {
+    "dataset": "fb45426f7fa483616cf717b12d3dc2906a753b96bd7710be18ccf8d2f39635e9",
+    "design": "c3fde048a4648d75be7439ca7e6bd0fabdf19ae4fdac0f901f8943e9c83a436b",
+    "split": "8f207cfeb7f8149865cf89dd118a6a7373a2f27d37a98aec203214cf7a067f50"
+  },
+  "version": "synthetic-ranking-imitation-v1",
+  "weights": [
+    2.413738886085,
+    1.177306290846,
+    0.377169921251,
+    0.226750144936,
+    1.145982606465
+  ]
+}

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SkinCare Hub — Engineering Case Study | Aanchal Khandelwal</title>
+  <meta name="description" content="Aanchal Khandelwal’s engineering case study: building SkinCare Hub with Python, SQLite, JavaScript, structured LLM explanations, deterministic fallbacks, and MCP tools.">
+  <meta name="author" content="Aanchal Khandelwal">
+  <link rel="canonical" href="https://skincarehub.app/engineering/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="SkinCare Hub — Engineering Case Study">
+  <meta property="og:description" content="Product development, backend architecture, and inspectable AI engineering by Aanchal Khandelwal.">
+  <meta property="og:url" content="https://skincarehub.app/engineering/">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body class="engineering-page">
+  <a class="eng-skip" href="#main">Skip to case study</a>
+  <div class="eng-wrap">
+    <header class="eng-header">
+      <a class="eng-brand" href="https://skincarehub.app/">SkinCare Hub <span> / Engineering</span></a>
+      <a href="https://www.linkedin.com/in/aanchalk/">Aanchal Khandelwal ↗</a>
+    </header>
+    <main id="main">
+      <section class="eng-hero" aria-labelledby="case-title">
+        <p class="eng-eyebrow">Independent project · Engineering case study</p>
+        <h1 id="case-title">Building a product<br> around better decisions.</h1>
+        <p class="eng-deck">SkinCare Hub connects product discovery, comparison, and routine planning—with structured explanations and deterministic fallback when context or provider output is unusable.</p>
+        <p class="eng-byline"><strong>Aanchal Khandelwal</strong><br>AI Engineer | Backend &amp; Product Development | LLM Applications</p>
+        <div class="eng-actions">
+          <a class="eng-button" href="https://skincarehub.app/">Explore the product <span aria-hidden="true">↗</span></a>
+          <a class="eng-text-link" href="https://github.com/aancha/skincare-decision-hub">View source on GitHub ↗</a>
+          <a class="eng-text-link" href="#evidence">Inspect the engineering <span aria-hidden="true">↓</span></a>
+        </div>
+        <ul class="eng-stack" aria-label="Technology stack">
+          <li>Python</li><li>SQLite</li><li>JavaScript</li><li>LLM applications</li><li>MCP</li>
+        </ul>
+      </section>
+
+      <section class="eng-section eng-split" aria-labelledby="ownership">
+        <div><p class="eng-eyebrow">01 / Product &amp; ownership</p><h2 id="ownership">From a shopper’s question<br>to a working product.</h2></div>
+        <div class="eng-prose">
+          <p>Skincare shoppers compare fragmented catalogs, ingredient details, prices, and routine compatibility. I built a connected workflow that helps them discover options, compare evidence, and assemble a shortlist and routine.</p>
+          <p><strong>I owned the product flow and application architecture:</strong> the HTML/CSS/JavaScript client, Python/SQLite services, catalog ingestion and normalization, LLM explanations, MCP tools, validation, and release decisions.</p>
+          <p>I used coding assistants and existing libraries during implementation, while retaining responsibility for design choices, integration, and verification.</p>
+        </div>
+      </section>
+
+      <section class="eng-section" aria-labelledby="architecture">
+        <div class="eng-section-head"><div><p class="eng-eyebrow">02 / Architecture</p><h2 id="architecture">Complete product architecture.</h2></div><p>Product data, decision logic, and generated text have distinct roles.</p></div>
+        <ol class="eng-flow" aria-label="Application data flow">
+          <li><span>01</span><h3>Normalize</h3><p>Ingestion maps catalog records into a shared product schema.</p></li>
+          <li><span>02</span><h3>Serve</h3><p>A Python API reads SQLite; server-sent events deliver updates.</p></li>
+          <li><span>03</span><h3>Decide</h3><p>Native JavaScript supports discovery, shortlisting, and routine planning.</p></li>
+          <li><span>04</span><h3>Explain</h3><p>Bounded product context feeds structured, validated explanations.</p></li>
+        </ol>
+        <p class="eng-evidence-scope">The source repository contains the synthetic browser app and standalone examples. The download isolates explanation and tool behavior; it excludes the product API, database, ingestion services, and browser app shown here.</p>
+        <div class="eng-architecture-notes">
+          <p><strong>Continuity:</strong> a static catalog supports access when the API is unavailable; live updates avoid full-page reloads.</p>
+          <p><strong>Tool interface:</strong> Model Context Protocol (MCP) exposes product capabilities through tool discovery and invocation. A tool call does not inherently call an LLM.</p>
+        </div>
+      </section>
+
+      <section class="eng-section" aria-labelledby="decisions">
+        <p class="eng-eyebrow">03 / Engineering decisions</p><h2 id="decisions">Design for the failure path.</h2>
+        <div class="eng-decisions">
+          <article><span class="eng-decision-number">A</span><h3>Keep explanations optional.</h3>
+            <p>Resolve selected product IDs, build bounded context, and apply deterministic guardrails before provider execution. Recognized guarded questions retain every matched caution and select no product and skip provider execution. Timeouts, refusals, and invalid output return a fact-based deterministic explanation.</p>
+            <p><strong>Concrete check:</strong> an unknown product citation is rejected and follows the fallback path in the standalone example.</p>
+            <p class="eng-tradeoff">Tradeoff: fallback text can be less useful than a good model answer. That comparison needs separate evaluation.</p>
+            <a href="examples.html#shortlist">Read the explanation implementation →</a>
+          </article>
+          <article><span class="eng-decision-number">B</span><h3>Keep ranking authority explicit.</h3>
+            <p>Deterministic logic controls eligibility and ranking. Response validation checks exact fields and whether cited IDs belong to the selected products. MCP dispatch limits operations and returned fields.</p>
+            <p><strong>Concrete check:</strong> a regression test demonstrates that a valid citation ID can still accompany unsupported prose.</p>
+            <p class="eng-tradeoff">Boundary: schema and citation membership checks do not establish factual support. A learned-ranker experiment failed promotion criteria, so deterministic ranking retained authority.</p>
+            <a href="examples.html#validation-tests">Read the validation boundary test →</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="eng-section" id="evidence" aria-labelledby="evidence-title">
+        <div class="eng-section-head"><div><p class="eng-eyebrow">04 / Reproducible evidence</p><h2 id="evidence-title">Code you can inspect and run.</h2></div><p>Standalone examples with fictional data.<br><a href="https://github.com/aancha/skincare-decision-hub/blob/main/docs/portfolio/evidence.md">Dated verification and measurement gaps</a>.</p></div>
+        <dl class="eng-results">
+          <div><dt>Structured explanations</dt><dd>Mocks<span>Injected provider failures and citation rejection</span></dd></div>
+          <div><dt>Bounded MCP tools</dt><dd>stdio<span>Actual local client/server subprocesses</span></dd></div>
+          <div><dt>Offline evaluation</dt><dd>Paired<span>Mock orchestration and deterministic fallback</span></dd></div>
+        </dl>
+        <p class="eng-evidence-scope">The documented commands test controlled implementation behavior, including the fixed guardrail cases. Keyword rules can miss unfamiliar wording. These checks do not measure real-model quality, clinical safety, human usability, production reliability, or shopper outcomes. The separate real-provider adapter is disabled by default.</p>
+        <div class="eng-evidence-links">
+          <a href="examples.html#shortlist"><strong>Structured explanations</strong><span>Context, validation, provider adapter, and fallback</span></a>
+          <a href="examples.html#mcp"><strong>MCP client &amp; server</strong><span>Bounded tools and local stdio interoperability</span></a>
+          <a href="examples.html#evaluation"><strong>Offline evaluation</strong><span>Injected scenarios and explicit measurement gaps</span></a>
+        </div>
+        <div class="eng-download">
+          <div><h3>Reproduce the checks locally.</h3><p>Python 3.9+ · standard library · no API key needed for the documented checks</p></div>
+          <a class="eng-button" href="skincare-hub-engineering-examples.zip" download>Download examples <span aria-hidden="true">↓</span></a>
+        </div>
+        <p class="eng-small">The download contains synthetic examples, supporting rules, tests, an MIT license, and file checksums. The provider adapter is disabled by default; the documented checks make no real provider calls. <a href="examples.html#reproduce">View commands and contents</a>.</p>
+      </section>
+
+      <section class="eng-section eng-split" aria-labelledby="next">
+        <div><p class="eng-eyebrow">05 / What comes next</p><h2 id="next">Measure usefulness<br>with fresh evidence.</h2></div>
+        <div class="eng-prose"><p>My next step is to compare actual model answers with deterministic output using fresh cases and blinded human review. I would measure usefulness, unsupported claims, latency, and token usage, and observe unfamiliar users completing the product journey.</p><p>The product supports skincare decisions; it does not establish individual effectiveness or medical certainty.</p></div>
+      </section>
+    </main>
+    <footer class="eng-footer"><div><strong>Aanchal Khandelwal</strong><p>Product development · Backend systems · LLM applications</p></div><a href="https://www.linkedin.com/in/aanchalk/">Connect on LinkedIn ↗</a></footer>
+  </div>
+</body>
+</html>

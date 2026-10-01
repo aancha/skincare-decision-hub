@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONDONTWRITEBYTECODE: "1"
+
+jobs:
+  deterministic:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out source without persisted credentials
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Verify public front door, synthetic quick start, and browser flow
+        run: python3 -m unittest discover -s tests -v
+
+      - name: Run the 50-case skincare safety matrix
+        run: python3 scripts/evaluate_skincare_guardrails.py
+
+      - name: Syntax-check Python
+        run: python3 scripts/check_python_syntax.py

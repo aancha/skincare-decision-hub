@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Engineering Examples | SkinCare Hub | Aanchal Khandelwal</title>
+<meta name="description" content="Inspect and reproduce SkinCare Hub’s synthetic explanation, MCP, and offline evaluation examples.">
+<link rel="canonical" href="https://skincarehub.app/engineering/examples.html">
+<link rel="stylesheet" href="./styles.css"></head>
+<body class="engineering-page"><a class="eng-skip" href="#main">Skip to examples</a><div class="eng-wrap">
+<header class="eng-header"><a class="eng-brand" href="./">SkinCare Hub <span>/ Engineering</span></a>
+<a href="./#evidence">Back to case study</a></header><main id="main">
+<section class="eng-hero"><p class="eng-eyebrow">Inspect &amp; reproduce</p><h1>Engineering examples.</h1>
+<p class="eng-deck">Standalone Python examples for structured explanations, bounded MCP tools, and offline contract evaluation.</p>
+<p>All product fixtures are fictional. The checks use local mocks and subprocesses; no API key is needed.
+The ZIP excludes the product API, database, ingestion services, browser application, and ML experiment. These checks demonstrate implementation behavior; real-model quality, clinical safety, production reliability, and human usefulness are unmeasured. Valid citation identifiers do not prove factual support.</p>
+<div class="eng-actions"><a class="eng-button" href="skincare-hub-engineering-examples.zip" download>Download examples ↓</a><a href="https://github.com/aancha/skincare-decision-hub">View source on GitHub ↗</a></div></section>
+<section class="eng-section" id="reproduce"><h2>Run the checks.</h2>
+<p>Use Python 3.9+ and the standard library. Unzip the download, then run these commands from its
+<code>skincare-hub-engineering-examples</code> directory.</p><pre><code>@@COMMANDS@@</code></pre>
+<p>Expect each test suite to end in <code>OK</code>, 50/50 fixed guardrail cases, MCP <code>status: PASS</code>, and 12/12 injected contract scenarios. The final command returns <code>source: fallback</code> and <code>reason: invalid-output</code> for an unknown citation. <a href="https://github.com/aancha/skincare-decision-hub/blob/main/docs/portfolio/evidence.md">See dated results and scope</a>.</p>
+<p>These commands come from the <a href="https://github.com/aancha/skincare-decision-hub/blob/main/docs/portfolio/engineering-examples.md">canonical reproduction guide</a>, included verbatim as the ZIP’s README. Browser tests are separate and require Chrome/Chromium and loopback permission.</p>
+<p>Recognized guarded questions preserve matched cautions without selecting a product or calling a provider. Shared checks include named-allergen and swelling variants; keyword matching can miss unfamiliar wording.</p>
+<p>The optional real-provider adapter is disabled by default. It was tested with injected transport;
+actual provider execution and model quality remain unverified.</p>
+<h3>Exact download contents</h3><ul class="eng-file-list">@@FILES@@</ul><p class="eng-small">Download SHA-256: <code style="overflow-wrap:anywhere">@@SHA256@@</code>. The bundle includes per-file checksums, a README, a notice, and its MIT license.</p></section><section class="eng-section"><h2>Read the implementation.</h2><p>Each source view below matches the same file in the download. Open a section to inspect its code.</p>@@SOURCES@@</section></main><footer class="eng-footer"><strong>Aanchal Khandelwal</strong><a href="./">Return to case study →</a></footer></div></body></html>

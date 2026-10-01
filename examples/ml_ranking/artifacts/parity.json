@@ -1,0 +1,4076 @@
+{
+  "cases": [
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-00-2",
+          "fictional-00-0",
+          "fictional-00-4",
+          "fictional-00-3",
+          "fictional-00-1"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          3.9206193926410595,
+          2.3726537524823,
+          0.9528550932226405,
+          0.6475009455438405,
+          0.4139883597768904
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              1.0,
+              0.633333,
+              0.4,
+              0.0
+            ],
+            "id": "fictional-00-2",
+            "productFamily": "product-00-2"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.65,
+              0.4,
+              0.75
+            ],
+            "id": "fictional-00-0",
+            "productFamily": "product-00-0"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.766667,
+              0.4,
+              0.5
+            ],
+            "id": "fictional-00-4",
+            "productFamily": "product-00-4"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.716667,
+              0.4,
+              0.25
+            ],
+            "id": "fictional-00-3",
+            "productFamily": "product-00-3"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.616667,
+              0.8,
+              0.0
+            ],
+            "id": "fictional-00-1",
+            "productFamily": "product-00-1"
+          }
+        ],
+        "id": "query-00-0",
+        "queryFamily": "family-00",
+        "scope": "fictional-comparison",
+        "split": "train"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-00-2",
+          "fictional-00-0",
+          "fictional-00-4",
+          "fictional-00-3",
+          "fictional-00-1"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          3.9017608965785096,
+          2.35379525641975,
+          0.9717135892851905,
+          0.43284685583944044,
+          0.6286424494812904
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              1.0,
+              0.583333,
+              0.4,
+              0.0
+            ],
+            "id": "fictional-00-2",
+            "productFamily": "product-00-2"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.6,
+              0.4,
+              0.75
+            ],
+            "id": "fictional-00-0",
+            "productFamily": "product-00-0"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.816667,
+              0.4,
+              0.5
+            ],
+            "id": "fictional-00-4",
+            "productFamily": "product-00-4"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.666667,
+              0.8,
+              0.0
+            ],
+            "id": "fictional-00-1",
+            "productFamily": "product-00-1"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.666667,
+              0.4,
+              0.25
+            ],
+            "id": "fictional-00-3",
+            "productFamily": "product-00-3"
+          }
+        ],
+        "id": "query-00-1",
+        "queryFamily": "family-00",
+        "scope": "fictional-comparison",
+        "split": "train"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-01-1",
+          "fictional-01-4",
+          "fictional-01-0",
+          "fictional-01-2",
+          "fictional-01-3"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          3.9624843931264406,
+          3.065280446152591,
+          1.7749400659555095,
+          1.6842400079811095,
+          0.6991368884386095
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.466667,
+              1.0,
+              1.0
+            ],
+            "id": "fictional-01-1",
+            "productFamily": "product-01-1"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.366667,
+              1.0,
+              0.25
+            ],
+            "id": "fictional-01-4",
+            "productFamily": "product-01-4"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.983333,
+              1.0,
+              0.0
+            ],
+            "id": "fictional-01-0",
+            "productFamily": "product-01-0"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.983333,
+              0.6,
+              0.0
+            ],
+            "id": "fictional-01-2",
+            "productFamily": "product-01-2"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.733333,
+              0.6,
+              0.25
+            ],
+            "id": "fictional-01-3",
+            "productFamily": "product-01-3"
+          }
+        ],
+        "id": "query-01-0",
+        "queryFamily": "family-01",
+        "scope": "fictional-comparison",
+        "split": "train"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-01-1",
+          "fictional-01-4",
+          "fictional-01-0",
+          "fictional-01-2",
+          "fictional-01-3"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          3.9813428891889906,
+          3.084138942215141,
+          1.7560815698929595,
+          1.6779540940735402,
+          0.7179953845011595
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.516667,
+              1.0,
+              1.0
+            ],
+            "id": "fictional-01-1",
+            "productFamily": "product-01-1"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.416667,
+              1.0,
+              0.25
+            ],
+            "id": "fictional-01-4",
+            "productFamily": "product-01-4"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.933333,
+              1.0,
+              0.0
+            ],
+            "id": "fictional-01-0",
+            "productFamily": "product-01-0"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.966667,
+              0.6,
+              0.0
+            ],
+            "id": "fictional-01-2",
+            "productFamily": "product-01-2"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.783333,
+              0.6,
+              0.25
+            ],
+            "id": "fictional-01-3",
+            "productFamily": "product-01-3"
+          }
+        ],
+        "id": "query-01-1",
+        "queryFamily": "family-01",
+        "scope": "fictional-comparison",
+        "split": "train"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-02-1",
+          "fictional-02-3",
+          "fictional-02-4",
+          "fictional-02-0",
+          "fictional-02-2"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          2.8894919713729,
+          3.121855934340241,
+          2.2985665140167093,
+          0.5949660718799404,
+          0.2819788873390404
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.9,
+              1.0,
+              1.0
+            ],
+            "id": "fictional-02-3",
+            "productFamily": "product-02-3"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.516667,
+              1.0,
+              0.25
+            ],
+            "id": "fictional-02-1",
+            "productFamily": "product-02-1"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.333333,
+              0.6,
+              0.75
+            ],
+            "id": "fictional-02-4",
+            "productFamily": "product-02-4"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.216667,
+              1.0,
+              0.25
+            ],
+            "id": "fictional-02-0",
+            "productFamily": "product-02-0"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.266667,
+              0.8,
+              0.0
+            ],
+            "id": "fictional-02-2",
+            "productFamily": "product-02-2"
+          }
+        ],
+        "id": "query-02-0",
+        "queryFamily": "family-02",
+        "scope": "fictional-comparison",
+        "split": "final"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-02-1",
+          "fictional-02-3",
+          "fictional-02-4",
+          "fictional-02-0",
+          "fictional-02-2"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          2.90835046743545,
+          3.1407144304027907,
+          2.3174250100792593,
+          0.6138245679424904,
+          0.30083738340159044
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.95,
+              1.0,
+              1.0
+            ],
+            "id": "fictional-02-3",
+            "productFamily": "product-02-3"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.566667,
+              1.0,
+              0.25
+            ],
+            "id": "fictional-02-1",
+            "productFamily": "product-02-1"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.383333,
+              0.6,
+              0.75
+            ],
+            "id": "fictional-02-4",
+            "productFamily": "product-02-4"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.266667,
+              1.0,
+              0.25
+            ],
+            "id": "fictional-02-0",
+            "productFamily": "product-02-0"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.316667,
+              0.8,
+              0.0
+            ],
+            "id": "fictional-02-2",
+            "productFamily": "product-02-2"
+          }
+        ],
+        "id": "query-02-1",
+        "queryFamily": "family-02",
+        "scope": "fictional-comparison",
+        "split": "final"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-03-3",
+          "fictional-03-0",
+          "fictional-03-2",
+          "fictional-03-4",
+          "fictional-03-1"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          3.98762880309656,
+          2.4983769338426596,
+          2.4983769338426596,
+          1.32735693407415,
+          1.1791828343128905
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.533333,
+              1.0,
+              1.0
+            ],
+            "id": "fictional-03-3",
+            "productFamily": "product-03-3"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.983333,
+              0.4,
+              0.75
+            ],
+            "id": "fictional-03-0",
+            "productFamily": "product-03-0"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.983333,
+              0.4,
+              0.75
+            ],
+            "id": "fictional-03-2",
+            "productFamily": "product-03-2"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              1.0,
+              0.4,
+              0.75
+            ],
+            "id": "fictional-03-4",
+            "productFamily": "product-03-4"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.366667,
+              0.8,
+              0.75
+            ],
+            "id": "fictional-03-1",
+            "productFamily": "product-03-1"
+          }
+        ],
+        "id": "query-03-0",
+        "queryFamily": "family-03",
+        "scope": "fictional-comparison",
+        "split": "development"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-03-3",
+          "fictional-03-0",
+          "fictional-03-2",
+          "fictional-03-4",
+          "fictional-03-1"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          4.00648729915911,
+          2.4920910199350903,
+          2.4795184377801096,
+          1.3084984380116,
+          1.1980413303754405
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.583333,
+              1.0,
+              1.0
+            ],
+            "id": "fictional-03-3",
+            "productFamily": "product-03-3"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.966667,
+              0.4,
+              0.75
+            ],
+            "id": "fictional-03-0",
+            "productFamily": "product-03-0"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.933333,
+              0.4,
+              0.75
+            ],
+            "id": "fictional-03-2",
+            "productFamily": "product-03-2"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.95,
+              0.4,
+              0.75
+            ],
+            "id": "fictional-03-4",
+            "productFamily": "product-03-4"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.416667,
+              0.8,
+              0.75
+            ],
+            "id": "fictional-03-1",
+            "productFamily": "product-03-1"
+          }
+        ],
+        "id": "query-03-1",
+        "queryFamily": "family-03",
+        "scope": "fictional-comparison",
+        "split": "development"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-04-0",
+          "fictional-04-4",
+          "fictional-04-2",
+          "fictional-04-1",
+          "fictional-04-3"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          5.142035983356259,
+          4.72981715037965,
+          1.3664206719838596,
+          1.0449018969816501,
+          1.1589772152958098
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              1.0,
+              0.833333,
+              0.4,
+              1.0
+            ],
+            "id": "fictional-04-0",
+            "productFamily": "product-04-0"
+          },
+          {
+            "features": [
+              1.0,
+              1.0,
+              0.5,
+              0.4,
+              0.75
+            ],
+            "id": "fictional-04-4",
+            "productFamily": "product-04-4"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.983333,
+              0.6,
+              0.75
+            ],
+            "id": "fictional-04-2",
+            "productFamily": "product-04-2"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.65,
+              1.0,
+              0.5
+            ],
+            "id": "fictional-04-3",
+            "productFamily": "product-04-3"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.433333,
+              0.6,
+              0.75
+            ],
+            "id": "fictional-04-1",
+            "productFamily": "product-04-1"
+          }
+        ],
+        "id": "query-04-0",
+        "queryFamily": "family-04",
+        "scope": "fictional-comparison",
+        "split": "train"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-04-0",
+          "fictional-04-4",
+          "fictional-04-2",
+          "fictional-04-1",
+          "fictional-04-3"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          5.160894479418809,
+          4.7109586543171,
+          1.3475621759213097,
+          1.0637603930442001,
+          1.1401187192332596
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              1.0,
+              0.883333,
+              0.4,
+              1.0
+            ],
+            "id": "fictional-04-0",
+            "productFamily": "product-04-0"
+          },
+          {
+            "features": [
+              1.0,
+              1.0,
+              0.45,
+              0.4,
+              0.75
+            ],
+            "id": "fictional-04-4",
+            "productFamily": "product-04-4"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.933333,
+              0.6,
+              0.75
+            ],
+            "id": "fictional-04-2",
+            "productFamily": "product-04-2"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.7,
+              1.0,
+              0.5
+            ],
+            "id": "fictional-04-3",
+            "productFamily": "product-04-3"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.383333,
+              0.6,
+              0.75
+            ],
+            "id": "fictional-04-1",
+            "productFamily": "product-04-1"
+          }
+        ],
+        "id": "query-04-1",
+        "queryFamily": "family-04",
+        "scope": "fictional-comparison",
+        "split": "train"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-05-3",
+          "fictional-05-1",
+          "fictional-05-0",
+          "fictional-05-2",
+          "fictional-05-4"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          4.0190598813140905,
+          3.4105968853403095,
+          2.5827910779094907,
+          2.2334336470280998,
+          0.7934293687513596
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.616667,
+              1.0,
+              1.0
+            ],
+            "id": "fictional-05-3",
+            "productFamily": "product-05-3"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.883333,
+              0.4,
+              0.5
+            ],
+            "id": "fictional-05-1",
+            "productFamily": "product-05-1"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.966667,
+              0.8,
+              0.75
+            ],
+            "id": "fictional-05-0",
+            "productFamily": "product-05-0"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.8,
+              0.8,
+              0.5
+            ],
+            "id": "fictional-05-2",
+            "productFamily": "product-05-2"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.983333,
+              0.6,
+              0.25
+            ],
+            "id": "fictional-05-4",
+            "productFamily": "product-05-4"
+          }
+        ],
+        "id": "query-05-0",
+        "queryFamily": "family-05",
+        "scope": "fictional-comparison",
+        "split": "train"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-05-3",
+          "fictional-05-1",
+          "fictional-05-0",
+          "fictional-05-2",
+          "fictional-05-4"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          4.0379183773766405,
+          3.3917383892777595,
+          2.5639325818469407,
+          2.2522921430906497,
+          0.7871434548437904
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.666667,
+              1.0,
+              1.0
+            ],
+            "id": "fictional-05-3",
+            "productFamily": "product-05-3"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.833333,
+              0.4,
+              0.5
+            ],
+            "id": "fictional-05-1",
+            "productFamily": "product-05-1"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.916667,
+              0.8,
+              0.75
+            ],
+            "id": "fictional-05-0",
+            "productFamily": "product-05-0"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.85,
+              0.8,
+              0.5
+            ],
+            "id": "fictional-05-2",
+            "productFamily": "product-05-2"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.966667,
+              0.6,
+              0.25
+            ],
+            "id": "fictional-05-4",
+            "productFamily": "product-05-4"
+          }
+        ],
+        "id": "query-05-1",
+        "queryFamily": "family-05",
+        "scope": "fictional-comparison",
+        "split": "train"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-06-0",
+          "fictional-06-4",
+          "fictional-06-2",
+          "fictional-06-1",
+          "fictional-06-3"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          5.0692958678452005,
+          3.4420279635578406,
+          1.7372230738304095,
+          2.0924443919435403,
+          0.50962758587425
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              1.0,
+              0.4,
+              0.8,
+              1.0
+            ],
+            "id": "fictional-06-0",
+            "productFamily": "product-06-0"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.966667,
+              0.4,
+              0.5
+            ],
+            "id": "fictional-06-4",
+            "productFamily": "product-06-4"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.883333,
+              1.0,
+              0.0
+            ],
+            "id": "fictional-06-1",
+            "productFamily": "product-06-1"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.666667,
+              0.4,
+              0.5
+            ],
+            "id": "fictional-06-2",
+            "productFamily": "product-06-2"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.75,
+              1.0,
+              0.0
+            ],
+            "id": "fictional-06-3",
+            "productFamily": "product-06-3"
+          }
+        ],
+        "id": "query-06-0",
+        "queryFamily": "family-06",
+        "scope": "fictional-comparison",
+        "split": "train"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-06-0",
+          "fictional-06-4",
+          "fictional-06-2",
+          "fictional-06-1",
+          "fictional-06-3"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          5.05043737178265,
+          3.42316946749529,
+          1.7183645777678596,
+          2.0735858958809903,
+          0.4907690898117
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              1.0,
+              0.35,
+              0.8,
+              1.0
+            ],
+            "id": "fictional-06-0",
+            "productFamily": "product-06-0"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.916667,
+              0.4,
+              0.5
+            ],
+            "id": "fictional-06-4",
+            "productFamily": "product-06-4"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.833333,
+              1.0,
+              0.0
+            ],
+            "id": "fictional-06-1",
+            "productFamily": "product-06-1"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.616667,
+              0.4,
+              0.5
+            ],
+            "id": "fictional-06-2",
+            "productFamily": "product-06-2"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.7,
+              1.0,
+              0.0
+            ],
+            "id": "fictional-06-3",
+            "productFamily": "product-06-3"
+          }
+        ],
+        "id": "query-06-1",
+        "queryFamily": "family-06",
+        "scope": "fictional-comparison",
+        "split": "train"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-07-1",
+          "fictional-07-3",
+          "fictional-07-0",
+          "fictional-07-2",
+          "fictional-07-4"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          5.20130534028305,
+          1.7121856805269,
+          1.60262712648995,
+          1.4252676250649001,
+          0.9946126998714904
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              1.0,
+              0.75,
+              0.8,
+              1.0
+            ],
+            "id": "fictional-07-1",
+            "productFamily": "product-07-1"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.9,
+              1.0,
+              1.0
+            ],
+            "id": "fictional-07-3",
+            "productFamily": "product-07-3"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.85,
+              0.6,
+              1.0
+            ],
+            "id": "fictional-07-0",
+            "productFamily": "product-07-0"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.5,
+              0.4,
+              1.0
+            ],
+            "id": "fictional-07-2",
+            "productFamily": "product-07-2"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.516667,
+              1.0,
+              0.5
+            ],
+            "id": "fictional-07-4",
+            "productFamily": "product-07-4"
+          }
+        ],
+        "id": "query-07-0",
+        "queryFamily": "family-07",
+        "scope": "fictional-comparison",
+        "split": "train"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-07-1",
+          "fictional-07-3",
+          "fictional-07-0",
+          "fictional-07-2",
+          "fictional-07-4"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          5.2201638363456,
+          1.69332718446435,
+          1.6214856225525,
+          1.4064091290023502,
+          0.9757542038089404
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              1.0,
+              0.8,
+              0.8,
+              1.0
+            ],
+            "id": "fictional-07-1",
+            "productFamily": "product-07-1"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.85,
+              1.0,
+              1.0
+            ],
+            "id": "fictional-07-3",
+            "productFamily": "product-07-3"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.9,
+              0.6,
+              1.0
+            ],
+            "id": "fictional-07-0",
+            "productFamily": "product-07-0"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.45,
+              0.4,
+              1.0
+            ],
+            "id": "fictional-07-2",
+            "productFamily": "product-07-2"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.466667,
+              1.0,
+              0.5
+            ],
+            "id": "fictional-07-4",
+            "productFamily": "product-07-4"
+          }
+        ],
+        "id": "query-07-1",
+        "queryFamily": "family-07",
+        "scope": "fictional-comparison",
+        "split": "train"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-08-2",
+          "fictional-08-3",
+          "fictional-08-1",
+          "fictional-08-0",
+          "fictional-08-4"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          5.151016143172891,
+          4.25381219619904,
+          4.0428575454996,
+          3.6746416185556594,
+          2.5576462907694504
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              1.0,
+              0.616667,
+              0.8,
+              1.0
+            ],
+            "id": "fictional-08-2",
+            "productFamily": "product-08-2"
+          },
+          {
+            "features": [
+              1.0,
+              1.0,
+              0.516667,
+              0.8,
+              0.25
+            ],
+            "id": "fictional-08-3",
+            "productFamily": "product-08-3"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.8,
+              0.8,
+              1.0
+            ],
+            "id": "fictional-08-1",
+            "productFamily": "product-08-1"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.583333,
+              0.8,
+              0.75
+            ],
+            "id": "fictional-08-0",
+            "productFamily": "product-08-0"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.9,
+              0.8,
+              0.75
+            ],
+            "id": "fictional-08-4",
+            "productFamily": "product-08-4"
+          }
+        ],
+        "id": "query-08-0",
+        "queryFamily": "family-08",
+        "scope": "fictional-comparison",
+        "split": "final"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-08-2",
+          "fictional-08-3",
+          "fictional-08-1",
+          "fictional-08-0",
+          "fictional-08-4"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          5.13215764711034,
+          4.23495370013649,
+          4.02399904943705,
+          3.6935001146182094,
+          2.5387877947068995
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              1.0,
+              0.566667,
+              0.8,
+              1.0
+            ],
+            "id": "fictional-08-2",
+            "productFamily": "product-08-2"
+          },
+          {
+            "features": [
+              1.0,
+              1.0,
+              0.466667,
+              0.8,
+              0.25
+            ],
+            "id": "fictional-08-3",
+            "productFamily": "product-08-3"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.75,
+              0.8,
+              1.0
+            ],
+            "id": "fictional-08-1",
+            "productFamily": "product-08-1"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.633333,
+              0.8,
+              0.75
+            ],
+            "id": "fictional-08-0",
+            "productFamily": "product-08-0"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.85,
+              0.8,
+              0.75
+            ],
+            "id": "fictional-08-4",
+            "productFamily": "product-08-4"
+          }
+        ],
+        "id": "query-08-1",
+        "queryFamily": "family-08",
+        "scope": "fictional-comparison",
+        "split": "final"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-09-4",
+          "fictional-09-3",
+          "fictional-09-1",
+          "fictional-09-0",
+          "fictional-09-2"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          4.0190598813140905,
+          2.81765040946105,
+          1.9707356595973595,
+          1.8575846832220595,
+          1.6466304096925404
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.616667,
+              1.0,
+              1.0
+            ],
+            "id": "fictional-09-4",
+            "productFamily": "product-09-4"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.95,
+              0.6,
+              1.0
+            ],
+            "id": "fictional-09-3",
+            "productFamily": "product-09-3"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.983333,
+              0.6,
+              0.25
+            ],
+            "id": "fictional-09-1",
+            "productFamily": "product-09-1"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.683333,
+              0.6,
+              0.25
+            ],
+            "id": "fictional-09-0",
+            "productFamily": "product-09-0"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.966667,
+              0.6,
+              1.0
+            ],
+            "id": "fictional-09-2",
+            "productFamily": "product-09-2"
+          }
+        ],
+        "id": "query-09-0",
+        "queryFamily": "family-09",
+        "scope": "fictional-comparison",
+        "split": "train"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-09-4",
+          "fictional-09-3",
+          "fictional-09-1",
+          "fictional-09-0",
+          "fictional-09-2"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          4.0379183773766405,
+          2.7987919133985,
+          1.9644497456897902,
+          1.8764431792846095,
+          1.6529163236001096
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.666667,
+              1.0,
+              1.0
+            ],
+            "id": "fictional-09-4",
+            "productFamily": "product-09-4"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.9,
+              0.6,
+              1.0
+            ],
+            "id": "fictional-09-3",
+            "productFamily": "product-09-3"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.966667,
+              0.6,
+              0.25
+            ],
+            "id": "fictional-09-1",
+            "productFamily": "product-09-1"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.733333,
+              0.6,
+              0.25
+            ],
+            "id": "fictional-09-0",
+            "productFamily": "product-09-0"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.983333,
+              0.6,
+              1.0
+            ],
+            "id": "fictional-09-2",
+            "productFamily": "product-09-2"
+          }
+        ],
+        "id": "query-09-1",
+        "queryFamily": "family-09",
+        "scope": "fictional-comparison",
+        "split": "train"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-10-4",
+          "fictional-10-3",
+          "fictional-10-1",
+          "fictional-10-2",
+          "fictional-10-0"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          4.855540331740009,
+          3.825509587056059,
+          2.2572313112136095,
+          1.3866262910009404,
+          1.0624136472595904
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              1.0,
+              0.833333,
+              0.4,
+              0.75
+            ],
+            "id": "fictional-10-4",
+            "productFamily": "product-10-4"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.983333,
+              0.8,
+              0.75
+            ],
+            "id": "fictional-10-3",
+            "productFamily": "product-10-3"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.983333,
+              0.6,
+              0.5
+            ],
+            "id": "fictional-10-1",
+            "productFamily": "product-10-1"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.916667,
+              0.8,
+              0.75
+            ],
+            "id": "fictional-10-2",
+            "productFamily": "product-10-2"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.816667,
+              0.8,
+              0.5
+            ],
+            "id": "fictional-10-0",
+            "productFamily": "product-10-0"
+          }
+        ],
+        "id": "query-10-0",
+        "queryFamily": "family-10",
+        "scope": "fictional-comparison",
+        "split": "development"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-10-4",
+          "fictional-10-3",
+          "fictional-10-1",
+          "fictional-10-2",
+          "fictional-10-0"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          4.874398827802559,
+          3.8192236731484908,
+          2.2509453973060403,
+          1.4054847870634906,
+          1.0812721433221404
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              1.0,
+              0.883333,
+              0.4,
+              0.75
+            ],
+            "id": "fictional-10-4",
+            "productFamily": "product-10-4"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.966667,
+              0.8,
+              0.75
+            ],
+            "id": "fictional-10-3",
+            "productFamily": "product-10-3"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.966667,
+              0.6,
+              0.5
+            ],
+            "id": "fictional-10-1",
+            "productFamily": "product-10-1"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.966667,
+              0.8,
+              0.75
+            ],
+            "id": "fictional-10-2",
+            "productFamily": "product-10-2"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.866667,
+              0.8,
+              0.5
+            ],
+            "id": "fictional-10-0",
+            "productFamily": "product-10-0"
+          }
+        ],
+        "id": "query-10-1",
+        "queryFamily": "family-10",
+        "scope": "fictional-comparison",
+        "split": "development"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-11-0",
+          "fictional-11-4",
+          "fictional-11-1",
+          "fictional-11-2",
+          "fictional-11-3"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          3.9584437786026903,
+          3.40565771721735,
+          2.1440803348383097,
+          0.9779995031927596,
+          0.96946791273145
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.816667,
+              0.4,
+              1.0
+            ],
+            "id": "fictional-11-0",
+            "productFamily": "product-11-0"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.75,
+              0.6,
+              0.5
+            ],
+            "id": "fictional-11-4",
+            "productFamily": "product-11-4"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.683333,
+              0.6,
+              0.5
+            ],
+            "id": "fictional-11-1",
+            "productFamily": "product-11-1"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.833333,
+              0.4,
+              0.5
+            ],
+            "id": "fictional-11-2",
+            "productFamily": "product-11-2"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.45,
+              1.0,
+              0.5
+            ],
+            "id": "fictional-11-3",
+            "productFamily": "product-11-3"
+          }
+        ],
+        "id": "query-11-0",
+        "queryFamily": "family-11",
+        "scope": "fictional-comparison",
+        "split": "train"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-11-0",
+          "fictional-11-4",
+          "fictional-11-1",
+          "fictional-11-3",
+          "fictional-11-2"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          3.9395852825401403,
+          3.4245162132799,
+          2.1629388309008597,
+          0.988326408794,
+          0.9591410071302096
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.766667,
+              0.4,
+              1.0
+            ],
+            "id": "fictional-11-0",
+            "productFamily": "product-11-0"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.8,
+              0.6,
+              0.5
+            ],
+            "id": "fictional-11-4",
+            "productFamily": "product-11-4"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.733333,
+              0.6,
+              0.5
+            ],
+            "id": "fictional-11-1",
+            "productFamily": "product-11-1"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.5,
+              1.0,
+              0.5
+            ],
+            "id": "fictional-11-3",
+            "productFamily": "product-11-3"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.783333,
+              0.4,
+              0.5
+            ],
+            "id": "fictional-11-2",
+            "productFamily": "product-11-2"
+          }
+        ],
+        "id": "query-11-1",
+        "queryFamily": "family-11",
+        "scope": "fictional-comparison",
+        "split": "train"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-12-0",
+          "fictional-12-2",
+          "fictional-12-3",
+          "fictional-12-1",
+          "fictional-12-4"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          4.957465848914859,
+          3.0172365484262498,
+          1.0799250203676096,
+          0.7745708726888096,
+          0.48313605294960005
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              1.0,
+              0.983333,
+              0.6,
+              0.75
+            ],
+            "id": "fictional-12-0",
+            "productFamily": "product-12-0"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.6,
+              0.4,
+              0.25
+            ],
+            "id": "fictional-12-2",
+            "productFamily": "product-12-2"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.983333,
+              0.6,
+              0.5
+            ],
+            "id": "fictional-12-3",
+            "productFamily": "product-12-3"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.933333,
+              0.6,
+              0.25
+            ],
+            "id": "fictional-12-1",
+            "productFamily": "product-12-1"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.8,
+              0.8,
+              0.0
+            ],
+            "id": "fictional-12-4",
+            "productFamily": "product-12-4"
+          }
+        ],
+        "id": "query-12-0",
+        "queryFamily": "family-12",
+        "scope": "fictional-comparison",
+        "split": "train"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-12-0",
+          "fictional-12-2",
+          "fictional-12-3",
+          "fictional-12-1",
+          "fictional-12-4"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          4.938607352852309,
+          2.9983780523637,
+          1.0736391064600403,
+          0.7557123766262597,
+          0.50199454901215
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              1.0,
+              0.933333,
+              0.6,
+              0.75
+            ],
+            "id": "fictional-12-0",
+            "productFamily": "product-12-0"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.55,
+              0.4,
+              0.25
+            ],
+            "id": "fictional-12-2",
+            "productFamily": "product-12-2"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.966667,
+              0.6,
+              0.5
+            ],
+            "id": "fictional-12-3",
+            "productFamily": "product-12-3"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.883333,
+              0.6,
+              0.25
+            ],
+            "id": "fictional-12-1",
+            "productFamily": "product-12-1"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.85,
+              0.8,
+              0.0
+            ],
+            "id": "fictional-12-4",
+            "productFamily": "product-12-4"
+          }
+        ],
+        "id": "query-12-1",
+        "queryFamily": "family-12",
+        "scope": "fictional-comparison",
+        "split": "train"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-13-3",
+          "fictional-13-4",
+          "fictional-13-1",
+          "fictional-13-2",
+          "fictional-13-0"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          4.093964067882009,
+          3.80799821394804,
+          2.9170801808817597,
+          1.6089134175674404,
+          1.399198495986
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              1.0,
+              0.333333,
+              0.4,
+              0.25
+            ],
+            "id": "fictional-13-3",
+            "productFamily": "product-13-3"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.816667,
+              1.0,
+              0.75
+            ],
+            "id": "fictional-13-4",
+            "productFamily": "product-13-4"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.733333,
+              1.0,
+              0.0
+            ],
+            "id": "fictional-13-1",
+            "productFamily": "product-13-1"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.866667,
+              0.6,
+              1.0
+            ],
+            "id": "fictional-13-2",
+            "productFamily": "product-13-2"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.95,
+              0.8,
+              0.75
+            ],
+            "id": "fictional-13-0",
+            "productFamily": "product-13-0"
+          }
+        ],
+        "id": "query-13-0",
+        "queryFamily": "family-13",
+        "scope": "fictional-comparison",
+        "split": "train"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-13-3",
+          "fictional-13-4",
+          "fictional-13-1",
+          "fictional-13-2",
+          "fictional-13-0"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          4.075105571819459,
+          3.78913971788549,
+          2.8982216848192097,
+          1.6277719136299904,
+          1.41805699204855
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              1.0,
+              0.283333,
+              0.4,
+              0.25
+            ],
+            "id": "fictional-13-3",
+            "productFamily": "product-13-3"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.766667,
+              1.0,
+              0.75
+            ],
+            "id": "fictional-13-4",
+            "productFamily": "product-13-4"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.683333,
+              1.0,
+              0.0
+            ],
+            "id": "fictional-13-1",
+            "productFamily": "product-13-1"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.916667,
+              0.6,
+              1.0
+            ],
+            "id": "fictional-13-2",
+            "productFamily": "product-13-2"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              1.0,
+              0.8,
+              0.75
+            ],
+            "id": "fictional-13-0",
+            "productFamily": "product-13-0"
+          }
+        ],
+        "id": "query-13-1",
+        "queryFamily": "family-13",
+        "scope": "fictional-comparison",
+        "split": "train"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-14-0",
+          "fictional-14-4",
+          "fictional-14-3",
+          "fictional-14-2",
+          "fictional-14-1"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          4.26369053244496,
+          3.59157459744336,
+          3.2282982157923,
+          1.8575846832220595,
+          1.2685357693327597
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              1.0,
+              0.783333,
+              0.4,
+              0.25
+            ],
+            "id": "fictional-14-0",
+            "productFamily": "product-14-0"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.483333,
+              0.6,
+              0.75
+            ],
+            "id": "fictional-14-4",
+            "productFamily": "product-14-4"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.4,
+              0.4,
+              0.5
+            ],
+            "id": "fictional-14-3",
+            "productFamily": "product-14-3"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.683333,
+              0.6,
+              0.25
+            ],
+            "id": "fictional-14-2",
+            "productFamily": "product-14-2"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.483333,
+              1.0,
+              0.75
+            ],
+            "id": "fictional-14-1",
+            "productFamily": "product-14-1"
+          }
+        ],
+        "id": "query-14-0",
+        "queryFamily": "family-14",
+        "scope": "fictional-comparison",
+        "split": "train"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-14-0",
+          "fictional-14-4",
+          "fictional-14-3",
+          "fictional-14-2",
+          "fictional-14-1"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          4.24483203638241,
+          3.57271610138081,
+          3.20943971972975,
+          1.8764431792846095,
+          1.2496772732702097
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              1.0,
+              0.733333,
+              0.4,
+              0.25
+            ],
+            "id": "fictional-14-0",
+            "productFamily": "product-14-0"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.433333,
+              0.6,
+              0.75
+            ],
+            "id": "fictional-14-4",
+            "productFamily": "product-14-4"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.35,
+              0.4,
+              0.5
+            ],
+            "id": "fictional-14-3",
+            "productFamily": "product-14-3"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.733333,
+              0.6,
+              0.25
+            ],
+            "id": "fictional-14-2",
+            "productFamily": "product-14-2"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.433333,
+              1.0,
+              0.75
+            ],
+            "id": "fictional-14-1",
+            "productFamily": "product-14-1"
+          }
+        ],
+        "id": "query-14-1",
+        "queryFamily": "family-14",
+        "scope": "fictional-comparison",
+        "split": "train"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-15-0",
+          "fictional-15-1",
+          "fictional-15-4",
+          "fictional-15-3",
+          "fictional-15-2"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          4.09303972594315,
+          3.1115290287389996,
+          1.3084984380116,
+          0.667706187391,
+          0.8751754324187
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              1.0,
+              0.85,
+              0.8,
+              0.0
+            ],
+            "id": "fictional-15-0",
+            "productFamily": "product-15-0"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.85,
+              0.4,
+              0.25
+            ],
+            "id": "fictional-15-1",
+            "productFamily": "product-15-1"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.95,
+              0.4,
+              0.75
+            ],
+            "id": "fictional-15-4",
+            "productFamily": "product-15-4"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.65,
+              0.6,
+              0.25
+            ],
+            "id": "fictional-15-2",
+            "productFamily": "product-15-2"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.2,
+              1.0,
+              0.5
+            ],
+            "id": "fictional-15-3",
+            "productFamily": "product-15-3"
+          }
+        ],
+        "id": "query-15-0",
+        "queryFamily": "family-15",
+        "scope": "fictional-comparison",
+        "split": "development"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-15-0",
+          "fictional-15-1",
+          "fictional-15-4",
+          "fictional-15-3",
+          "fictional-15-2"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          4.0741812298806,
+          3.0926705326764496,
+          1.28963994194905,
+          0.64884769132845,
+          0.85631693635615
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              1.0,
+              0.8,
+              0.8,
+              0.0
+            ],
+            "id": "fictional-15-0",
+            "productFamily": "product-15-0"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.8,
+              0.4,
+              0.25
+            ],
+            "id": "fictional-15-1",
+            "productFamily": "product-15-1"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.9,
+              0.4,
+              0.75
+            ],
+            "id": "fictional-15-4",
+            "productFamily": "product-15-4"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.6,
+              0.6,
+              0.25
+            ],
+            "id": "fictional-15-2",
+            "productFamily": "product-15-2"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.15,
+              1.0,
+              0.5
+            ],
+            "id": "fictional-15-3",
+            "productFamily": "product-15-3"
+          }
+        ],
+        "id": "query-15-1",
+        "queryFamily": "family-15",
+        "scope": "fictional-comparison",
+        "split": "development"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-16-2",
+          "fictional-16-4",
+          "fictional-16-3",
+          "fictional-16-0",
+          "fictional-16-1"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          4.144253642162091,
+          2.6218548158191997,
+          2.7386240028725,
+          1.6039738722745596,
+          1.3161314748737
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              1.0,
+              0.466667,
+              0.4,
+              0.25
+            ],
+            "id": "fictional-16-2",
+            "productFamily": "product-16-2"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.95,
+              1.0,
+              0.75
+            ],
+            "id": "fictional-16-3",
+            "productFamily": "product-16-3"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.5,
+              1.0,
+              1.0
+            ],
+            "id": "fictional-16-4",
+            "productFamily": "product-16-4"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.733333,
+              0.8,
+              1.0
+            ],
+            "id": "fictional-16-0",
+            "productFamily": "product-16-0"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.85,
+              0.6,
+              0.75
+            ],
+            "id": "fictional-16-1",
+            "productFamily": "product-16-1"
+          }
+        ],
+        "id": "query-16-0",
+        "queryFamily": "family-16",
+        "scope": "fictional-comparison",
+        "split": "development"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-16-2",
+          "fictional-16-4",
+          "fictional-16-3",
+          "fictional-16-0",
+          "fictional-16-1"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          4.1631121382246405,
+          2.6029963197566497,
+          2.75748249893505,
+          1.5851153762120096,
+          1.2972729788111501
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              1.0,
+              0.516667,
+              0.4,
+              0.25
+            ],
+            "id": "fictional-16-2",
+            "productFamily": "product-16-2"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.9,
+              1.0,
+              0.75
+            ],
+            "id": "fictional-16-3",
+            "productFamily": "product-16-3"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.55,
+              1.0,
+              1.0
+            ],
+            "id": "fictional-16-4",
+            "productFamily": "product-16-4"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.683333,
+              0.8,
+              1.0
+            ],
+            "id": "fictional-16-0",
+            "productFamily": "product-16-0"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.8,
+              0.6,
+              0.75
+            ],
+            "id": "fictional-16-1",
+            "productFamily": "product-16-1"
+          }
+        ],
+        "id": "query-16-1",
+        "queryFamily": "family-16",
+        "scope": "fictional-comparison",
+        "split": "development"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-17-3",
+          "fictional-17-2",
+          "fictional-17-4",
+          "fictional-17-0",
+          "fictional-17-1"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          4.02130518069791,
+          3.7375033978207997,
+          2.12387509299115,
+          1.6605493604622097,
+          1.2469837817009903
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.983333,
+              0.4,
+              1.0
+            ],
+            "id": "fictional-17-3",
+            "productFamily": "product-17-3"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.75,
+              0.8,
+              0.75
+            ],
+            "id": "fictional-17-2",
+            "productFamily": "product-17-2"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.75,
+              0.4,
+              0.5
+            ],
+            "id": "fictional-17-4",
+            "productFamily": "product-17-4"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.883333,
+              0.8,
+              1.0
+            ],
+            "id": "fictional-17-0",
+            "productFamily": "product-17-0"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.666667,
+              0.6,
+              0.75
+            ],
+            "id": "fictional-17-1",
+            "productFamily": "product-17-1"
+          }
+        ],
+        "id": "query-17-0",
+        "queryFamily": "family-17",
+        "scope": "fictional-comparison",
+        "split": "train"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-17-3",
+          "fictional-17-2",
+          "fictional-17-4",
+          "fictional-17-0",
+          "fictional-17-1"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          4.015019266790341,
+          3.7186449017582497,
+          2.1050165969286,
+          1.6794078565247597,
+          1.2658422777635405
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.966667,
+              0.4,
+              1.0
+            ],
+            "id": "fictional-17-3",
+            "productFamily": "product-17-3"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.7,
+              0.8,
+              0.75
+            ],
+            "id": "fictional-17-2",
+            "productFamily": "product-17-2"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.7,
+              0.4,
+              0.5
+            ],
+            "id": "fictional-17-4",
+            "productFamily": "product-17-4"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.933333,
+              0.8,
+              1.0
+            ],
+            "id": "fictional-17-0",
+            "productFamily": "product-17-0"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.716667,
+              0.6,
+              0.75
+            ],
+            "id": "fictional-17-1",
+            "productFamily": "product-17-1"
+          }
+        ],
+        "id": "query-17-1",
+        "queryFamily": "family-17",
+        "scope": "fictional-comparison",
+        "split": "train"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-18-0",
+          "fictional-18-4",
+          "fictional-18-2",
+          "fictional-18-1",
+          "fictional-18-3"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          4.94758751266894,
+          3.7550151480987406,
+          1.7436163815745096,
+          1.6012803807053406,
+          0.50199454901215
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              1.0,
+              0.716667,
+              1.0,
+              0.75
+            ],
+            "id": "fictional-18-0",
+            "productFamily": "product-18-0"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.916667,
+              0.6,
+              0.75
+            ],
+            "id": "fictional-18-4",
+            "productFamily": "product-18-4"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.983333,
+              1.0,
+              1.0
+            ],
+            "id": "fictional-18-2",
+            "productFamily": "product-18-2"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.966667,
+              0.4,
+              1.0
+            ],
+            "id": "fictional-18-1",
+            "productFamily": "product-18-1"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.85,
+              0.8,
+              0.0
+            ],
+            "id": "fictional-18-3",
+            "productFamily": "product-18-3"
+          }
+        ],
+        "id": "query-18-0",
+        "queryFamily": "family-18",
+        "scope": "fictional-comparison",
+        "split": "final"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-18-0",
+          "fictional-18-4",
+          "fictional-18-2",
+          "fictional-18-1",
+          "fictional-18-3"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          4.96644600873149,
+          3.7361566520361906,
+          1.7247578855119596,
+          1.6075662946129097,
+          0.5208530450747
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              1.0,
+              0.766667,
+              1.0,
+              0.75
+            ],
+            "id": "fictional-18-0",
+            "productFamily": "product-18-0"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.866667,
+              0.6,
+              0.75
+            ],
+            "id": "fictional-18-4",
+            "productFamily": "product-18-4"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.933333,
+              1.0,
+              1.0
+            ],
+            "id": "fictional-18-2",
+            "productFamily": "product-18-2"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.983333,
+              0.4,
+              1.0
+            ],
+            "id": "fictional-18-1",
+            "productFamily": "product-18-1"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.9,
+              0.8,
+              0.0
+            ],
+            "id": "fictional-18-3",
+            "productFamily": "product-18-3"
+          }
+        ],
+        "id": "query-18-1",
+        "queryFamily": "family-18",
+        "scope": "fictional-comparison",
+        "split": "final"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-19-3",
+          "fictional-19-0",
+          "fictional-19-2",
+          "fictional-19-4",
+          "fictional-19-1"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          4.04420429128421,
+          3.1595729264653407,
+          2.1642859538553902,
+          1.8979955440863001,
+          0.5913478612019405
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.683333,
+              1.0,
+              1.0
+            ],
+            "id": "fictional-19-3",
+            "productFamily": "product-19-3"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.616667,
+              1.0,
+              0.25
+            ],
+            "id": "fictional-19-0",
+            "productFamily": "product-19-0"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.616667,
+              0.8,
+              0.5
+            ],
+            "id": "fictional-19-2",
+            "productFamily": "product-19-2"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.55,
+              1.0,
+              0.25
+            ],
+            "id": "fictional-19-4",
+            "productFamily": "product-19-4"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.966667,
+              1.0,
+              0.0
+            ],
+            "id": "fictional-19-1",
+            "productFamily": "product-19-1"
+          }
+        ],
+        "id": "query-19-0",
+        "queryFamily": "family-19",
+        "scope": "fictional-comparison",
+        "split": "train"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-19-3",
+          "fictional-19-0",
+          "fictional-19-2",
+          "fictional-19-4",
+          "fictional-19-1"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          4.06306278734676,
+          3.1784314225278907,
+          2.1454274577928403,
+          1.8791370480237501,
+          0.5976337751095095
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.733333,
+              1.0,
+              1.0
+            ],
+            "id": "fictional-19-3",
+            "productFamily": "product-19-3"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.666667,
+              1.0,
+              0.25
+            ],
+            "id": "fictional-19-0",
+            "productFamily": "product-19-0"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.566667,
+              0.8,
+              0.5
+            ],
+            "id": "fictional-19-2",
+            "productFamily": "product-19-2"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.5,
+              1.0,
+              0.25
+            ],
+            "id": "fictional-19-4",
+            "productFamily": "product-19-4"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.983333,
+              1.0,
+              0.0
+            ],
+            "id": "fictional-19-1",
+            "productFamily": "product-19-1"
+          }
+        ],
+        "id": "query-19-1",
+        "queryFamily": "family-19",
+        "scope": "fictional-comparison",
+        "split": "train"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-20-1",
+          "fictional-20-3",
+          "fictional-20-2",
+          "fictional-20-0",
+          "fictional-20-4"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          5.0706426136298095,
+          3.7096651191115404,
+          2.5374410489222905,
+          2.25992517995275,
+          3.1654364365271594
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              1.0,
+              0.283333,
+              1.0,
+              1.0
+            ],
+            "id": "fictional-20-1",
+            "productFamily": "product-20-1"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.916667,
+              0.4,
+              0.75
+            ],
+            "id": "fictional-20-3",
+            "productFamily": "product-20-3"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.966667,
+              0.6,
+              0.75
+            ],
+            "id": "fictional-20-0",
+            "productFamily": "product-20-0"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.75,
+              1.0,
+              0.5
+            ],
+            "id": "fictional-20-4",
+            "productFamily": "product-20-4"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.233333,
+              0.4,
+              0.5
+            ],
+            "id": "fictional-20-2",
+            "productFamily": "product-20-2"
+          }
+        ],
+        "id": "query-20-0",
+        "queryFamily": "family-20",
+        "scope": "fictional-comparison",
+        "split": "train"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-20-1",
+          "fictional-20-3",
+          "fictional-20-2",
+          "fictional-20-0",
+          "fictional-20-4"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          5.0895011096923595,
+          3.6908066230489904,
+          2.5185825528597405,
+          2.2787836760153,
+          3.1842949325897094
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              1.0,
+              0.333333,
+              1.0,
+              1.0
+            ],
+            "id": "fictional-20-1",
+            "productFamily": "product-20-1"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.866667,
+              0.4,
+              0.75
+            ],
+            "id": "fictional-20-3",
+            "productFamily": "product-20-3"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.916667,
+              0.6,
+              0.75
+            ],
+            "id": "fictional-20-0",
+            "productFamily": "product-20-0"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.8,
+              1.0,
+              0.5
+            ],
+            "id": "fictional-20-4",
+            "productFamily": "product-20-4"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.283333,
+              0.4,
+              0.5
+            ],
+            "id": "fictional-20-2",
+            "productFamily": "product-20-2"
+          }
+        ],
+        "id": "query-20-1",
+        "queryFamily": "family-20",
+        "scope": "fictional-comparison",
+        "split": "train"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-21-1",
+          "fictional-21-2",
+          "fictional-21-0",
+          "fictional-21-4",
+          "fictional-21-3"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          4.91346294288219,
+          4.78145347044434,
+          3.1267951024632,
+          2.46964010153419,
+          2.1993090772413497
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              1.0,
+              0.866667,
+              0.6,
+              0.75
+            ],
+            "id": "fictional-21-1",
+            "productFamily": "product-21-1"
+          },
+          {
+            "features": [
+              1.0,
+              1.0,
+              0.516667,
+              0.6,
+              0.75
+            ],
+            "id": "fictional-21-2",
+            "productFamily": "product-21-2"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.65,
+              0.8,
+              0.25
+            ],
+            "id": "fictional-21-0",
+            "productFamily": "product-21-0"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.666667,
+              0.8,
+              0.75
+            ],
+            "id": "fictional-21-4",
+            "productFamily": "product-21-4"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.95,
+              0.4,
+              0.5
+            ],
+            "id": "fictional-21-3",
+            "productFamily": "product-21-3"
+          }
+        ],
+        "id": "query-21-0",
+        "queryFamily": "family-21",
+        "scope": "fictional-comparison",
+        "split": "train"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-21-1",
+          "fictional-21-2",
+          "fictional-21-0",
+          "fictional-21-4",
+          "fictional-21-3"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          4.93232143894474,
+          4.76259497438179,
+          3.10793660640065,
+          2.45078160547164,
+          2.2181675733038997
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              1.0,
+              0.916667,
+              0.6,
+              0.75
+            ],
+            "id": "fictional-21-1",
+            "productFamily": "product-21-1"
+          },
+          {
+            "features": [
+              1.0,
+              1.0,
+              0.466667,
+              0.6,
+              0.75
+            ],
+            "id": "fictional-21-2",
+            "productFamily": "product-21-2"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.6,
+              0.8,
+              0.25
+            ],
+            "id": "fictional-21-0",
+            "productFamily": "product-21-0"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.616667,
+              0.8,
+              0.75
+            ],
+            "id": "fictional-21-4",
+            "productFamily": "product-21-4"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              1.0,
+              0.4,
+              0.5
+            ],
+            "id": "fictional-21-3",
+            "productFamily": "product-21-3"
+          }
+        ],
+        "id": "query-21-1",
+        "queryFamily": "family-21",
+        "scope": "fictional-comparison",
+        "split": "train"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-22-3",
+          "fictional-22-1",
+          "fictional-22-2",
+          "fictional-22-4",
+          "fictional-22-0"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          3.6571302454476404,
+          3.3490822290297,
+          1.6039738722745596,
+          1.04849431932,
+          1.02200278639535
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.416667,
+              1.0,
+              0.75
+            ],
+            "id": "fictional-22-3",
+            "productFamily": "product-22-3"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.6,
+              0.6,
+              0.5
+            ],
+            "id": "fictional-22-1",
+            "productFamily": "product-22-1"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.733333,
+              0.8,
+              1.0
+            ],
+            "id": "fictional-22-2",
+            "productFamily": "product-22-2"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.9,
+              0.6,
+              0.5
+            ],
+            "id": "fictional-22-4",
+            "productFamily": "product-22-4"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.95,
+              0.4,
+              0.5
+            ],
+            "id": "fictional-22-0",
+            "productFamily": "product-22-0"
+          }
+        ],
+        "id": "query-22-0",
+        "queryFamily": "family-22",
+        "scope": "fictional-comparison",
+        "split": "train"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-22-3",
+          "fictional-22-1",
+          "fictional-22-2",
+          "fictional-22-4",
+          "fictional-22-0"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          3.6759887415101904,
+          3.36794072509225,
+          1.6228323683371095,
+          1.02963582325745,
+          1.0031442903328
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.466667,
+              1.0,
+              0.75
+            ],
+            "id": "fictional-22-3",
+            "productFamily": "product-22-3"
+          },
+          {
+            "features": [
+              1.0,
+              0.0,
+              0.65,
+              0.6,
+              0.5
+            ],
+            "id": "fictional-22-1",
+            "productFamily": "product-22-1"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.783333,
+              0.8,
+              1.0
+            ],
+            "id": "fictional-22-2",
+            "productFamily": "product-22-2"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.85,
+              0.6,
+              0.5
+            ],
+            "id": "fictional-22-4",
+            "productFamily": "product-22-4"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.9,
+              0.4,
+              0.5
+            ],
+            "id": "fictional-22-0",
+            "productFamily": "product-22-0"
+          }
+        ],
+        "id": "query-22-1",
+        "queryFamily": "family-22",
+        "scope": "fictional-comparison",
+        "split": "train"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-23-0",
+          "fictional-23-4",
+          "fictional-23-3",
+          "fictional-23-1",
+          "fictional-23-2"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          1.5963408354124597,
+          1.2734753146256406,
+          0.7494264627186904,
+          1.10105498132355,
+          0.60349766234125
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.833333,
+              0.6,
+              1.0
+            ],
+            "id": "fictional-23-0",
+            "productFamily": "product-23-0"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.616667,
+              0.8,
+              0.75
+            ],
+            "id": "fictional-23-4",
+            "productFamily": "product-23-4"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.866667,
+              0.6,
+              0.25
+            ],
+            "id": "fictional-23-1",
+            "productFamily": "product-23-1"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.4,
+              0.4,
+              0.75
+            ],
+            "id": "fictional-23-3",
+            "productFamily": "product-23-3"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.6,
+              0.4,
+              0.25
+            ],
+            "id": "fictional-23-2",
+            "productFamily": "product-23-2"
+          }
+        ],
+        "id": "query-23-0",
+        "queryFamily": "family-23",
+        "scope": "fictional-comparison",
+        "split": "final"
+      }
+    },
+    {
+      "expected": {
+        "controlled": true,
+        "order": [
+          "fictional-23-0",
+          "fictional-23-4",
+          "fictional-23-3",
+          "fictional-23-1",
+          "fictional-23-2"
+        ],
+        "reason": "synthetic-comparison-only",
+        "scores": [
+          1.6151993314750097,
+          1.2923338106881905,
+          0.7682849587812404,
+          1.1199134773861,
+          0.6223561584038
+        ]
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.883333,
+              0.6,
+              1.0
+            ],
+            "id": "fictional-23-0",
+            "productFamily": "product-23-0"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.666667,
+              0.8,
+              0.75
+            ],
+            "id": "fictional-23-4",
+            "productFamily": "product-23-4"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.916667,
+              0.6,
+              0.25
+            ],
+            "id": "fictional-23-1",
+            "productFamily": "product-23-1"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.45,
+              0.4,
+              0.75
+            ],
+            "id": "fictional-23-3",
+            "productFamily": "product-23-3"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.65,
+              0.4,
+              0.25
+            ],
+            "id": "fictional-23-2",
+            "productFamily": "product-23-2"
+          }
+        ],
+        "id": "query-23-1",
+        "queryFamily": "family-23",
+        "scope": "fictional-comparison",
+        "split": "final"
+      }
+    },
+    {
+      "expected": {
+        "controlled": false,
+        "order": [
+          "fictional-00-2",
+          "fictional-00-0",
+          "fictional-00-4",
+          "fictional-00-3",
+          "fictional-00-1"
+        ],
+        "reason": "out-of-scope",
+        "scores": []
+      },
+      "query": {
+        "candidates": [
+          {
+            "features": [
+              1.0,
+              1.0,
+              0.633333,
+              0.4,
+              0.0
+            ],
+            "id": "fictional-00-2",
+            "productFamily": "product-00-2"
+          },
+          {
+            "features": [
+              0.0,
+              1.0,
+              0.65,
+              0.4,
+              0.75
+            ],
+            "id": "fictional-00-0",
+            "productFamily": "product-00-0"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.766667,
+              0.4,
+              0.5
+            ],
+            "id": "fictional-00-4",
+            "productFamily": "product-00-4"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.716667,
+              0.4,
+              0.25
+            ],
+            "id": "fictional-00-3",
+            "productFamily": "product-00-3"
+          },
+          {
+            "features": [
+              0.0,
+              0.0,
+              0.616667,
+              0.8,
+              0.0
+            ],
+            "id": "fictional-00-1",
+            "productFamily": "product-00-1"
+          }
+        ],
+        "scope": "medical"
+      }
+    },
+    {
+      "expected": {
+        "controlled": false,
+        "order": [],
+        "reason": "invalid-input",
+        "scores": []
+      },
+      "query": {
+        "candidates": [],
+        "scope": "fictional-comparison"
+      }
+    }
+  ],
+  "tolerance": 1e-09,
+  "version": "synthetic-ranking-imitation-v1"
+}
