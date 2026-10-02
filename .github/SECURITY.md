@@ -2,9 +2,9 @@
 
 ## Reporting a vulnerability
 
-No private reporting route is currently verified or advertised for this repository.
-The owner must verify a private route for the replacement repository before
-requesting sensitive reports or advertising GitHub private vulnerability reporting.
+Report vulnerabilities privately through
+[GitHub private vulnerability reporting](https://github.com/aancha/skincare-decision-hub/security/advisories/new).
+Sign in to GitHub and include the affected revision, impact, and reproduction steps.
 
 Do not open public issues containing vulnerability details, suspected secrets,
 or personal data. Do not use pull requests or public comments to disclose them.
